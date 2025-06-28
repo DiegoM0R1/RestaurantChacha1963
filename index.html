@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chacha - Sabores Ancestrales de Amazonas</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+        
+        :root {
+            --tierra-principal: #1b110a;
+            --ocre: #cccc3c;
+            --terracota: #271e14;
+            --piedra: #d2c48c;
+            --verde-bosque: #354f2f;
+            --azul-catarata: #a0b446;
+            --rojo-ceramica: #cdbc3f;
+            --blanco-hueso: #FDF5E6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--blanco-hueso);
+            color: var(--tierra-principal);
+            overflow-x: hidden;
+        }
+
+        /* NAVEGACIÓN */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(24, 14, 7, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(50, 33, 21, 0.98);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--blanco-hueso);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--ocre);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--ocre);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* CARRUSEL PRINCIPAL */
+        .hero-carousel {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            display: flex;
+            width: 400%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .carousel-slide {
+    width: 25%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* === AÑADE ESTAS TRES LÍNEAS AQUÍ === */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Ahora tus reglas específicas solo definen la imagen y se verán bien */
+.slide-1 { 
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/carrusel/slider1.jpg'); 
+}
+.slide-2 { 
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/carrusel/slider2.jpg'); 
+}
+.slide-3 { 
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('img/carrusel/todo.jpg'); 
+}
+.slide-4 { 
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/carrusel/slider3.jpg'); 
+}
+        .slide-content {
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .slide-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            line-height: 1.2;
+        }
+
+        .slide-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--rojo-ceramica), var(--ocre));
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+            background: linear-gradient(135deg, var(--ocre), var(--rojo-ceramica));
+        }
+
+        /* CONTROLES DEL CARRUSEL */
+        .carousel-nav {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-dot {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-dot.active {
+            background: var(--ocre);
+            transform: scale(1.2);
+        }
+
+        .carousel-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .carousel-arrow:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .arrow-left { left: 2rem; }
+        .arrow-right { right: 2rem; }
+
+        /* SECCIONES */
+        .section {
+            padding: 5rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--tierra-principal);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--ocre), var(--rojo-ceramica));
+        }
+
+        /* BIENVENIDA */
+        .welcome-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--verde-bosque);
+            font-weight: 400;
+        }
+
+        /* PLATOS DESTACADOS */
+        .dishes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .dish-card {
+            position: relative;
+            height: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background-size: cover;
+    background-position: center;
+        }
+
+        .dish-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        
+
+        .dish-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 2rem;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            z-index: 2;
+        }
+
+        .dish-card:hover .dish-overlay {
+            transform: translateY(0);
+        }
+
+        .dish-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .dish-description {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* AMBIENTE */
+        .ambiente-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .ambiente-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--verde-bosque);
+        }
+
+        .ambiente-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .ambiente-img {
+            height: 200px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--piedra), var(--ocre));
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .ambiente-img:hover {
+            transform: scale(1.05);
+        }
+
+        .ambiente-img::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: var(--tierra-principal);
+            border-radius: 10px;
+            opacity: 0.7;
+        }
+
+        /* TESTIMONIOS */
+        .testimonios {
+            background: linear-gradient(135deg, var(--verde-bosque), var(--azul-catarata));
+            color: white;
+            padding: 5rem 0;
+        }
+
+        .testimonios-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .testimonio {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .testimonio-text {
+            font-size: 1.4rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .testimonio-author {
+            font-weight: 600;
+            color: var(--ocre);
+        }
+
+        /* CTA FINAL */
+        .cta-final {
+            background: linear-gradient(135deg, var(--tierra-principal), var(--terracota));
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .cta-title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--tierra-principal);
+            color: var(--blanco-hueso);
+            padding: 3rem 0 1rem 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h3 {
+            font-family: 'Cinzel', serif;
+            margin-bottom: 1rem;
+            color: var(--ocre);
+        }
+
+        .footer-section p, .footer-section a {
+            color: var(--blanco-hueso);
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .footer-section a:hover {
+            color: var(--ocre);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--blanco-hueso);
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--ocre);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            margin-top: 2rem;
+            opacity: 0.7;
+        }
+
+        /* ANIMACIONES */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .slide-title {
+                font-size: 2.5rem;
+            }
+            
+            .slide-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .ambiente-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 3rem 0;
+            }
+        }
+        /* === AÑADE ESTE NUEVO BLOQUE DE CÓDIGO AL FINAL DE TU CSS === */
+
+/* Imagen para la primera tarjeta de plato */
+.dishes-grid .dish-card:nth-child(1) {
+    background-image: url('img/ceviche\ de\ trucha.jpg');
+}
+
+/* Imagen para la segunda tarjeta de plato */
+.dishes-grid .dish-card:nth-child(2) {
+    background-image: url('img/shanwichchicharronchancho.jpg');
+}
+
+/* Imagen para la tercera tarjeta de plato */
+.dishes-grid .dish-card:nth-child(3) {
+    background-image: url('img/El\ campesino.jpg');
+}
+
+/* Imagen para la cuarta tarjeta de plato */
+.dishes-grid .dish-card:nth-child(4) {
+    background-image: url('img/desayunochacha.jpg');
+}
+    </style>
+</head>
+<body>
+    <!-- NAVEGACIÓN -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+<a href="#inicio" class="logo"><img src="img/carrusel/logo/logochacha.jpg" alt="Logo Restaurante Chacha" style="border-radius: 50%; width: 70px;"></a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#platos">Nuestros Platos</a></li>
+                <li><a href="#ambiente">Nuestro Local</a></li>
+                <li><a href="#historia">Historia</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CARRUSEL PRINCIPAL -->
+    <section class="hero-carousel" id="inicio">
+        <div class="carousel-container" id="carouselContainer">
+            <div class="carousel-slide slide-1">
+                <div class="slide-content">
+                    <h1 class="slide-title">El Sabor Ancestral de Amazonas</h1>
+                    <p class="slide-subtitle">Descubre los sabores únicos que han alimentado nuestra tierra por generaciones</p>
+                    <a href="#platos" class="btn-primary">Ver Nuestros Platos</a>
+                </div>
+            </div>
+            <div class="carousel-slide slide-2">
+                <div class="slide-content">
+                    <h1 class="slide-title">Una Cena en el Corazón de la ciudad</h1>
+                    <p class="slide-subtitle">Sumérgete en un ambiente inspirado en la majestuosidad de Kuélap</p>
+                    <a href="#ambiente" class="btn-primary">Conoce Nuestro Local</a>
+                </div>
+            </div>
+            <div class="carousel-slide slide-3">
+                <div class="slide-content">
+                    <h1 class="slide-title">Inspirados en Nuestra Tierra Mágica</h1>
+                    <p class="slide-subtitle">Cada detalle rinde homenaje a la grandeza de Chachapoyas</p>
+                    <a href="#historia" class="btn-primary">Nuestra Historia</a>
+                </div>
+            </div>
+            <div class="carousel-slide slide-4">
+                <div class="slide-content">
+                    <h1 class="slide-title">Tradición en Manos Expertas</h1>
+                    <p class="slide-subtitle">Nuestro equipo preserva y reinventa las recetas de nuestros ancestros</p>
+                    <a href="#contacto" class="btn-primary">Reservar Mesa</a>
+                </div>
+            </div>
+        </div>
+        
+        <button class="carousel-arrow arrow-left">
+    <i class="fas fa-chevron-left"></i>
+</button>
+<button class="carousel-arrow arrow-right">
+    <i class="fas fa-chevron-right"></i>
+</button>
+
+<div class="carousel-nav">
+    <div class="nav-dot active"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+    <div class="nav-dot"></div>
+</div>
+    </section>
+
+    <!-- BIENVENIDA -->
+    <section class="section fade-in">
+        <h2 class="section-title">Nuestra Esencia</h2>
+        <p class="welcome-text">
+            En Chacha, no solo servimos comida. Servimos historias en cada plato, rescatando las recetas de nuestros ancestros y celebrando la riqueza de Amazonas. Bienvenido a una experiencia que alimenta el cuerpo y el alma, donde cada bocado te conecta con la majestuosa herencia de los Chachapoyas.
+        </p>
+    </section>
+
+    <!-- PLATOS DESTACADOS -->
+    <section class="section fade-in" id="platos">
+        <h2 class="section-title">Platos que Cuentan Historias</h2>
+        <div class="dishes-grid">
+            <div class="dish-card">
+                <div class="dish-overlay">
+                    <h3 class="dish-name">Ceviche de trucha</h3>
+                    <p class="dish-description">con camote cocido</p>
+                </div>
+            </div>
+            <div class="dish-card">
+                <div class="dish-overlay">
+                    <h3 class="dish-name">Sandwhich de chicharrón de chancho</h3>
+                    <p class="dish-description">Con camote y sarsa criolla</p>
+                </div>
+            </div>
+            <div class="dish-card">
+                <div class="dish-overlay">
+                    <h3 class="dish-name">El campesino</h3>
+                    <p class="dish-description">Cecina de chancho, filete de pollo, bistek, papas fritas, arroz, mote, yucas y platanos fritos, tamal</p>
+                </div>
+            </div>
+            <div class="dish-card">
+                <div class="dish-overlay">
+                    <h3 class="dish-name">Desayuno chacha</h3>
+                    <p class="dish-description">Jugo de papaya o piña, purtumote con huevo frito, tamal, pan y café</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AMBIENTE -->
+    <section class="section fade-in" id="ambiente">
+        <h2 class="section-title">Un Refugio Inspirado en Gigantes</h2>
+        <div class="ambiente-grid">
+            <div class="ambiente-text">
+                <p>Cada rincón de nuestro restaurante es un homenaje a la grandeza de nuestra cultura. Cene rodeado por la mística de Kuélap y la mirada eterna de los sarcófagos de Karajía.</p>
+                <p>Nuestro diseño arquitectónico recrea los muros de piedra ancestrales, mientras que elementos decorativos evocan los textiles y cerámicas que han definido nuestra identidad por siglos.</p>
+            </div>
+            <div class="ambiente-images">
+                <div class="ambiente-img"></div>
+                <div class="ambiente-img"></div>
+                <div class="ambiente-img"></div>
+                <div class="ambiente-img"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="testimonios fade-in">
+        <div class="testimonios-container">
+            <h2 class="section-title" style="color: white;">Lo que Dicen Nuestros Visitantes</h2>
+            <div class="testimonio">
+                <p class="testimonio-text">"Una experiencia gastronómica única que me transportó a la verdadera esencia de Amazonas. Los sabores son auténticos y el ambiente te hace sentir la magia de Chachapoyas."</p>
+                <p class="testimonio-author">- María Elena, Lima</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- HISTORIA -->
+    <section class="section fade-in" id="historia">
+        <h2 class="section-title">Nuestra Historia</h2>
+        <div class="ambiente-grid">
+            <div class="ambiente-text">
+                <p>Chacha nació del amor profundo por nuestra tierra y sus tradiciones culinarias. Fundado por chefs locales apasionados por preservar la herencia gastronómica de Amazonas, nuestro restaurante es más que un lugar para comer.</p>
+                <p>Inspirados por la imponente fortaleza de Kuélap, las místicas cataratas de Gocta y los enigmáticos sarcófagos de Karajía, creamos un espacio donde la historia cobra vida a través de cada plato y cada detalle arquitectónico.</p>
+                <p>Cada receta ha sido cuidadosamente investigada y adaptada, respetando las técnicas ancestrales mientras incorporamos toques contemporáneos que realzan los sabores únicos de nuestra región.</p>
+            </div>
+            <div class="ambiente-images">
+                <div class="ambiente-img"></div>
+                <div class="ambiente-img"></div>
+                <div class="ambiente-img"></div>
+                <div class="ambiente-img"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-final">
+        <h2 class="cta-title">¿Listo para tu Viaje Culinario?</h2>
+        <p class="cta-subtitle">Déjanos llevarte por un recorrido de sabores que despertarán todos tus sentidos</p>
+        <a href="#contacto" class="btn-primary" style="font-size: 1.3rem; padding: 1.2rem 3rem;">RESERVAR TU MESA AHORA</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contacto">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Jr. Amazonas 123, Chachapoyas</p>
+                <p><i class="fas fa-phone"></i> +51 941 234 567</p>
+                <p><i class="fas fa-envelope"></i> reservas@chacharestaurante.com</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Horarios</h3>
+                <p>Lunes a Domingo</p>
+                <p>12:00 PM - 3:00 PM</p>
+                <p>6:00 PM - 11:00 PM</p>
+                <p><strong>Reservas recomendadas</strong></p>
+            </div>
+            <div class="footer-section">
+                <h3>Ubicación</h3>
+                <p>En el corazón histórico de Chachapoyas, a solo minutos de los principales atractivos turísticos.</p>
+                <p>Fácil acceso y estacionamiento disponible.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Restaurante Chacha. Todos los derechos reservados. | Diseñado con amor por nuestra tierra amazónica.</p>
+        </div>
+    </footer>
+
+   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // ===================================
+        // LÓGICA DEL CARRUSEL
+        // ===================================
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+        const carouselContainer = document.getElementById('carouselContainer');
+        const dots = document.querySelectorAll('.nav-dot');
+        const arrowLeft = document.querySelector('.arrow-left');
+        const arrowRight = document.querySelector('.arrow-right');
+        let autoPlayInterval;
+
+        function updateCarousel() {
+            carouselContainer.style.transform = `translateX(-${currentSlide * (100 / totalSlides)}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function changeSlide(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            updateCarousel();
+            resetAutoPlay();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+            resetAuto-Play();
+        }
+
+        function startAutoPlay() {
+            autoPlayInterval = setInterval(() => {
+                changeSlide(1);
+            }, 6000);
+        }
+
+        function resetAutoPlay() {
+            clearInterval(autoPlayInterval);
+            startAutoPlay();
+        }
+
+        // Asignar eventos a flechas y puntos (LA SOLUCIÓN AL ERROR)
+        arrowLeft.addEventListener('click', () => changeSlide(-1));
+        arrowRight.addEventListener('click', () => changeSlide(1));
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => goToSlide(index));
+        });
+        
+        startAutoPlay(); // Iniciar el carrusel automático
+
+        // ===================================
+        // EFECTO DE SCROLL EN LA BARRA DE NAVEGACIÓN
+        // ===================================
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // ===================================
+        // SCROLL SUAVE (SMOOTH SCROLLING)
+        // ===================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // ===================================
+        // ANIMACIÓN DE ENTRADA (FADE IN)
+        // ===================================
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // ===================================
+        // INTEGRACIÓN CON WHATSAPP
+        // ===================================
+        function reservarWhatsApp() {
+            const phone = '51941234567'; // Reemplaza con tu número
+            const message = 'Hola! Me gustaría hacer una reserva en el restaurante Chacha.';
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        document.querySelectorAll('.btn-primary, .footer-section a[href*="whatsapp"]').forEach(btn => {
+            if (btn.textContent.includes('RESERVAR') || btn.textContent.includes('Reservar') || (btn.href && btn.href.includes('whatsapp'))) {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    reservarWhatsApp();
+                });
+            }
+        });
+
+    });
+</script>
