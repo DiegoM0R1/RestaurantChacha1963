@@ -58,8 +58,6 @@
             padding: 0 2rem;
         }
 
-        
-
         .nav-links {
             display: flex;
             list-style: none;
@@ -94,6 +92,22 @@
         .nav-links a:hover::after {
             width: 100%;
         }
+        
+        /* === NUEVO: MENÚ HAMBURGUESA === */
+        .hamburger-menu {
+            display: none; /* Oculto por defecto en pantallas grandes */
+            cursor: pointer;
+            z-index: 1002;
+        }
+
+        .hamburger-menu .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--blanco-hueso);
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+
 
         /* CARRUSEL PRINCIPAL */
         .hero-carousel {
@@ -110,32 +124,22 @@
         }
 
         .carousel-slide {
-    width: 25%;
-    height: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    /* === AÑADE ESTAS TRES LÍNEAS AQUÍ === */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-}
+            width: 25%;
+            height: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
 
-/* Ahora tus reglas específicas solo definen la imagen y se verán bien */
-.slide-1 { 
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/carrusel/slider1.jpg'); 
-}
-.slide-2 { 
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/carrusel/slider2.jpg'); 
-}
-.slide-3 { 
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('img/carrusel/todo.jpg'); 
-}
-.slide-4 { 
-    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/carrusel/slider3.jpg'); 
-}
+        .slide-1 { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/carrusel/slider1.jpg'); }
+        .slide-2 { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/carrusel/slider2.jpg'); }
+        .slide-3 { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('img/carrusel/todo.jpg'); }
+        .slide-4 { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/carrusel/slider3.jpg'); }
+
         .slide-content {
             text-align: center;
             color: white;
@@ -182,7 +186,6 @@
             background: linear-gradient(135deg, var(--ocre), var(--rojo-ceramica));
         }
 
-        /* CONTROLES DEL CARRUSEL */
         .carousel-nav {
             position: absolute;
             bottom: 2rem;
@@ -220,20 +223,15 @@
             backdrop-filter: blur(5px);
         }
 
-        .carousel-arrow:hover {
-            background: rgba(255,255,255,0.3);
-        }
-
+        .carousel-arrow:hover { background: rgba(255,255,255,0.3); }
         .arrow-left { left: 2rem; }
         .arrow-right { right: 2rem; }
 
         /* SECCIONES */
         .section {
-            padding: 5rem 0;
+            padding: 5rem 2rem; /* Añadido padding lateral por defecto */
             max-width: 1200px;
             margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
         }
 
         .section-title {
@@ -284,7 +282,7 @@
             transition: all 0.4s ease;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             background-size: cover;
-    background-position: center;
+            background-position: center;
         }
 
         .dish-card:hover {
@@ -292,13 +290,9 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
 
-        
-
         .dish-overlay {
             position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
+            bottom: 0; left: 0; right: 0;
             background: linear-gradient(transparent, rgba(0,0,0,0.8));
             color: white;
             padding: 2rem;
@@ -307,20 +301,9 @@
             z-index: 2;
         }
 
-        .dish-card:hover .dish-overlay {
-            transform: translateY(0);
-        }
-
-        .dish-name {
-            font-family: 'Cinzel', serif;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .dish-description {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
+        .dish-card:hover .dish-overlay { transform: translateY(0); }
+        .dish-name { font-family: 'Cinzel', serif; font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .dish-description { font-size: 1rem; opacity: 0.9; }
 
         /* AMBIENTE */
         .ambiente-grid {
@@ -330,239 +313,246 @@
             align-items: center;
             margin-top: 3rem;
         }
-
-        .ambiente-text {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: var(--verde-bosque);
-        }
-
-        .ambiente-images {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
-
-        .ambiente-img {
-            height: 200px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--piedra), var(--ocre));
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-
-        .ambiente-img:hover {
-            transform: scale(1.05);
-        }
-
-        .ambiente-img::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background: var(--tierra-principal);
-            border-radius: 10px;
-            opacity: 0.7;
-        }
+        .ambiente-text { font-size: 1.2rem; line-height: 1.8; color: var(--verde-bosque); }
+        .ambiente-images { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .ambiente-img { height: 200px; border-radius: 10px; background: linear-gradient(135deg, var(--piedra), var(--ocre)); position: relative; overflow: hidden; transition: transform 0.3s ease; }
+        .ambiente-img:hover { transform: scale(1.05); }
 
         /* TESTIMONIOS */
-        .testimonios {
-            background: linear-gradient(135deg, var(--verde-bosque), var(--azul-catarata));
-            color: white;
-            padding: 5rem 0;
-        }
-
-        .testimonios-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            text-align: center;
-        }
-
-        .testimonio {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .testimonio-text {
-            font-size: 1.4rem;
-            font-style: italic;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .testimonio-author {
-            font-weight: 600;
-            color: var(--ocre);
-        }
+        .testimonios { background: linear-gradient(135deg, var(--verde-bosque), var(--azul-catarata)); color: white; padding: 5rem 2rem; }
+        .testimonios-container { max-width: 1000px; margin: 0 auto; text-align: center; }
+        .testimonio { max-width: 600px; margin: 0 auto; }
+        .testimonio-text { font-size: 1.4rem; font-style: italic; margin-bottom: 2rem; line-height: 1.6; }
+        .testimonio-author { font-weight: 600; color: var(--ocre); }
 
         /* CTA FINAL */
-        .cta-final {
-            background: linear-gradient(135deg, var(--tierra-principal), var(--terracota));
-            color: white;
-            text-align: center;
-            padding: 5rem 2rem;
-        }
-
-        .cta-title {
-            font-family: 'Cinzel', serif;
-            font-size: 3rem;
-            margin-bottom: 2rem;
-        }
-
-        .cta-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-        }
+        .cta-final { background: linear-gradient(135deg, var(--tierra-principal), var(--terracota)); color: white; text-align: center; padding: 5rem 2rem; }
+        .cta-title { font-family: 'Cinzel', serif; font-size: 3rem; margin-bottom: 2rem; }
+        .cta-subtitle { font-size: 1.3rem; margin-bottom: 3rem; opacity: 0.9; }
 
         /* FOOTER */
-        .footer {
-            background: var(--tierra-principal);
-            color: var(--blanco-hueso);
-            padding: 3rem 0 1rem 0;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .footer-section h3 {
-            font-family: 'Cinzel', serif;
-            margin-bottom: 1rem;
-            color: var(--ocre);
-        }
-
-        .footer-section p, .footer-section a {
-            color: var(--blanco-hueso);
-            text-decoration: none;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .footer-section a:hover {
-            color: var(--ocre);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            color: var(--blanco-hueso);
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .social-links a:hover {
-            color: var(--ocre);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            margin-top: 2rem;
-            opacity: 0.7;
-        }
+        .footer { background: var(--tierra-principal); color: var(--blanco-hueso); padding: 3rem 0 1rem 0; }
+        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .footer-section h3 { font-family: 'Cinzel', serif; margin-bottom: 1rem; color: var(--ocre); }
+        .footer-section p, .footer-section a { color: var(--blanco-hueso); text-decoration: none; margin-bottom: 0.5rem; display: block; }
+        .footer-section a:hover { color: var(--ocre); }
+        .social-links { display: flex; gap: 1rem; margin-top: 1rem; }
+        .social-links a { color: var(--blanco-hueso); font-size: 1.5rem; transition: color 0.3s ease; }
+        .social-links a:hover { color: var(--ocre); }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2); margin-top: 2rem; opacity: 0.7; }
 
         /* ANIMACIONES */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .slide-title {
-                font-size: 2.5rem;
-            }
-            
-            .slide-subtitle {
-                font-size: 1.1rem;
-            }
-            
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        
+        /* === IMÁGENES DE PLATOS === */
+        .dishes-grid .dish-card:nth-child(1) { background-image: url('img/ceviche de trucha.jpg'); }
+        .dishes-grid .dish-card:nth-child(2) { background-image: url('img/shanwichchicharronchancho.jpg'); }
+        .dishes-grid .dish-card:nth-child(3) { background-image: url('img/El campesino.jpg'); }
+        .dishes-grid .dish-card:nth-child(4) { background-image: url('img/desayunochacha.jpg'); }
+        
+        
+        /* =================================
+           ===== MEJORAS RESPONSIVE ======
+           ================================= */
+        
+        /* === TABLETS Y MÓVILES GRANDES (hasta 992px) === */
+        @media (max-width: 992px) {
             .ambiente-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .cta-title {
-                font-size: 2rem;
-            }
-            
-            .section {
-                padding: 3rem 0;
+                text-align: center;
             }
         }
-        /* === AÑADE ESTE NUEVO BLOQUE DE CÓDIGO AL FINAL DE TU CSS === */
 
-/* Imagen para la primera tarjeta de plato */
-.dishes-grid .dish-card:nth-child(1) {
-    background-image: url('img/ceviche\ de\ trucha.jpg');
+        /* === MÓVILES (hasta 768px) === */
+        @media (max-width: 768px) {
+            .nav-links {
+                /* === MEJORA: Transforma los enlaces en un menú desplegable === */
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                right: -100%; /* Empieza fuera de la pantalla */
+                width: 70%;
+                height: 100vh;
+                background: var(--terracota);
+                padding-top: 5rem;
+                align-items: center;
+                transition: right 0.5s ease-in-out;
+                z-index: 1001;
+            }
+            .nav-links.active {
+                right: 0; /* Muestra el menú */
+            }
+            .hamburger-menu {
+                display: block; /* Muestra el icono de hamburguesa */
+            }
+            .slide-title { font-size: 2.5rem; }
+            .slide-subtitle { font-size: 1.1rem; }
+            .section { padding: 3rem 1.5rem; }
+            .section-title { font-size: 2.2rem; }
+            .welcome-text { font-size: 1.1rem; }
+            .cta-title { font-size: 2rem; }
+            .btn-primary { padding: 0.8rem 1.8rem; font-size: 1rem; }
+            .footer-content { text-align: center; }
+            .social-links { justify-content: center; }
+        }
+
+        /* === MÓVILES PEQUEÑOS (hasta 480px) === */
+        @media (max-width: 480px) {
+            .slide-title { font-size: 2rem; }
+            .slide-subtitle { font-size: 1rem; }
+            .carousel-arrow { font-size: 1.5rem; padding: 0.8rem; }
+            .arrow-left { left: 1rem; }
+            .arrow-right { right: 1rem; }
+            .cta-title { font-size: 1.8rem; }
+        }
+
+/* =================================
+   === ESTILOS PARA LA CARTA ACORDEÓN ===
+   ================================= */
+
+#menu-accordion-container {
+    max-width: 1200px;
+    margin: 2rem auto 0 auto;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border: 1px solid #eee;
 }
 
-/* Imagen para la segunda tarjeta de plato */
-.dishes-grid .dish-card:nth-child(2) {
-    background-image: url('img/shanwichchicharronchancho.jpg');
+.accordion-item {
+    border-bottom: 1px solid #e0e0e0;
+}
+.accordion-item:last-child {
+    border-bottom: none;
 }
 
-/* Imagen para la tercera tarjeta de plato */
-.dishes-grid .dish-card:nth-child(3) {
-    background-image: url('img/El\ campesino.jpg');
+.accordion-header {
+    padding: 20px 25px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
 }
 
-/* Imagen para la cuarta tarjeta de plato */
-.dishes-grid .dish-card:nth-child(4) {
-    background-image: url('img/desayunochacha.jpg');
+.accordion-header:hover {
+    background-color: #f9f9f9;
 }
+
+.accordion-header h2 {
+    margin: 0;
+    font-family: 'Cinzel', serif;
+    font-size: 1.6em;
+    color: var(--tierra-principal);
+}
+
+.accordion-header .icon {
+    transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+    font-size: 1.4em;
+    color: var(--ocre);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
+    background-color: #fdfdfd;
+    padding: 0 25px;
+}
+
+/* Estado activo del acordeón */
+.accordion-item.active .accordion-content {
+    padding: 25px;
+}
+
+.accordion-item.active .icon {
+    transform: rotate(180deg);
+}
+
+.category-description {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #ccc;
+    font-size: 1.05em;
+}
+/* Nuevos estilos para las imágenes en la carta */
+.menu-item {
+    display: grid;
+    /* Ajustamos las columnas para la imagen */
+    grid-template-columns: 80px 1fr auto; 
+    gap: 15px 20px;
+    align-items: start;
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.menu-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.item-image-container {
+    width: 80px;
+    height: 80px;
+    grid-row: 1 / 3; /* La imagen ocupa dos filas si el texto es largo */
+}
+
+.item-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
+    border-radius: 8px;
+    background-color: #f5f5f5; /* Un color de fondo por si la imagen no carga */
+}
+
+.item-details {
+    /* La descripción ahora se alinea correctamente */
+    grid-column: 2 / 3;
+}
+
+.item-price {
+    grid-column: 3 / 4;
+}
+
+/* Si no hay imagen, el texto ocupa todo el espacio */
+.menu-item:has(.item-image-container) .item-details {
+    grid-column: 2 / 3;
+}
+.menu-item:not(:has(.item-image-container)) .item-details {
+    grid-column: 1 / 3;
+}
+
     </style>
 </head>
 <body>
-    <!-- NAVEGACIÓN -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
-<a href="#inicio" class="logo"><img src="img/carrusel/logo/logochacha.jpg" alt="Logo Restaurante Chacha" style="border-radius: 50%; width: 70px;"></a>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#platos">Nuestros Platos</a></li>
-                <li><a href="#ambiente">Nuestro Local</a></li>
-                <li><a href="#historia">Historia</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
+            <a href="#inicio" class="logo"><img src="img/carrusel/logo/logochacha.jpg" alt="Logo Restaurante Chacha" style="border-radius: 50%; width: 70px;"></a>
+            <ul class="nav-links" id="nav-links">
+    <li><a href="#inicio">Inicio</a></li>
+    <li><a href="#platos">Nuestros Platos</a></li>
+    <li><a href="#nuestra-carta">Nuestra Carta</a></li> 
+    <li><a href="#ambiente">Nuestro Local</a></li>
+    <li><a href="#historia">Historia</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+</ul>
+            <div class="hamburger-menu" id="hamburger-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
         </div>
     </nav>
+
 
     <!-- CARRUSEL PRINCIPAL -->
     <section class="hero-carousel" id="inicio">
@@ -650,6 +640,11 @@
             </div>
         </div>
     </section>
+<section class="section fade-in" id="nuestra-carta">
+    <h2 class="section-title">Nuestra Carta Completa</h2>
+    <div id="menu-accordion-container">
+        </div>
+</section>
 
     <!-- AMBIENTE -->
     <section class="section fade-in" id="ambiente">
@@ -738,117 +733,244 @@
     </footer>
 
    <script>
-    document.addEventListener('DOMContentLoaded', function() {
+   document.addEventListener('DOMContentLoaded', function() {
 
-        // ===================================
-        // LÓGICA DEL CARRUSEL
-        // ===================================
+    /*****************************************************
+     * SECCIÓN 1: LÓGICA DEL MENÚ Y LA CARTA
+     *****************************************************/
+
+    /**
+ * Construye el menú de la carta en formato de acordeón a partir de datos JSON.
+ * @param {object} data - El objeto JSON completo de la carta.
+ */
+function generarMenu(data) {
+    const menuData = data.menu;
+    const menuContainer = document.getElementById('menu-accordion-container');
+    if (!menuContainer) return;
+
+    menuContainer.innerHTML = ''; // Limpiar antes de generar
+
+    menuData.forEach(category => {
+        const accordionItem = document.createElement('div');
+        accordionItem.className = 'accordion-item';
+
+        const accordionHeader = document.createElement('div');
+        accordionHeader.className = 'accordion-header';
+        accordionHeader.innerHTML = `<h2>${category.category}</h2><i class="fas fa-chevron-down icon"></i>`;
+
+        const accordionContent = document.createElement('div');
+        accordionContent.className = 'accordion-content';
+
+        let contentHTML = category.description ? `<p class="category-description">${category.description}</p>` : '';
+
+        category.items.forEach(item => {
+            let priceHTML = '';
+            if (typeof item.price === 'number') {
+                priceHTML = `S/ ${item.price.toFixed(2)}`;
+            } else if (item.prices) {
+                priceHTML = Object.entries(item.prices).map(([size, price]) => `${size}: S/ ${price.toFixed(2)}`).join('<br>');
+            } else {
+                priceHTML = item.price || '';
+            }
+
+            // === LÓGICA PARA LA IMAGEN ===
+            // Si el item tiene una imagen, creamos la etiqueta img.
+            // La ruta será "img/" + el nombre del archivo del JSON.
+            const imageHTML = item.image ? 
+                `<div class="item-image-container">
+                    <img src="img/${item.image}" alt="${item.name}" loading="lazy">
+                 </div>` : 
+                '';
+
+            contentHTML += `
+                <div class="menu-item">
+                    ${imageHTML}
+                    <div class="item-details">
+                        <h3>${item.name}</h3>
+                        ${item.description ? `<p>${item.description}</p>` : ''}
+                    </div>
+                    <div class="item-price">${priceHTML}</div>
+                </div>
+            `;
+        });
+
+        accordionContent.innerHTML = contentHTML;
+        accordionItem.appendChild(accordionHeader);
+        accordionItem.appendChild(accordionContent);
+        menuContainer.appendChild(accordionItem);
+
+        accordionHeader.addEventListener('click', () => {
+            const isActive = accordionItem.classList.contains('active');
+            accordionItem.classList.toggle('active');
+            const content = accordionItem.querySelector('.accordion-content');
+            if (accordionItem.classList.contains('active')) {
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                content.style.maxHeight = null;
+            }
+        });
+    });
+}
+
+    /**
+     * Carga los datos de la carta desde un archivo JSON externo.
+     */
+    function cargarCarta() {
+        fetch('carta.json') // Asegúrate que tu archivo se llame 'carta.json'
+            .then(response => {
+                if (!response.ok) throw new Error('Error de red al cargar la carta.');
+                return response.json();
+            })
+            .then(data => {
+                generarMenu(data); // Llama a la función que construye el menú
+            })
+            .catch(error => {
+                console.error('Error al cargar la carta:', error);
+                const menuContainer = document.getElementById('menu-accordion-container');
+                if (menuContainer) {
+                    menuContainer.innerHTML = '<p style="text-align:center; color:red;">Lo sentimos, no se pudo cargar la carta en este momento.</p>';
+                }
+            });
+    }
+
+
+    /*****************************************************
+     * SECCIÓN 2: LÓGICA DE NAVEGACIÓN Y SCROLL
+     *****************************************************/
+
+    // Lógica para el menú hamburguesa en móviles
+    const hamburger = document.getElementById('hamburger-menu');
+    const navLinks = document.getElementById('nav-links');
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    }
+
+    // Efecto de scroll en la barra de navegación
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    }
+
+    // Scroll suave con ajuste para la barra de navegación fija
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                const navbarHeight = navbar ? navbar.offsetHeight : 0;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+
+    /*****************************************************
+     * SECCIÓN 3: LÓGICA DEL CARRUSEL
+     *****************************************************/
+
+    const carouselContainer = document.getElementById('carouselContainer');
+    if (carouselContainer) {
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel-slide');
         const totalSlides = slides.length;
-        const carouselContainer = document.getElementById('carouselContainer');
         const dots = document.querySelectorAll('.nav-dot');
         const arrowLeft = document.querySelector('.arrow-left');
         const arrowRight = document.querySelector('.arrow-right');
         let autoPlayInterval;
 
-        function updateCarousel() {
+        const updateCarousel = () => {
             carouselContainer.style.transform = `translateX(-${currentSlide * (100 / totalSlides)}%)`;
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
-        }
+            dots.forEach((dot, index) => dot.classList.toggle('active', index === currentSlide));
+        };
 
-        function changeSlide(direction) {
+        const resetAutoPlay = () => {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(() => changeSlide(1), 6000);
+        };
+
+        const changeSlide = (direction) => {
             currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
             updateCarousel();
             resetAutoPlay();
-        }
+        };
 
-        function goToSlide(index) {
+        const goToSlide = (index) => {
             currentSlide = index;
             updateCarousel();
-            resetAuto-Play();
+            resetAutoPlay();
+        };
+
+        if (arrowLeft && arrowRight && dots.length > 0) {
+            arrowLeft.addEventListener('click', () => changeSlide(-1));
+            arrowRight.addEventListener('click', () => changeSlide(1));
+            dots.forEach((dot, index) => dot.addEventListener('click', () => goToSlide(index)));
+            resetAutoPlay(); // Inicia el carrusel
         }
+    }
 
-        function startAutoPlay() {
-            autoPlayInterval = setInterval(() => {
-                changeSlide(1);
-            }, 6000);
-        }
 
-        function resetAutoPlay() {
-            clearInterval(autoPlayInterval);
-            startAutoPlay();
-        }
+    /*****************************************************
+     * SECCIÓN 4: ANIMACIONES Y OTROS
+     *****************************************************/
 
-        // Asignar eventos a flechas y puntos (LA SOLUCIÓN AL ERROR)
-        arrowLeft.addEventListener('click', () => changeSlide(-1));
-        arrowRight.addEventListener('click', () => changeSlide(1));
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => goToSlide(index));
-        });
-        
-        startAutoPlay(); // Iniciar el carrusel automático
-
-        // ===================================
-        // EFECTO DE SCROLL EN LA BARRA DE NAVEGACIÓN
-        // ===================================
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // ===================================
-        // SCROLL SUAVE (SMOOTH SCROLLING)
-        // ===================================
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
-        // ===================================
-        // ANIMACIÓN DE ENTRADA (FADE IN)
-        // ===================================
+    // Animación de entrada (Fade In) al hacer scroll
+    const fadeInElements = document.querySelectorAll('.fade-in');
+    if (fadeInElements.length > 0) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
         }, { threshold: 0.1 });
+        fadeInElements.forEach(el => observer.observe(el));
+    }
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
-        
-        // ===================================
-        // INTEGRACIÓN CON WHATSAPP
-        // ===================================
-        function reservarWhatsApp() {
-            const phone = '51941234567'; // Reemplaza con tu número
-            const message = 'Hola! Me gustaría hacer una reserva en el restaurante Chacha.';
-            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
-        }
+    // Integración con WhatsApp
+    function reservarWhatsApp() {
+        const phone = '51941234567'; // Reemplaza con tu número
+        const message = 'Hola! Me gustaría hacer una reserva en el restaurante Chacha.';
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
 
-        document.querySelectorAll('.btn-primary, .footer-section a[href*="whatsapp"]').forEach(btn => {
-            if (btn.textContent.includes('RESERVAR') || btn.textContent.includes('Reservar') || (btn.href && btn.href.includes('whatsapp'))) {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    reservarWhatsApp();
-                });
+    document.body.addEventListener('click', function(e) {
+        const target = e.target.closest('a');
+        if (target) {
+            const isReserveButton = target.textContent.toUpperCase().includes('RESERVAR');
+            const isWhatsappIcon = target.querySelector('.fa-whatsapp');
+            if (isReserveButton || isWhatsappIcon) {
+                e.preventDefault();
+                reservarWhatsApp();
             }
-        });
-
+        }
     });
+
+
+    /*****************************************************
+     * INICIO DE LA APLICACIÓN
+     *****************************************************/
+
+    // Llama a la función principal para cargar la carta
+    cargarCarta();
+
+});
 </script>

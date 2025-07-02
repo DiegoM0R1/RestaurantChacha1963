@@ -1,0 +1,2067 @@
+{
+  "restaurantName": "Restaurante Chacha 1963",
+  "slogan": "Tradición Chachapoyana",
+  "menu": [
+    {
+      "category": "Sandwiches",
+      "description": "Nuestros clásicos para cualquier momento del día.",
+      "items": [
+        {
+          "name": "Pollo deshilachado",
+          "price": 10.00,
+          "currency": "Soles",
+          "description": "Tiernas hebras de pollo, perfectas para un bocado rápido.",
+          "image": "sandwich_pollo_deshilachado.jpg",
+          "tags": ["clásico", "rápido"]
+        },
+        {
+          "name": "Mixto Clásico",
+          "price": 10.00,
+          "currency": "Soles",
+          "description": "La combinación perfecta de jamón y queso.",
+          "image": "sandwich_mixto_clasico.jpg",
+          "tags": ["clásico", "básico"]
+        },
+        {
+          "name": "Chicharrón de Chancho",
+          "price": 13.00,
+          "currency": "Soles",
+          "description": "Crujiente chicharrón con camote frito y nuestra auténtica salsa criolla.",
+          "image": "sandwich_chicharron.jpg",
+          "tags": ["regional", "imperdible"]
+        },
+        {
+          "name": "Filete de pollo",
+          "price": 13.00,
+          "currency": "Soles",
+          "description": "Jugoso filete de pollo con tomate fresco y lechuga crujiente.",
+          "image": "sandwich_filete_pollo.jpg",
+          "tags": ["ligero", "saludable"]
+        },
+        {
+          "name": "Cecina de Chancho",
+          "price": 12.00,
+          "currency": "Soles",
+          "description": "",
+          "image": "sandwich_lomo_saltado.jpg",
+          "tags": ["tradicional", "sabroso"]
+        },
+        {
+          "name": "Chorizo Regional",
+          "price": 12.00,
+          "currency": "Soles",
+          "description": "Exquisito chorizo con el sabor auténtico de la región.",
+          "image": "sandwich_chorizo_regional.jpg",
+          "tags": ["regional", "único"]
+        },
+        {
+          "name": "Club Sandwich",
+          "price": 25.00,
+          "currency": "Soles",
+          "description": "Pollo, jamón, queso, huevo, tomate, acompañado de papas fritas.",
+          "image": "sandwich_club.jpg",
+          "tags": ["completo", "generoso"]
+        }
+      ]
+    },
+    {
+      "category": "Sandwich Triples",
+      "description": "Nuestras combinaciones más completas en tres capas.",
+      "items": [
+        {
+          "name": "Pollo Palta y Tomate",
+          "price": 14.00,
+          "currency": "Soles",
+          "description": "Fresco y delicioso, con pollo, palta cremosa y tomate.",
+          "image": "triple_pollo_palta_tomate.jpg",
+          "tags": ["fresco", "clásico"]
+        },
+        {
+          "name": "Palta Tomate y Lechuga Aceituna",
+          "price": 12.00,
+          "currency": "Soles",
+          "description": "La frescura de la palta, tomate, lechuga y el toque mediterráneo de la aceituna.",
+          "image": "triple_palta_tomate_lechuga.jpg",
+          "tags": ["vegetariano", "fresco"]
+        },
+        {
+          "name": "Palta Jamón y Queso",
+          "price": 12.00,
+          "currency": "Soles",
+          "description": "La cremosidad de la palta se une al sabor del jamón y queso.",
+          "image": "triple_palta_jamon_queso.jpg",
+          "tags": ["clásico", "sabroso"]
+        },
+        {
+          "name": "Pollo Durazno con Almíbar y Queso Jamón",
+          "price": 16.00,
+          "currency": "Soles",
+          "description": "Una mezcla sorprendente de pollo, dulzura del durazno en almíbar, queso y jamón.",
+          "image": "triple_pollo_durazno.jpg",
+          "tags": ["innovador", "dulce-salado"]
+        },
+        {
+          "name": "Pollo Durazno Huevo con Tocino",
+          "price": 16.00,
+          "currency": "Soles",
+          "description": "Una combinación única de pollo, durazno, huevo y crujiente tocino.",
+          "image": "triple_pollo_durazno_huevo_tocino.jpg",
+          "tags": ["único", "especial"]
+        }
+      ]
+    },
+    {
+      "category": "Sandwich Vegetariano",
+      "description": "Opciones deliciosas para quienes prefieren no carne.",
+      "items": [
+        {
+          "name": "Capresse",
+          "price": 10.00,
+          "currency": "Soles",
+          "description": "Clásico con tomate fresco, queso y aromática albahaca.",
+          "image": "sandwich_capresso.jpg",
+          "tags": ["vegetariano", "fresco"]
+        },
+        {
+          "name": "Queso Palta y Tomate Lechuga",
+          "price": 12.00,
+          "currency": "Soles",
+          "description": "Una explosión de frescura con queso, palta, tomate y lechuga.",
+          "image": "sandwich_queso_palta.jpg",
+          "tags": ["vegetariano", "saludable"]
+        }
+      ]
+    },
+    {
+      "category": "Desayunos",
+      "description": "Comienza tu día con energía y el sabor de la tradición chachapoyana.",
+      "items": [
+        {
+          "name": "Pan",
+          "price": 1.50,
+          "currency": "Soles",
+          "description": "Pan clásico chachapoyas.",
+          "image": "pan.jpg",
+          "tags": ["básico", "fresco"]
+        },
+        {
+          "name": "Porción de leche",
+          "price": 3.00,
+          "currency": "Soles",
+          "description": "Leche fresca y cremosa.",
+          "image": "leche.jpg",
+          "tags": ["bebida", "básico"]
+        },
+        {
+          "name": "Huevo frito",
+          "price": 3.00,
+          "currency": "Soles",
+          "description": "Huevo frito al punto.",
+          "image": "huevo_frito.jpg",
+          "tags": ["básico", "proteína"]
+        },
+        {
+          "name": "Tamales, Humitas c/u",
+          "price": 6.00,
+          "currency": "Soles",
+          "description": "Deliciosos tamales o humitas, la tradición en tu mesa.",
+          "image": "tamales_humitas.jpg",
+          "tags": ["regional", "tradicional"]
+        },
+        {
+          "name": "Juane",
+          "price": 6.00,
+          "currency": "Soles",
+          "description": "El clásico juane, con arroz, pollo y especias, envuelto en hoja de bijao.",
+          "image": "jumitas.jpg",
+          "tags": ["regional", "dulce", "salado"]
+        },
+        {
+          "name": "Porción de Huevos Revueltos",
+          "price": 12.00,
+          "currency": "Soles",
+          "description": "Huevos revueltos esponjosos, acompañados de 1 pan.",
+          "image": "huevos_revueltos.jpg",
+          "tags": ["clásico", "completo"]
+        },
+        {
+          "name": "Porción de Huevos con Tocino",
+          "price": 14.00,
+          "currency": "Soles",
+          "description": "Huevos y crujiente tocino, acompañado de 1 pan.",
+          "image": "huevos_tocino.jpg",
+          "tags": ["clásico", "sabroso"]
+        },
+        {
+          "name": "Omelette de Jamón y Queso",
+          "price": 18.00,
+          "currency": "Soles",
+          "description": "Suave omelette relleno de jamón y queso, con tostadas.",
+          "image": "omelette_jamon_queso.jpg",
+          "tags": ["completo", "delicioso"]
+        },
+        {
+          "name": "Omelette Vegetariano",
+          "price": 18.00,
+          "currency": "Soles",
+          "description": "Omelette lleno de vegetales frescos, con tostadas.",
+          "image": "omelette_vegetariano.jpg",
+          "tags": ["vegetariano", "saludable"]
+        },
+        {
+          "name": "Desayuno Continental",
+          "price": 15.50,
+          "currency": "Soles",
+          "description": "Jugo de papaya o piña, 1 café o té, 2 panes, miel y mantequilla.",
+          "image": "desayuno_continental.jpg",
+          "tags": ["ligero", "clásico"]
+        },
+        {
+          "name": "Desayuno Americano",
+          "price": 21.00,
+          "currency": "Soles",
+          "description": "Jugo de papaya o piña, café o té, 2 panes, miel, mantequilla, huevos revueltos o fritos.",
+          "image": "desayuno_americano.jpg",
+          "tags": ["completo", "sustancioso"]
+        },
+        {
+          "name": "Desayuno Chacha",
+          "price": 22.00,
+          "currency": "Soles",
+          "description": "Jugo de papaya o piña, café o té, 2 panes, miel, mantequilla, y la tradicional cecina con tacacho.",
+          "image": "desayuno_chacha.jpg",
+          "tags": ["regional", "especialidad"]
+        },
+        {
+          "name": "Desayuno Light",
+          "price": 22.00,
+          "currency": "Soles",
+          "description": "Jugo de piña o papaya, 1 café o té, miel, queso fresco, mermelada y panes integrales o cereales, tostadas.",
+          "image": "desayuno_light.jpg",
+          "tags": ["saludable", "ligero"]
+        },
+        {
+          "name": "Desayuno Típico",
+          "price": 22.00,
+          "currency": "Soles",
+          "description": "Jugo de piña o papaya, café o té, huevo revuelto o frito, salchicha, tacacho, cecina de res y mote, café y pan.",
+          "image": "desayuno_tipico.jpg",
+          "tags": ["regional", "tradicional"]
+        },
+        {
+          "name": "Desayuno Regional",
+          "price": 23.00,
+          "currency": "Soles",
+          "description": "El auténtico sabor regional con Chicharrón de Chancho con mote, cafe y pan.",
+          "image": "desayuno_regional.jpg",
+          "tags": ["regional", "imperdible"]
+        },
+        {
+          "name": "Adicional Porción de tostadas",
+          "price": 8.00,
+          "currency": "Soles",
+          "description": "Porción extra de tostadas.",
+          "image": "tostadas.jpg",
+          "tags": ["adicional"]
+        }
+      ]
+    },
+    {
+      "category": "Platos de Fondo - Pollo",
+      "description": "Nuestras especialidades con pollo, preparados con el mejor sabor.",
+      "items": [
+        {
+          "name": "Pollo frito",
+          "price": 28.00,
+          "currency": "Soles",
+          "description": "Crujiente pollo frito acompañado de papas fritas, arroz y ensalada.",
+          "image": "pollo_frito.jpg",
+          "tags": ["clásico", "favorito"]
+        },
+        {
+          "name": "Pollo a la plancha",
+          "price": 28.00,
+          "currency": "Soles",
+          "description": "Jugoso pollo a la plancha, una opción ligera y deliciosa.",
+          "image": "pollo_a_la_plancha.jpg",
+          "tags": ["saludable", "ligero"]
+        },
+        {
+          "name": "Tortilla de pollo",
+          "price": 28.00,
+          "currency": "Soles",
+          "description": "Suave tortilla rellena de pollo, acompañada de arroz.",
+          "image": "tortilla_pollo.jpg",
+          "tags": ["casero", "reconfortante"]
+        },
+        {
+          "name": "Arroz chaufa de pollo",
+          "price": 28.00,
+          "currency": "Soles",
+          "description": "El clásico arroz chaufa con trozos de pollo.",
+          "image": "arroz_chaufa_pollo.jpg",
+          "tags": ["fusión", "popular"]
+        },
+        {
+          "name": "Filete de pollo al Curry",
+          "price": 28.00,
+          "currency": "Soles",
+          "description": "Exquisito filete de pollo en salsa de curry, con arroz y papas al hilo.",
+          "image": "filete_pollo_curry.jpg",
+          "tags": ["internacional", "aromático"]
+        },
+        {
+          "name": "Filete de pollo a la plancha",
+          "price": 30.00,
+          "currency": "Soles",
+          "description": "Filete de pollo a la plancha, con papas fritas, arroz y ensalada.",
+          "image": "filete_pollo_plancha_completo.jpg",
+          "tags": ["completo", "saludable"]
+        },
+        {
+          "name": "Filete de pollo a las finas hierbas",
+          "price": 32.00,
+          "currency": "Soles",
+          "description": "Filete de pollo sazonado con finas hierbas, papas fritas, arroz y ensalada.",
+          "image": "filete_pollo_finas_hierbas.jpg",
+          "tags": ["gourmet", "sabroso"]
+        },
+        {
+          "name": "Filete de pollo bañado en salsa de pepino de árbol",
+          "price": 32.00,
+          "currency": "Soles",
+          "description": "Innovador filete de pollo con salsa de pepino de árbol, papas cocidas y ensalada.",
+          "image": "filete_pollo_pepino_arbol.jpg",
+          "tags": ["regional", "innovador"]
+        },
+        {
+          "name": "Filete de pollo a la napolitana",
+          "price": 32.00,
+          "currency": "Soles",
+          "description": "Saltado en salsa de tomate, gratinado con queso, champiñones, arroz y papas fritas.",
+          "image": "filete_pollo_napolitana.jpg",
+          "tags": ["internacional", "sabroso"]
+        },
+        {
+          "name": "Filete de pollo en salsa de champiñones con puré",
+          "price": 32.00,
+          "currency": "Soles",
+          "description": "Delicioso filete de pollo en cremosa salsa de champiñones, acompañado de puré.",
+          "image": "filete_pollo_champiñones_pure.jpg",
+          "tags": ["clásico", "cremoso"]
+        },
+        {
+          "name": "Asado de pollo",
+          "price": 30.00,
+          "currency": "Soles",
+          "description": "Asado de pollo jugoso, servido con puré.",
+          "image": "asado_pollo.jpg",
+          "tags": ["casero", "reconfortante"]
+        },
+        {
+          "name": "Suprema de Pollo",
+          "price": 32.00,
+          "currency": "Soles",
+          "description": "Suprema de pollo acompañada de papas fritas, arroz y ensalada.",
+          "image": "suprema_pollo.jpg",
+          "tags": ["completo", "satisfactorio"]
+        },
+        {
+          "name": "Milanesa de pollo",
+          "price": 28.00,
+          "currency": "Soles",
+          "description": "Crujiente milanesa de pollo con papas fritas, arroz y ensalada.",
+          "image": "milanesa_pollo.jpg",
+          "tags": ["clásico", "favorito"]
+        },
+        {
+          "name": "Chaufa de pollo",
+          "price": 28.00,
+          "currency": "Soles",
+          "description": "El clásico arroz chaufa con pollo.",
+          "image": "chaufa_pollo.jpg",
+          "tags": ["fusión", "popular"]
+        },
+        {
+          "name": "Chaufa especial de pollo",
+          "price": 30.00,
+          "currency": "Soles",
+          "description": "Arroz chaufa con pollo, una combinación especial.",
+          "image": "chaufa_especial_pollo.jpg",
+          "tags": ["completo", "fusión"]
+        },
+        {
+          "name": "Enrollado de pollo con jamón y queso",
+          "price": 32.00,
+          "currency": "Soles",
+          "description": "Enrollado de pollo relleno de jamón y queso, bañado en salsa de aguaymanto o pepino, con papas nativas.",
+          "image": "enrollado_pollo.jpg",
+          "tags": ["innovador", "regional"]
+        }
+      ]
+    },
+    {
+      "category": "Platos de Fondo - Carne",
+      "description": "Nuestras exquisitas preparaciones con carne de res, para los amantes del buen gusto.",
+      "items": [
+        {
+          "name": "Saltado de res",
+          "price": 30.00,
+          "currency": "Soles",
+          "description": "Clásico saltado de res, jugoso y lleno de sabor.",
+          "image": "saltado_res.jpg",
+          "tags": ["clásico", "peruano"]
+        },
+        {
+          "name": "Bisteck a la parrilla",
+          "price": 30.00,
+          "currency": "Soles",
+          "description": "Jugoso bisteck a la parrilla con papas fritas, arroz y ensalada.",
+          "image": "bisteck_parrilla.jpg",
+          "tags": ["parrilla", "satisfactorio"]
+        },
+        {
+          "name": "Milanesa de res",
+          "price": 30.00,
+          "currency": "Soles",
+          "description": "Tierna milanesa de res, empanizada y frita a la perfección.",
+          "image": "milanesa_res.jpg",
+          "tags": ["clásico", "favorito"]
+        },
+        {
+          "name": "Lomo saltado a lo chacha",
+          "price": 36.00,
+          "currency": "Soles",
+          "description": "Nuestra versión especial con lomo fino, cecina de chancho, plátano frito y huevo frito.",
+          "image": "lomo_saltado_chacha.jpg",
+          "tags": ["especialidad", "regional", "completo"]
+        },
+        {
+          "name": "Lomito al jugo",
+          "price": 30.00,
+          "currency": "Soles",
+          "description": "Delicioso lomito en su jugo, acompañado de arroz y yucas.",
+          "image": "lomito_al_jugo.jpg",
+          "tags": ["casero", "reconfortante"]
+        },
+        {
+          "name": "Lomo a la plancha",
+          "price": 30.00,
+          "currency": "Soles",
+          "description": "Lomo a la plancha jugoso, con papas fritas y arroz.",
+          "image": "lomo_a_la_plancha.jpg",
+          "tags": ["saludable", "clásico"]
+        },
+        {
+          "name": "Bisteck apanado",
+          "price": 32.00,
+          "currency": "Soles",
+          "description": "Bisteck apanado crujiente, con papas fritas, arroz y ensalada.",
+          "image": "bisteck_apanado.jpg",
+          "tags": ["clásico", "sabroso"]
+        },
+        {
+          "name": "Bisteck a lo pobre",
+          "price": 35.00,
+          "currency": "Soles",
+          "description": "El tradicional bisteck a lo pobre con papas fritas, arroz, plátano frito y huevo frito.",
+          "image": "bisteck_a_lo_pobre.jpg",
+          "tags": ["clásico", "completo"]
+        },
+        {
+          "name": "Lomo fino a la parrilla",
+          "price": 37.00,
+          "currency": "Soles",
+          "description": "Exquisito lomo fino a la parrilla con papas fritas, arroz y ensalada.",
+          "image": "lomo_fino_parrilla.jpg",
+          "tags": ["premium", "parrilla"]
+        },
+        {
+          "name": "Lomo fino saltado",
+          "price": 32.00,
+          "currency": "Soles",
+          "description": "Jugoso lomo fino saltado, acompañado de arroz.",
+          "image": "lomo_fino_saltado.jpg",
+          "tags": ["peruano", "delicioso"]
+        },
+        {
+          "name": "Lomo fino saltado bañado en salsa de champiñones",
+          "price": 38.00,
+          "currency": "Soles",
+          "description": "Lomo fino saltado en cremosa salsa de champiñones, con papas doradas, lechuga y aguaymanto.",
+          "image": "lomo_fino_champiñones.jpg",
+          "tags": ["gourmet", "elegante"]
+        },
+        {
+          "name": "Lomo fino bañado en salsa de pepino de árbol",
+          "price": 38.00,
+          "currency": "Soles",
+          "description": "Lomo fino con nuestra innovadora salsa de pepino de árbol, ensalada y papas cocktail salteadas al perejil.",
+          "image": "lomo_fino_pepino_arbol.jpg",
+          "tags": ["regional", "innovador"]
+        },
+        {
+          "name": "Lomo fino bañado en salsa de aguaymanto",
+          "price": 38.00,
+          "currency": "Soles",
+          "description": "Lomo fino con una deliciosa salsa de aguaymanto, acompañado de arroz y yuca.",
+          "image": "lomo_fino_aguaymanto.jpg",
+          "tags": ["regional", "dulce-salado"]
+        },
+        {
+          "name": "Lomo fino en salsa de maracuyá",
+          "price": 38.00,
+          "currency": "Soles",
+          "description": "Lomo fino con la acidez y dulzura de la salsa de maracuyá, con puré de papas.",
+          "image": "lomo_fino_maracuya.jpg",
+          "tags": ["gourmet", "exótico"]
+        },
+        {
+          "name": "Medallón de lomo fino en salsa de ajonjolí",
+          "price": 38.00,
+          "currency": "Soles",
+          "description": "Medallones de lomo fino bañados en una exquisita salsa de ajonjolí.",
+          "image": "medallon_lomo_ajonjoli.jpg",
+          "tags": ["gourmet", "oriental"]
+        },
+        {
+          "name": "Churrasco a la plancha",
+          "price": 38.00,
+          "currency": "Soles",
+          "description": "Jugoso churrasco a la plancha con papas fritas y ensalada fresca.",
+          "image": "churrasco_plancha.jpg",
+          "tags": ["parrilla", "sabroso"]
+        }
+      ]
+    },
+    {
+      "category": "Ensaladas",
+      "description": "Opciones frescas y ligeras para complementar tu comida.",
+      "items": [
+        {
+          "name": "Ensalada de palta",
+          "price": 12.00,
+          "currency": "Soles",
+          "description": "Rodajas de palta, cebolla, lechuga y vinagreta de limón.",
+          "image": "ensalada_palta.jpg",
+          "tags": ["fresca", "ligera"]
+        },
+        {
+          "name": "Fresca",
+          "price": 12.00,
+          "currency": "Soles",
+          "description": "Lechuga, tomate, pepinillo y palta, una opción clásica y refrescante.",
+          "image": "ensalada_fresca.jpg",
+          "tags": ["vegetariano", "saludable"]
+        },
+        {
+          "name": "Mediterránea",
+          "price": 17.00,
+          "currency": "Soles",
+          "description": "Lechuga, col morada, tomate, zanahoria, choclo, aceitunas, queso parmesano, aderezo con aceite de oliva.",
+          "image": "ensalada_mediterranea.jpg",
+          "tags": ["vegetariano", "completa"]
+        },
+        {
+          "name": "Del Campo",
+          "price": 18.00,
+          "currency": "Soles",
+          "description": "Lechuga, espinaca y salteado de champiñones.",
+          "image": "ensalada_campo.jpg",
+          "tags": ["vegetariano", "natural"]
+        },
+        {
+          "name": "Ensalada Capresse",
+          "price": 18.00,
+          "currency": "Soles",
+          "description": "Tomate, queso fresco, albahaca y aceite de oliva.",
+          "image": "ensalada_capresse.jpg",
+          "tags": ["vegetariano", "clásico"]
+        },
+        {
+          "name": "Hawaiana",
+          "price": 25.00,
+          "currency": "Soles",
+          "description": "Dados de pollo sellados, piña al almíbar, durazno, lechuga, con mayonesa de la casa.",
+          "image": "ensalada_hawaiana.jpg",
+          "tags": ["frutal", "agridulce"]
+        },
+        {
+          "name": "César",
+          "price": 24.00,
+          "currency": "Soles",
+          "description": "Dados de pollo a la plancha, queso parmesano, palta, lechuga, croutones, aderezo César.",
+          "image": "ensalada_cesar.jpg",
+          "tags": ["clásica", "popular"]
+        },
+        {
+          "name": "Pollo Crispy",
+          "price": 24.00,
+          "currency": "Soles",
+          "description": "Lechuga, col morada, manzana, apio, pollo crocante con aderezo de la casa.",
+          "image": "ensalada_pollo_crispy.jpg",
+          "tags": ["crocante", "textura"]
+        },
+        {
+          "name": "Chacha",
+          "price": 26.00,
+          "currency": "Soles",
+          "description": "Mezcla de lechugas, col morada, palta, tomate, aceitunas, huevo de codorniz, aderezada con huevo.",
+          "image": "ensalada_chacha.jpg",
+          "tags": ["especialidad", "completa"]
+        }
+      ]
+    },
+    {
+      "category": "Piques",
+      "description": "Ideales para compartir o disfrutar como entrada.",
+      "items": [
+        {
+          "name": "Porción de Pan al ajo",
+          "price": 8.00,
+          "currency": "Soles",
+          "description": "Pan tostado con un delicioso toque de ajo.",
+          "image": "pan_ajo.jpg",
+          "tags": ["entrada", "acompañamiento"]
+        },
+        {
+          "name": "Alitas a la BBQ hot",
+          "price": 20.00,
+          "currency": "Soles",
+          "description": "Crujientes alitas bañadas en salsa BBQ picante, con papas fritas.",
+          "image": "alitas_bbq_hot.jpg",
+          "tags": ["picante", "aperitivo"]
+        },
+        {
+          "name": "Alitas con salsa de Maracuyá",
+          "price": 23.00,
+          "currency": "Soles",
+          "description": "Alitas bañadas en una exótica salsa de maracuyá, con papas.",
+          "image": "alitas_maracuya.jpg",
+          "tags": ["agridulce", "exótico"]
+        },
+        {
+          "name": "Alitas finas hierbas",
+          "price": 24.00,
+          "currency": "Soles",
+          "description": "Alitas con finas hierbas, acompañadas de guacamole y papas.",
+          "image": "alitas_finas_hierbas.jpg",
+          "tags": ["aromático", "gourmet"]
+        },
+        {
+          "name": "Patacones regionales",
+          "price": 24.00,
+          "currency": "Soles",
+          "description": "Crujientes patacones con cecina de res, plátano frito y queso.",
+          "image": "patacones_regionales.jpg",
+          "tags": ["regional", "aperitivo"]
+        },
+        {
+          "name": "Tequeños de Jamón y Queso",
+          "price": 17.00,
+          "currency": "Soles",
+          "description": "Deliciosos tequeños rellenos de jamón y queso, con salsa de aguaymanto o rocoto.",
+          "image": "tequeños.jpg",
+          "tags": ["entrada", "clásico"]
+        },
+        {
+          "name": "Tortilla de Cecina de Chancho",
+          "price": 18.00,
+          "currency": "Soles",
+          "description": "Suave tortilla con cecina de chancho, acompañada de salsa de la casa.",
+          "image": "tortilla_cecina_chancho.jpg",
+          "tags": ["regional", "casero"]
+        }
+      ]
+    },
+    {
+      "category": "Sopas",
+      "description": "Calientes y reconfortantes, ideales para el alma.",
+      "items": [
+        {
+          "name": "Sustancia de pollo o res",
+          "price": 22.00,
+          "currency": "Soles",
+          "description": "Caldo nutritivo de pollo o res.",
+          "image": "sustancia.jpg",
+          "tags": ["saludable", "reconfortante"]
+        },
+        {
+          "name": "Minuta de pollo o res",
+          "price": 22.00,
+          "currency": "Soles",
+          "description": "Sopa ligera con trozos de pollo o res.",
+          "image": "minuta.jpg",
+          "tags": ["ligera", "básica"]
+        },
+        {
+          "name": "Sopa de verduras",
+          "price": 22.00,
+          "currency": "Soles",
+          "description": "Variedad de verduras frescas en un caldo aromático.",
+          "image": "sopa_verduras.jpg",
+          "tags": ["vegetariano", "saludable"]
+        },
+        {
+          "name": "Crema",
+          "price": 22.00,
+          "currency": "Soles",
+          "description": "Cremosa sopa del día.",
+          "image": "crema.jpg",
+          "tags": ["cremosa", "reconfortante"]
+        },
+        {
+          "name": "Dieta de pollo",
+          "price": 22.00,
+          "currency": "Soles",
+          "description": "Caldo ligero de pollo, ideal para una dieta balanceada.",
+          "image": "dieta_pollo.jpg",
+          "tags": ["saludable", "ligera"]
+        },
+        {
+          "name": "Caldo de gallina",
+          "price": 25.00,
+          "currency": "Soles",
+          "description": "El clásico y reconfortante caldo de gallina.",
+          "image": "caldo_gallina.jpg",
+          "tags": ["casero", "tradicional"]
+        },
+        {
+          "name": "Crema de res",
+          "price": 25.00,
+          "currency": "Soles",
+          "description": "Cremosa sopa de res, con todo el sabor casero.",
+          "image": "crema_res.jpg",
+          "tags": ["cremosa", "sustanciosa"]
+        }
+      ]
+    },
+    {
+      "category": "Vegetarianos",
+      "description": "Platos preparados especialmente para nuestros clientes vegetarianos.",
+      "items": [
+        {
+          "name": "Tostadas de champiñones y legumbres",
+          "price": 18.00,
+          "currency": "Soles",
+          "description": "Deliciosas tostadas con una mezcla de champiñones y legumbres.",
+          "image": "tostadas_champiñones_legumbres.jpg",
+          "tags": ["saludable", "ligero"]
+        },
+        {
+          "name": "Saltado de verduras",
+          "price": 22.00,
+          "currency": "Soles",
+          "description": "Variedad de verduras frescas salteadas al wok.",
+          "image": "saltado_verduras.jpg",
+          "tags": ["saludable", "fresco"]
+        },
+        {
+          "name": "Chaufa de verduras",
+          "price": 22.00,
+          "currency": "Soles",
+          "description": "Arroz chaufa con una colorida mezcla de verduras.",
+          "image": "chaufa_verduras.jpg",
+          "tags": ["fusión", "sabroso"]
+        },
+        {
+          "name": "Tortilla de verduras",
+          "price": 22.00,
+          "currency": "Soles",
+          "description": "Suave tortilla rellena de verduras de estación.",
+          "image": "tortilla_verduras.jpg",
+          "tags": ["casero", "saludable"]
+        }
+      ]
+    },
+    {
+      "category": "Platos Típicos",
+      "description": "Sumérgete en los sabores auténticos de la gastronomía chachapoyana y amazónica.",
+      "items": [
+        {
+          "name": "Ronda Regional",
+          "price": 52.00,
+          "currency": "Soles",
+          "description": "Degustación de lo mejor: lomo, cecina, costilla, patacones y picante de gallina.",
+          "image": "ronda_regional.jpg",
+          "tags": ["degustación", "regional", "completo"]
+        },
+        {
+          "name": "Cecina de trucha con mote",
+          "price": 18.00,
+          "currency": "Soles",
+          "description": "Exquisita cecina de trucha con mote y salsa criolla.",
+          "image": "cecina_trucha_mote.jpg",
+          "tags": ["regional", "pescado"]
+        },
+        {
+          "name": "Trucha frita con mote",
+          "price": 28.00,
+          "currency": "Soles",
+          "description": "Trucha entera frita, acompañada de mote y ensalada.",
+          "image": "trucha_frita.jpg",
+          "tags": ["regional", "pescado"]
+        },
+        {
+          "name": "Chicharrón de trucha",
+          "price": 30.00,
+          "currency": "Soles",
+          "description": "Crujiente chicharrón de trucha con mote, yuca frita y salsa criolla.",
+          "image": "chicharron_trucha.jpg",
+          "tags": ["regional", "innovador"]
+        },
+        {
+          "name": "Sudado de trucha",
+          "price": 30.00,
+          "currency": "Soles",
+          "description": "Acompañado con arros y yucas sancochadas",
+          "image": "sudadodetrucha.jpg",
+          "tags": ["regional", "pescado"]
+        },
+        {
+          "name": "Cecina de chancho",
+          "price": 33.00,
+          "currency": "Soles",
+          "description": "Tierna cecina de chancho con mote, yuca frita, arroz, salsa criolla y ensalada.",
+          "image": "cecina_chancho.jpg",
+          "tags": ["regional", "clásico"]
+        },
+        {
+          "name": "Cecina de res o de chancho",
+          "price": 33.00,
+          "currency": "Soles",
+          "description": "Cecina a elección (res o chancho) con mote, yuca frita, arroz, salsa criolla y ensalada.",
+          "image": "cecina_res_chancho.jpg",
+          "tags": ["regional", "personalizable"]
+        },
+        {
+          "name": "Cecina shilpida de chancho",
+          "price": 30.00,
+          "currency": "Soles",
+          "description": "Cecina shilpida de chancho con mote, huevo y cebolla.",
+          "image": "cecina_shilpida.jpg",
+          "tags": ["regional", "auténtico"]
+        },
+        {
+          "name": "Costilla cecina de chancho o regional",
+          "price": 35.00,
+          "currency": "Soles",
+          "description": "Costilla cecina de chancho o regional, con mote, papa, yuca y salsa criolla.",
+          "image": "costilla_cecina.jpg",
+          "tags": ["regional", "delicioso"]
+        },
+        {
+          "name": "Trio regional",
+          "price": 52.00,
+          "currency": "Soles",
+          "description": "Combinación perfecta de lomo, cecina de chancho, chicharrón, mote, yuca frita, papas, humita, plátano frito y salsa criolla.",
+          "image": "trio_regional.jpg",
+          "tags": ["degustación", "regional", "completo"]
+        },
+        {
+          "name": "Cuy frito entero",
+          "price": 70.00,
+          "currency": "Soles",
+          "description": "Cuy frito entero, acompañado de papas, arroz y salsa criolla.",
+          "image": "cuy_frito_entero.jpg",
+          "tags": ["exótico", "tradicional"]
+        },
+        {
+          "name": "½ Cuy frito",
+          "price": 38.00,
+          "currency": "Soles",
+          "description": "Media porción de cuy frito, con papas, arroz y salsa criolla.",
+          "image": "medio_cuy_frito.jpg",
+          "tags": ["exótico", "tradicional"]
+        }
+      ]
+    },
+    {
+      "category": "Pastas",
+      "description": "Nuestras pastas con el toque peruano e internacional.",
+      "items": [
+        {
+          "name": "Fettuccini a lo alfredo",
+          "price": 30.00,
+          "currency": "Soles",
+          "description": "Cremoso fettuccini en salsa alfredo.",
+          "image": "fettuccini_alfredo.jpg",
+          "tags": ["clásico", "cremoso"]
+        },
+        {
+          "name": "Spaguetti a la bolognesa",
+          "price": 28.00,
+          "currency": "Soles",
+          "description": "Clásico spaguetti con salsa boloñesa.",
+          "image": "spaguetti_bolognesa.jpg",
+          "tags": ["clásico", "sabroso"]
+        },
+        {
+          "name": "Fettuccini a la huancaina",
+          "price": 30.00,
+          "currency": "Soles",
+          "description": "Fettuccini con la tradicional salsa huancaína.",
+          "image": "fettuccini_huancaina.jpg",
+          "tags": ["peruano", "cremoso"]
+        },
+        {
+          "name": "Adicional: Filete de pollo o bistec",
+          "price": 15.00,
+          "currency": "Soles",
+          "description": "Añade filete de pollo o bistec a tu pasta.",
+          "image": "adicional_pollo_bistec.jpg",
+          "tags": ["adicional"]
+        },
+        {
+          "name": "Adicional al lomo y trucha",
+          "price": 18.00,
+          "currency": "Soles",
+          "description": "Añade lomo o trucha a tu pasta.",
+          "image": "adicional_lomo_trucha.jpg",
+          "tags": ["adicional"]
+        },
+        {
+          "name": "Lasagna de carne",
+          "price": 37.00,
+          "currency": "Soles",
+          "description": "Capas de pasta, carne y queso, horneada a la perfección.",
+          "image": "lasagna_carne.jpg",
+          "tags": ["clásico", "horneado"]
+        },
+        {
+          "name": "Spaguetti a la huancaina con lomo fino saltado",
+          "price": 36.00,
+          "currency": "Soles",
+          "description": "Spaguetti en salsa huancaína, acompañado de jugoso lomo fino saltado.",
+          "image": "spaguetti_huancaina_lomo.jpg",
+          "tags": ["fusión", "peruano"]
+        },
+        {
+          "name": "Fettuccini a lo alfredo con lomo fino",
+          "price": 36.00,
+          "currency": "Soles",
+          "description": "Fettuccini en salsa alfredo, con tierno lomo fino.",
+          "image": "fettuccini_alfredo_lomo.jpg",
+          "tags": ["clásico", "gourmet"]
+        }
+      ]
+    },
+    {
+      "category": "Menú de Niños",
+      "description": "Opciones pensadas para los más pequeños, ricas y divertidas.",
+      "items": [
+        {
+          "name": "Spaguetti a la bolognesa",
+          "price": 20.00,
+          "currency": "Soles",
+          "description": "Spaguetti con la clásica salsa boloñesa, porción ideal para niños.",
+          "image": "kids_spaguetti_bolognesa.jpg",
+          "tags": ["infantil", "clásico"]
+        },
+        {
+          "name": "Milanesa de pollo con papas fritas",
+          "price": 18.00,
+          "currency": "Soles",
+          "description": "Milanesa de pollo crocante acompañada de papas fritas, la favorita de los niños.",
+          "image": "kids_milanesa_pollo.jpg",
+          "tags": ["infantil", "favorito"]
+        },
+        {
+          "name": "½ porción",
+          "price_factor": 0.5,
+          "currency": "Soles",
+          "description": "(La mitad del precio del plato regular) Opción de media porción para platos seleccionados.",
+          "image": "half_portion.jpg",
+          "tags": ["infantil", "flexibilidad"]
+        }
+      ]
+    },
+    {
+      "category": "Guarniciones",
+      "description": "Complementos perfectos para tu plato principal.",
+      "items": [
+        {
+          "name": "Arroz",
+          "price": 7.00,
+          "currency": "Soles",
+          "description": "Porción de arroz blanco.",
+          "image": "guarnicion_arroz.jpg",
+          "tags": ["básico", "acompañamiento"]
+        },
+        {
+          "name": "Yuca frita",
+          "price": 6.00,
+          "currency": "Soles",
+          "description": "Crujiente yuca frita.",
+          "image": "guarnicion_yuca_frita.jpg",
+          "tags": ["regional", "acompañamiento"]
+        },
+        {
+          "name": "Papas fritas",
+          "price": 6.00,
+          "currency": "Soles",
+          "description": "Clásicas papas fritas, siempre una buena opción.",
+          "image": "guarnicion_papas_fritas.jpg",
+          "tags": ["clásico", "acompañamiento"]
+        },
+        {
+          "name": "Fortunata",
+          "price": 6.00,
+          "currency": "Soles",
+          "description": "Guarnición especial de la casa.",
+          "image": "guarnicion_fortunata.jpg",
+          "tags": ["especial", "acompañamiento"]
+        },
+        {
+          "name": "Mote blanco",
+          "price": 6.00,
+          "currency": "Soles",
+          "description": "Mote blanco suave y delicioso.",
+          "image": "guarnicion_mote_blanco.jpg",
+          "tags": ["regional", "acompañamiento"]
+        },
+        {
+          "name": "Plátanos fritos",
+          "price": 6.00,
+          "currency": "Soles",
+          "description": "Dulces plátanos fritos, un toque amazónico.",
+          "image": "guarnicion_platanos_fritos.jpg",
+          "tags": ["regional", "acompañamiento"]
+        },
+        {
+          "name": "Papas de papas",
+          "price": 10.00,
+          "currency": "Soles",
+          "description": "Variedad de papas nativas, un manjar de los Andes.",
+          "image": "guarnicion_papas_nativas.jpg",
+          "tags": ["regional", "premium"]
+        }
+      ]
+    },
+    {
+      "category": "Frozen y Frappes",
+      "description": "Refrescantes bebidas heladas para cualquier momento.",
+      "items": [
+        {
+          "name": "Limonada frozen",
+          "prices": {
+            "Vaso": 10.00,
+            "Jarra ½": 20.00,
+            "Jarra": 23.00
+          },
+          "currency": "Soles",
+          "description": "Refrescante limonada helada.",
+          "image": "frozen_limonada.jpg",
+          "tags": ["refrescante", "clásico"]
+        },
+        {
+          "name": "Frozen de naranja",
+          "prices": {
+            "Vaso": 10.00,
+            "Jarra ½": 20.00,
+            "Jarra": 23.00
+          },
+          "currency": "Soles",
+          "description": "Delicioso frozen de naranja natural.",
+          "image": "frozen_naranja.jpg",
+          "tags": ["refrescante", "frutal"]
+        },
+        {
+          "name": "Frozen de pepino de árbol",
+          "prices": {
+            "Vaso": 10.00,
+            "Jarra ½": 20.00,
+            "Jarra": 23.00
+          },
+          "currency": "Soles",
+          "description": "Exótico frozen de pepino de árbol, un sabor único de la Amazonía.",
+          "image": "frozen_pepino_arbol.jpg",
+          "tags": ["regional", "exótico"]
+        },
+        {
+          "name": "Frozen de maracuyá",
+          "prices": {
+            "Vaso": 10.00,
+            "Jarra ½": 20.00,
+            "Jarra": 23.00
+          },
+          "currency": "Soles",
+          "description": "Refrescante frozen de maracuyá, con su toque ácido y dulce.",
+          "image": "frozen_maracuya.jpg",
+          "tags": ["refrescante", "frutal"]
+        },
+        {
+          "name": "Frozen de lúcuma",
+          "prices": {
+            "Vaso": 13.00,
+            "Jarra ½": 25.00
+          },
+          "currency": "Soles",
+          "description": "(De estación) Cremoso frozen de lúcuma, el sabor del Perú.",
+          "image": "frozen_lucuma.jpg",
+          "tags": ["regional", "estacional"]
+        },
+        {
+          "name": "Frappé de pepino de árbol",
+          "price": 14.00,
+          "currency": "Soles",
+          "description": "Un frappé diferente con el sabor del pepino de árbol.",
+          "image": "frappe_pepino_arbol.jpg",
+          "tags": ["regional", "exótico"]
+        },
+        {
+          "name": "Frappé de aguaymanto",
+          "price": 15.00,
+          "currency": "Soles",
+          "description": "Delicioso frappé de aguaymanto, dulce y ligeramente ácido.",
+          "image": "frappe_aguaymanto.jpg",
+          "tags": ["regional", "frutal"]
+        },
+        {
+          "name": "Frappé de fresa",
+          "price": 15.00,
+          "currency": "Soles",
+          "description": "Clásico frappé de fresa, dulce y refrescante.",
+          "image": "frappe_fresa.jpg",
+          "tags": ["frutal", "clásico"]
+        },
+        {
+          "name": "Frappé de guanábana",
+          "price": 16.00,
+          "currency": "Soles",
+          "description": "Exótico frappé de guanábana, con un sabor tropical.",
+          "image": "frappe_guanabana.jpg",
+          "tags": ["exótico", "frutal"]
+        },
+        {
+          "name": "Frappuccino",
+          "price": 16.00,
+          "currency": "Soles",
+          "description": "El clásico frappuccino, para los amantes del café.",
+          "image": "frappuccino.jpg",
+          "tags": ["café", "refrescante"]
+        }
+      ]
+    },
+    {
+      "category": "Refrescos",
+      "description": "Bebidas naturales para calmar la sed.",
+      "items": [
+        {
+          "name": "Maracuyá",
+          "prices": {
+            "Vaso": 10.00,
+            "Jarra": 19.00
+          },
+          "currency": "Soles",
+          "description": "Refresco natural de maracuyá.",
+          "image": "refresco_maracuya.jpg",
+          "tags": ["natural", "frutal"]
+        },
+        {
+          "name": "Carambola",
+          "prices": {
+            "Vaso": 10.00,
+            "Jarra": 19.00
+          },
+          "currency": "Soles",
+          "description": "Refresco natural de carambola.",
+          "image": "refresco_carambola.jpg",
+          "tags": ["natural", "frutal"]
+        },
+        {
+          "name": "Limonada de hierba luisa",
+          "prices": {
+            "Vaso": 11.00,
+            "Jarra": 21.00
+          },
+          "currency": "Soles",
+          "description": "Refrescante limonada con el toque aromático de la hierba luisa.",
+          "image": "limonada_hierbaluisa.jpg",
+          "tags": ["aromática", "natural"]
+        }
+      ]
+    },
+    {
+      "category": "Bebidas Frías",
+      "description": "Bebidas embotelladas y enlatadas para acompañar tu comida.",
+      "items": [
+        {
+          "name": "Agua San Luis 500 ml",
+          "price": 4.00,
+          "currency": "Soles",
+          "description": "Agua mineral sin gas.",
+          "image": "agua_san_luis.jpg",
+          "tags": ["agua", "embotellada"]
+        },
+        {
+          "name": "Agua San Mateo sin gas 500 ml",
+          "price": 4.00,
+          "currency": "Soles",
+          "description": "Agua mineral sin gas.",
+          "image": "agua_san_mateo_sg.jpg",
+          "tags": ["agua", "embotellada"]
+        },
+        {
+          "name": "Agua San Mateo con gas 500 ml",
+          "price": 4.00,
+          "currency": "Soles",
+          "description": "Agua mineral con gas.",
+          "image": "agua_san_mateo_cg.jpg",
+          "tags": ["agua", "embotellada"]
+        },
+        {
+          "name": "Gaseosas 500 ml",
+          "price": 5.00,
+          "currency": "Soles",
+          "description": "Variedad de gaseosas en presentación de 500 ml.",
+          "image": "gaseosas_500ml.jpg",
+          "tags": ["gaseosa", "refresco"]
+        },
+        {
+          "name": "Gaseosas 1.5 L",
+          "price": 10.00,
+          "currency": "Soles",
+          "description": "Variedad de gaseosas en presentación de 1.5 litros.",
+          "image": "gaseosas_1_5l.jpg",
+          "tags": ["gaseosa", "familiar"]
+        }
+      ]
+    },
+    {
+      "category": "Vinos Nacionales",
+      "description": "Selección de los mejores vinos peruanos.",
+      "items": [
+        {
+          "name": "TABERNERO Abstado bot. 750ml",
+          "price": 38.00,
+          "currency": "Soles",
+          "description": "Vino Tabernero Abstado, botella de 750ml.",
+          "image": "vino_tabernero_abstado.jpg",
+          "tags": ["vino", "nacional"]
+        },
+        {
+          "name": "TABERNERO Borgoña bot. 750ml",
+          "price": 38.00,
+          "currency": "Soles",
+          "description": "Vino Tabernero Borgoña, botella de 750ml.",
+          "image": "vino_tabernero_borgona.jpg",
+          "tags": ["vino", "nacional"]
+        },
+        {
+          "name": "TABERNERO Rose bot. 750ml",
+          "price": 38.00,
+          "currency": "Soles",
+          "description": "Vino Tabernero Rose, botella de 750ml.",
+          "image": "vino_tabernero_rose.jpg",
+          "tags": ["vino", "nacional"]
+        },
+        {
+          "name": "TABERNERO Gran tinto seco bot. 750ml",
+          "price": 48.00,
+          "currency": "Soles",
+          "description": "Vino Tabernero Gran Tinto Seco, botella de 750ml.",
+          "image": "vino_tabernero_gran_tinto.jpg",
+          "tags": ["vino", "nacional", "premium"]
+        },
+        {
+          "name": "SANTIAGO QUEIROLO Rojo semi seco bot. 750ml",
+          "price": 38.00,
+          "currency": "Soles",
+          "description": "Vino Santiago Queirolo Rojo Semi Seco, botella de 750ml.",
+          "image": "vino_queirolo_rojo.jpg",
+          "tags": ["vino", "nacional"]
+        },
+        {
+          "name": "SANTIAGO QUEIROLO Magdalena bot. 750ml",
+          "price": 38.00,
+          "currency": "Soles",
+          "description": "Vino Santiago Queirolo Magdalena, botella de 750ml.",
+          "image": "vino_queirolo_magdalena.jpg",
+          "tags": ["vino", "nacional"]
+        },
+        {
+          "name": "SANTIAGO QUEIROLO Borgoña bot. 750ml",
+          "price": 38.00,
+          "currency": "Soles",
+          "description": "Vino Santiago Queirolo Borgoña, botella de 750ml.",
+          "image": "vino_queirolo_borgona.jpg",
+          "tags": ["vino", "nacional"]
+        },
+        {
+          "name": "TACAMA Rose semiseco bot 750ml",
+          "price": 46.00,
+          "currency": "Soles",
+          "description": "Vino Tacama Rose Semiseco, botella de 750ml.",
+          "image": "vino_tacama_rose.jpg",
+          "tags": ["vino", "nacional"]
+        },
+        {
+          "name": "TACAMA Tinto seco bot 750ml",
+          "price": 46.00,
+          "currency": "Soles",
+          "description": "Vino Tacama Tinto Seco, botella de 750ml.",
+          "image": "vino_tacama_tinto.jpg",
+          "tags": ["vino", "nacional"]
+        }
+      ]
+    },
+    {
+      "category": "Cervezas",
+      "description": "Variedad de cervezas nacionales e internacionales para acompañar tu comida.",
+      "items": [
+        {
+          "name": "Cerveza artesanal",
+          "price": 45.00,
+          "currency": "Soles",
+          "description": "Cerveza artesanal local, un sabor único.",
+          "image": "cerveza_artesanal.jpg",
+          "tags": ["artesanal", "local"]
+        },
+        {
+          "name": "Pilsen Callao 355 ml",
+          "price": 10.00,
+          "currency": "Soles",
+          "description": "Clásica Pilsen Callao, botella de 355 ml.",
+          "image": "pilsen_callao.jpg",
+          "tags": ["nacional", "clásica"]
+        },
+        {
+          "name": "Cerveza Doble Malta 330 ml",
+          "price": 10.00,
+          "currency": "Soles",
+          "description": "Cerveza Doble Malta, botella de 330 ml.",
+          "image": "doble_malta.jpg",
+          "tags": ["nacional", "especial"]
+        },
+        {
+          "name": "Cerveza Cusqueña Red Lager",
+          "price": 10.00,
+          "currency": "Soles",
+          "description": "Cerveza Cusqueña Red Lager.",
+          "image": "cusquena_red_lager.jpg",
+          "tags": ["nacional", "lager"]
+        },
+        {
+          "name": "Cerveza Cusqueña Dorada",
+          "price": 10.00,
+          "currency": "Soles",
+          "description": "Cerveza Cusqueña Dorada.",
+          "image": "cusquena_dorada.jpg",
+          "tags": ["nacional", "dorada"]
+        },
+        {
+          "name": "Cusqueña de Trigo 355 ml",
+          "price": 10.00,
+          "currency": "Soles",
+          "description": "Cerveza Cusqueña de Trigo, botella de 355 ml.",
+          "image": "cusquena_trigo_355.jpg",
+          "tags": ["nacional", "trigo"]
+        },
+        {
+          "name": "Cusqueña Negra 355 ml",
+          "price": 10.00,
+          "currency": "Soles",
+          "description": "Cerveza Cusqueña Negra, botella de 355 ml.",
+          "image": "cusquena_negra_355.jpg",
+          "tags": ["nacional", "negra"]
+        },
+        {
+          "name": "Corona 355 ml",
+          "price": 10.00,
+          "currency": "Soles",
+          "description": "Cerveza Corona, botella de 355 ml.",
+          "image": "corona.jpg",
+          "tags": ["internacional", "clásica"]
+        },
+        {
+          "name": "Cerveza Cusqueña trigo bot. 625ml",
+          "price": 12.00,
+          "currency": "Soles",
+          "description": "Cerveza Cusqueña de Trigo, botella de 625 ml.",
+          "image": "cusquena_trigo_625.jpg",
+          "tags": ["nacional", "trigo"]
+        },
+        {
+          "name": "Cerveza Pilsen bot. 625ml",
+          "price": 12.00,
+          "currency": "Soles",
+          "description": "Cerveza Pilsen, botella de 625 ml.",
+          "image": "pilsen_625.jpg",
+          "tags": ["nacional", "clásica"]
+        },
+        {
+          "name": "Stella Artois 330ml",
+          "price": 10.00,
+          "currency": "Soles",
+          "description": "Cerveza Stella Artois, botella de 330ml.",
+          "image": "stella_artois.jpg",
+          "tags": ["internacional", "premium"]
+        }
+      ]
+    },
+    {
+      "category": "Bebidas Calientes",
+      "description": "Para calentar el alma y disfrutar de un buen momento.",
+      "items": [
+        {
+          "name": "Café Blend",
+          "price": 8.00,
+          "currency": "Soles",
+          "description": "Las mejores selecciones de cafés de los Andes y Amazonía del Perú.",
+          "image": "cafe_blend.jpg",
+          "tags": ["café", "regional", "especial"]
+        },
+        {
+          "name": "Leche fresca",
+          "price": 8.00,
+          "currency": "Soles",
+          "description": "Leche fresca y caliente.",
+          "image": "leche_caliente.jpg",
+          "tags": ["bebida", "básica"]
+        },
+        {
+          "name": "Chocolate",
+          "price": 8.00,
+          "currency": "Soles",
+          "description": "Delicioso chocolate caliente.",
+          "image": "chocolate.jpg",
+          "tags": ["dulce", "clásico"]
+        },
+        {
+          "name": "Café Americano",
+          "price": 8.00,
+          "currency": "Soles",
+          "description": "El clásico café americano.",
+          "image": "cafe_americano.jpg",
+          "tags": ["café", "clásico"]
+        },
+        {
+          "name": "Café Espresso",
+          "price": 8.00,
+          "currency": "Soles",
+          "description": "Intenso café espresso.",
+          "image": "cafe_espresso.jpg",
+          "tags": ["café", "intenso"]
+        },
+        {
+          "name": "Café Cortado",
+          "price": 8.00,
+          "currency": "Soles",
+          "description": "Café espresso cortado con un toque de leche.",
+          "image": "cafe_cortado.jpg",
+          "tags": ["café", "ligero"]
+        },
+        {
+          "name": "Café Capuccino",
+          "price": 9.00,
+          "currency": "Soles",
+          "description": "Cremoso capuccino con espuma de leche.",
+          "image": "cafe_capuccino.jpg",
+          "tags": ["café", "cremoso"]
+        },
+        {
+          "name": "Café Latte",
+          "price": 9.00,
+          "currency": "Soles",
+          "description": "Suave café latte con leche vaporizada.",
+          "image": "cafe_latte.jpg",
+          "tags": ["café", "suave"]
+        },
+        {
+          "name": "Café Vainilla",
+          "price": 9.00,
+          "currency": "Soles",
+          "description": "Café con un toque dulce de vainilla.",
+          "image": "cafe_vainilla.jpg",
+          "tags": ["café", "dulce"]
+        },
+        {
+          "name": "Café Capuccino con crema",
+          "price": 10.00,
+          "currency": "Soles",
+          "description": "Capuccino con un extra de crema batida.",
+          "image": "capuccino_crema.jpg",
+          "tags": ["café", "indulgent"]
+        },
+        {
+          "name": "Café Moka con crema",
+          "price": 10.00,
+          "currency": "Soles",
+          "description": "Delicioso café moka con chocolate y crema batida.",
+          "image": "cafe_moka_crema.jpg",
+          "tags": ["café", "chocolate"]
+        }
+      ]
+    },
+    {
+      "category": "Infusiones Naturales",
+      "description": "Infusiones reconfortantes con hierbas y frutos frescos.",
+      "items": [
+        {
+          "name": "Hoja frutos frescos",
+          "price": 6.00,
+          "currency": "Soles",
+          "description": "Infusión de hojas y frutos frescos de la estación.",
+          "image": "infusion_frutos_frescos.jpg",
+          "tags": ["natural", "fresca"]
+        },
+        {
+          "name": "Manzanilla florada",
+          "price": 6.00,
+          "currency": "Soles",
+          "description": "Infusión de manzanilla, relajante y digestiva.",
+          "image": "manzanilla_florada.jpg",
+          "tags": ["relajante", "digestiva"]
+        },
+        {
+          "name": "Hierba Luisa Radiante",
+          "price": 6.00,
+          "currency": "Soles",
+          "description": "Infusión de hierba luisa, con un aroma cítrico y propiedades calmantes.",
+          "image": "hierba_luisa.jpg",
+          "tags": ["aromática", "calmante"]
+        },
+        {
+          "name": "Cedrón Brillante",
+          "price": 6.00,
+          "currency": "Soles",
+          "description": "Infusión de cedrón, ideal para relajarse y disfrutar.",
+          "image": "cedron.jpg",
+          "tags": ["relajante", "aromática"]
+        },
+        {
+          "name": "Coca del Altar",
+          "price": 6.00,
+          "currency": "Soles",
+          "description": "Infusión de hoja de coca, tradicional de los Andes.",
+          "image": "coca_altar.jpg",
+          "tags": ["tradicional", "andino"]
+        }
+      ]
+    },
+    {
+      "category": "Infusiones Especiales",
+      "description": "Mezclas únicas y beneficiosas para tu bienestar.",
+      "items": [
+        {
+          "name": "Armonía del Cielo",
+          "price": 8.00,
+          "currency": "Soles",
+          "description": "Infusión de toronjil y milenrama para la ansiedad y el estrés.",
+          "image": "armonia_cielo.jpg",
+          "tags": ["beneficios", "relajante"]
+        },
+        {
+          "name": "Dulzura de Cocama",
+          "price": 8.00,
+          "currency": "Soles",
+          "description": "Infusión de hierbaluisa y stevia con el exquisito sabor de la lúcuma.",
+          "image": "dulzura_cocama.jpg",
+          "tags": ["dulce", "aromática", "regional"]
+        },
+        {
+          "name": "Aroma de Menta",
+          "price": 8.00,
+          "currency": "Soles",
+          "description": "Blend de distintas hojas de menta y frutos de fresa.",
+          "image": "aroma_menta.jpg",
+          "tags": ["refrescante", "aromática"]
+        },
+        {
+          "name": "Eterno deseo",
+          "price": 8.00,
+          "currency": "Soles",
+          "description": "El cacao genuino: equilibrio perfecto entre amargor y dulzura, con trozos de aguaymanto y fresa.",
+          "image": "eterno_deseo.jpg",
+          "tags": ["dulce", "exótico", "chocolate"]
+        },
+        {
+          "name": "Muña celestial",
+          "price": 9.00,
+          "currency": "Soles",
+          "description": "Infusión de hierbas andinas seleccionadas con un toque de miel de abejas y flores de cereales, tostadas.",
+          "image": "muna_celestial.jpg",
+          "tags": ["andina", "aromática"]
+        },
+        {
+          "name": "Escudo valiente",
+          "price": 9.00,
+          "currency": "Soles",
+          "description": "Combinación exquisita de frutos, para el buen funcionamiento del sistema nervioso.",
+          "image": "escudo_valiente.jpg",
+          "tags": ["saludable", "frutal"]
+        },
+        {
+          "name": "Tentación de los Andes",
+          "price": 9.00,
+          "currency": "Soles",
+          "description": "Combinación de maíz morado, trozos de fresa, anís estrellado, hierba buena, toronjil, hojas de sauco y pétalos de aciano y rosas.",
+          "image": "tentacion_andes.jpg",
+          "tags": ["andina", "exótica"]
+        }
+      ]
+    },
+    {
+      "category": "Postres y Tortas",
+      "description": "El dulce final perfecto para tu experiencia en Chacha 1963.",
+      "items": [
+        {
+          "name": "Ensalada de frutas con Yogurt y miel",
+          "price": 16.00,
+          "currency": "Soles",
+          "description": "Fresca ensalada de frutas de estación con yogurt natural y miel.",
+          "image": "ensalada_frutas_yogurt.jpg",
+          "tags": ["saludable", "fresco", "postre"]
+        },
+        {
+          "name": "Ravioles rellenos de durazno con helado",
+          "price": 18.00,
+          "currency": "Soles",
+          "description": "Innovadores ravioles dulces rellenos de durazno, servidos con helado.",
+          "image": "ravioles_durazno_helado.jpg",
+          "tags": ["innovador", "dulce"]
+        },
+        {
+          "name": "Creps relleno con helado y frutas de estación",
+          "price": 19.00,
+          "currency": "Soles",
+          "description": "Delicados crepes rellenos, acompañados de helado y frutas frescas de estación.",
+          "image": "creps_helado_frutas.jpg",
+          "tags": ["clásico", "dulce"]
+        },
+        {
+          "name": "Postres en Vitrina",
+          "price": "Consultar precio",
+          "currency": "Soles",
+          "description": "Variedad de postres y tortas disponibles en nuestra vitrina, consulta por nuestras opciones del día.",
+          "image": "postres_vitrina.jpg",
+          "tags": ["variedad", "diario"]
+        }
+      ]
+    },
+    {
+      "category": "Jugos y Refrescos",
+      "description": "Jugos naturales y refrescos amazónicos para refrescar tu paladar.",
+      "items": [
+        {
+          "name": "Papaya",
+          "prices": {
+            "Vaso": 10.00,
+            "Jarra ½": 19.00,
+            "Jarra": 24.00
+          },
+          "currency": "Soles",
+          "description": "Jugo natural de papaya.",
+          "image": "jugo_papaya.jpg",
+          "tags": ["natural", "frutal"]
+        },
+        {
+          "name": "Maracuyá con leche",
+          "prices": {
+            "Vaso": 10.00,
+            "Jarra ½": 19.00,
+            "Jarra": 24.00
+          },
+          "currency": "Soles",
+          "description": "Delicioso jugo de maracuyá cremoso con leche.",
+          "image": "jugo_maracuya_leche.jpg",
+          "tags": ["cremoso", "frutal"]
+        },
+        {
+          "name": "Naranja",
+          "prices": {
+            "Vaso": 12.00,
+            "Jarra ½": 23.00,
+            "Jarra": 28.00
+          },
+          "currency": "Soles",
+          "description": "Jugo natural de naranja recién exprimida.",
+          "image": "jugo_naranja.jpg",
+          "tags": ["natural", "cítrico"]
+        },
+        {
+          "name": "Delicia de pepino",
+          "prices": {
+            "Vaso": 12.00,
+            "Jarra ½": 23.00,
+            "Jarra": 28.00
+          },
+          "currency": "Soles",
+          "description": "Combinación refrescante de piña, papaya y pepino de árbol.",
+          "image": "jugo_delicia_pepino.jpg",
+          "tags": ["regional", "refrescante"]
+        },
+        {
+          "name": "Cítricos",
+          "prices": {
+            "Vaso": 12.00,
+            "Jarra ½": 23.00,
+            "Jarra": 28.00
+          },
+          "currency": "Soles",
+          "description": "Mezcla vibrante de carambola, maracuyá y piña.",
+          "image": "jugo_citricos.jpg",
+          "tags": ["frutal", "energizante"]
+        },
+        {
+          "name": "Fresa",
+          "prices": {
+            "Vaso": 13.00,
+            "Jarra ½": 24.00,
+            "Jarra": 29.00
+          },
+          "currency": "Soles",
+          "description": "Jugo natural de fresa.",
+          "image": "jugo_fresa.jpg",
+          "tags": ["natural", "dulce"]
+        },
+        {
+          "name": "Manzana",
+          "prices": {
+            "Vaso": 14.00,
+            "Jarra ½": 26.00,
+            "Jarra": 32.00
+          },
+          "currency": "Soles",
+          "description": "Jugo natural de manzana.",
+          "image": "jugo_manzana.jpg",
+          "tags": ["natural", "saludable"]
+        },
+        {
+          "name": "Guanábana",
+          "prices": {
+            "Vaso": 14.00,
+            "Jarra ½": 26.00,
+            "Jarra": 32.00
+          },
+          "currency": "Soles",
+          "description": "Jugo natural de guanábana, exótico y cremoso.",
+          "image": "jugo_guanabana.jpg",
+          "tags": ["exótico", "cremoso"]
+        },
+        {
+          "name": "Aguaymanto",
+          "prices": {
+            "Vaso": 14.00,
+            "Jarra ½": 26.00,
+            "Jarra": 32.00
+          },
+          "currency": "Soles",
+          "description": "(De estación) Jugo natural de aguaymanto, dulce y ligeramente ácido.",
+          "image": "jugo_aguaymanto.jpg",
+          "tags": ["regional", "estacional"]
+        },
+        {
+          "name": "Lúcuma",
+          "prices": {
+            "Vaso": 14.00,
+            "Jarra ½": 26.00,
+            "Jarra": 32.00
+          },
+          "currency": "Soles",
+          "description": "(De estación) Cremoso jugo natural de lúcuma, el sabor del Perú.",
+          "image": "jugo_lucuma.jpg",
+          "tags": ["regional", "estacional"]
+        },
+        {
+          "name": "Pepino de árbol",
+          "prices": {
+            "Vaso": 11.00,
+            "Jarra ½": 21.00,
+            "Jarra": 26.00
+          },
+          "currency": "Soles",
+          "description": "Jugo exótico de pepino de árbol (berengena).",
+          "image": "jugo_pepino_arbol.jpg",
+          "tags": ["regional", "exótico"]
+        },
+        {
+          "name": "Plátano",
+          "prices": {
+            "Vaso": 11.00,
+            "Jarra ½": 21.00,
+            "Jarra": 26.00
+          },
+          "currency": "Soles",
+          "description": "Jugo natural de plátano.",
+          "image": "jugo_platano.jpg",
+          "tags": ["natural", "cremoso"]
+        },
+        {
+          "name": "Especial",
+          "prices": {
+            "Vaso": 14.00,
+            "Jarra ½": 25.00
+          },
+          "currency": "Soles",
+          "description": "Variedad de frutas, leche y huevo, una bebida nutritiva.",
+          "image": "jugo_especial.jpg",
+          "tags": ["nutritivo", "completo"]
+        },
+        {
+          "name": "Lúcuma con leche",
+          "prices": {
+            "Vaso": 14.00,
+            "Jarra ½": 26.00
+          },
+          "currency": "Soles",
+          "description": "(De estación) Cremoso jugo de lúcuma con leche.",
+          "image": "jugo_lucuma_leche.jpg",
+          "tags": ["regional", "cremoso"]
+        },
+        {
+          "name": "Fresa con leche",
+          "prices": {
+            "Vaso": 14.00,
+            "Jarra ½": 26.00
+          },
+          "currency": "Soles",
+          "description": "(De estación) Delicioso jugo de fresa con leche.",
+          "image": "jugo_fresa_leche.jpg",
+          "tags": ["frutal", "cremoso"]
+        },
+        {
+          "name": "Mora, papaya, naranja mandarina",
+          "prices": {
+            "Vaso": 11.00,
+            "Jarra": 21.00
+          },
+          "currency": "Soles",
+          "description": "Combinación refrescante de mora, papaya, naranja y mandarina.",
+          "image": "jugo_mora_papaya_naranja.jpg",
+          "tags": ["frutal", "variado"]
+        },
+        {
+          "name": "Piña, naranja, mandarina",
+          "prices": {
+            "Vaso": 11.00,
+            "Jarra": 21.00
+          },
+          "currency": "Soles",
+          "description": "Mezcla tropical de piña, naranja y mandarina.",
+          "image": "jugo_pina_naranja.jpg",
+          "tags": ["frutal", "tropical"]
+        },
+        {
+          "name": "Mixto: Papaya y piña",
+          "prices": {
+            "Vaso": 11.00,
+            "Jarra": 21.00
+          },
+          "currency": "Soles",
+          "description": "Refrescante jugo mixto de papaya y piña.",
+          "image": "jugo_mixto_papaya_pina.jpg",
+          "tags": ["frutal", "refrescante"]
+        }
+      ]
+    },
+    {
+      "category": "Tragos",
+      "description": "Nuestra selección de licores y cócteles para disfrutar el momento.",
+      "items": [
+        {
+          "name": "Pisco shot (Santiago Queirolo)",
+          "price": 9.00,
+          "currency": "Soles",
+          "description": "Un shot del tradicional pisco Santiago Queirolo.",
+          "image": "pisco_shot_queirolo.jpg",
+          "tags": ["nacional", "clásico"]
+        },
+        {
+          "name": "Pisco shot (Cuatro Gallos)",
+          "price": 10.00,
+          "currency": "Soles",
+          "description": "Un shot del reconocido pisco Cuatro Gallos.",
+          "image": "pisco_shot_gallos.jpg",
+          "tags": ["nacional", "premium"]
+        },
+        {
+          "name": "Pisco shot (Portón)",
+          "price": 10.00,
+          "currency": "Soles",
+          "description": "Un shot del pisco Portón.",
+          "image": "pisco_shot_porton.jpg",
+          "tags": ["nacional", "premium"]
+        },
+        {
+          "name": "Licores nacionales shot",
+          "price": 10.00,
+          "currency": "Soles",
+          "description": "Shot de licores nacionales variados.",
+          "image": "licores_nacionales_shot.jpg",
+          "tags": ["nacional", "variedad"]
+        },
+        {
+          "name": "Anís del Mono/Anís Najar shot",
+          "price": 11.00,
+          "currency": "Soles",
+          "description": "Shot de anís del Mono o Anís Najar.",
+          "image": "anis_shot.jpg",
+          "tags": ["nacional", "tradicional"]
+        },
+        {
+          "name": "Tequila shot",
+          "price": 22.00,
+          "currency": "Soles",
+          "description": "Shot de tequila.",
+          "image": "tequila_shot.jpg",
+          "tags": ["internacional", "clásico"]
+        },
+        {
+          "name": "Chilcano clásico",
+          "price": 21.00,
+          "currency": "Soles",
+          "description": "El clásico chilcano con pisco, ginger ale y limón.",
+          "image": "chilcano_clasico.jpg",
+          "tags": ["cóctel", "peruano"]
+        },
+        {
+          "name": "Chilcano de aguaymanto",
+          "price": 21.00,
+          "currency": "Soles",
+          "description": "Refrescante chilcano con el toque único del aguaymanto.",
+          "image": "chilcano_aguaymanto.jpg",
+          "tags": ["cóctel", "regional"]
+        },
+        {
+          "name": "Destornillador",
+          "price": 22.00,
+          "currency": "Soles",
+          "description": "Vodka y jugo de naranja, un clásico sencillo y refrescante.",
+          "image": "destornillador.jpg",
+          "tags": ["cóctel", "clásico"]
+        },
+        {
+          "name": "Daiquiri durazno o pepino de árbol",
+          "price": 22.00,
+          "currency": "Soles",
+          "description": "Daiquiri refrescante con sabor a durazno o el exótico pepino de árbol.",
+          "image": "daiquiri.jpg",
+          "tags": ["cóctel", "frutal", "exótico"]
+        },
+        {
+          "name": "Pisco sour",
+          "price": 24.00,
+          "currency": "Soles",
+          "description": "Nuestro tradicional pisco sour, con pisco Santiago o Quebranta.",
+          "image": "pisco_sour.jpg",
+          "tags": ["cóctel", "peruano", "emblemático"]
+        },
+        {
+          "name": "Maracuyá sour",
+          "price": 24.00,
+          "currency": "Soles",
+          "description": "Delicioso sour con el toque ácido y dulce del maracuyá, con pisco Santiago o Quebranta.",
+          "image": "maracuya_sour.jpg",
+          "tags": ["cóctel", "frutal", "peruano"]
+        },
+        {
+          "name": "Piña colada",
+          "price": 22.00,
+          "currency": "Soles",
+          "description": "Clásica piña colada, cremosa y tropical.",
+          "image": "pina_colada.jpg",
+          "tags": ["cóctel", "tropical"]
+        },
+        {
+          "name": "Cocktail de algarrobina",
+          "price": 22.00,
+          "currency": "Soles",
+          "description": "Cóctel tradicional peruano con algarrobina, pisco y leche.",
+          "image": "cocktail_algarrobina.jpg",
+          "tags": ["cóctel", "peruano", "dulce"]
+        },
+        {
+          "name": "Margarita clásica",
+          "price": 26.00,
+          "currency": "Soles",
+          "description": "La clásica margarita con tequila, triple sec y limón.",
+          "image": "margarita_clasica.jpg",
+          "tags": ["cóctel", "clásico"]
+        },
+        {
+          "name": "Margarita blue",
+          "price": 26.00,
+          "currency": "Soles",
+          "description": "Margarita con un vibrante color azul.",
+          "image": "margarita_blue.jpg",
+          "tags": ["cóctel", "colorido"]
+        },
+        {
+          "name": "Pitiado de Pisco",
+          "price": 30.00,
+          "currency": "Soles",
+          "description": "Bebida caliente a base de pisco, ideal para las noches frías.",
+          "image": "pitiado_pisco.jpg",
+          "tags": ["tradicional", "caliente", "peruano"]
+        }
+      ]
+    },
+    {
+      "category": "Vinos Importados",
+      "description": "Una cuidada selección de vinos de renombre internacional.",
+      "items": [
+        {
+          "name": "TRAPICHE (Argentina)",
+          "varietals": ["Malbec", "Cabernet Sauvignon", "Merlot"],
+          "price": 50.00,
+          "currency": "Soles",
+          "description": "Vinos Trapiche de Argentina, disponibles en Malbec, Cabernet Sauvignon y Merlot.",
+          "image": "vino_trapiche.jpg",
+          "tags": ["vino", "argentino"]
+        },
+        {
+          "name": "CASILLERO DEL DIABLO (Chile)",
+          "varietals": ["Malbec", "Cabernet Sauvignon", "Merlot"],
+          "price": 65.00,
+          "currency": "Soles",
+          "description": "Vinos Casillero del Diablo de Chile, en variedades Malbec, Cabernet Sauvignon y Merlot.",
+          "image": "vino_casillero_diablo.jpg",
+          "tags": ["vino", "chileno"]
+        },
+        {
+          "name": "NAVARRO CORREAS (Argentina)",
+          "varietals": ["Colección privada", "Malbec", "Cabernet Sauvignon", "Merlot", "Syrah"],
+          "price": 85.00,
+          "currency": "Soles",
+          "description": "Vinos Navarro Correas de Argentina, incluyendo su Colección Privada y variedades como Malbec, Cabernet Sauvignon, Merlot y Syrah.",
+          "image": "vino_navarro_correas.jpg",
+          "tags": ["vino", "argentino", "premium"]
+        },
+        {
+          "name": "LAN (España) Bot. 750ml",
+          "price": 150.00,
+          "currency": "Soles",
+          "description": "Vino LAN de España, botella de 750ml.",
+          "image": "vino_lan.jpg",
+          "tags": ["vino", "español", "alta gama"]
+        },
+        {
+          "name": "LAN RESERVA (España) Bot. 750ml",
+          "price": 185.00,
+          "currency": "Soles",
+          "description": "Vino LAN Reserva de España, botella de 750ml.",
+          "image": "vino_lan_reserva.jpg",
+          "tags": ["vino", "español", "reserva", "exclusivo"]
+        },
+        {
+          "name": "LA LINDA (Argentina)",
+          "price": 80.00,
+          "currency": "Soles",
+          "description": "Vino La Linda de Argentina.",
+          "image": "vino_la_linda.jpg",
+          "tags": ["vino", "argentino"]
+        },
+        {
+          "name": "NIETO SENETINER (Argentina)",
+          "price": 80.00,
+          "currency": "Soles",
+          "description": "Vino Nieto Senetiner de Argentina.",
+          "image": "vino_nieto_senetiner.jpg",
+          "tags": ["vino", "argentino"]
+        }
+      ]
+    }
+  ]
+}
