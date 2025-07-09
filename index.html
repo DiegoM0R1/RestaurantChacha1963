@@ -283,6 +283,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat; /* Asegura que la imagen no se repita */
         }
 
         .dish-card:hover {
@@ -349,11 +350,11 @@
         .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
         
-        /* === IMÁGENES DE PLATOS === */
-        .dishes-grid .dish-card:nth-child(1) { background-image: url('img/ceviche de trucha.jpg'); }
-        .dishes-grid .dish-card:nth-child(2) { background-image: url('img/shanwichchicharronchancho.jpg'); }
-        .dishes-grid .dish-card:nth-child(3) { background-image: url('img/El campesino.jpg'); }
-        .dishes-grid .dish-card:nth-child(4) { background-image: url('img/desayunochacha.jpg'); }
+        /* === IMÁGENES DE PLATOS DESTACADOS (puedes dejarlas o quitarlas y manejar todo por JS si lo prefieres) === */
+        .dishes-grid .dish-card:nth-child(1) { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/ceviche de trucha.jpg'); }
+        .dishes-grid .dish-card:nth-child(2) { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/shanwichchicharronchancho.jpg'); }
+        .dishes-grid .dish-card:nth-child(3) { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('img/El campesino.jpg'); }
+        .dishes-grid .dish-card:nth-child(4) { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/desayunochacha.jpg'); }
         
         
         /* =================================
@@ -412,125 +413,65 @@
             .cta-title { font-size: 1.8rem; }
         }
 
-/* =================================
-   === ESTILOS PARA LA CARTA ACORDEÓN ===
-   ================================= */
+        /* NUEVOS ESTILOS PARA LA NAVEGACIÓN DE LA CARTA POR CATEGORÍAS */
 
-#menu-accordion-container {
-    max-width: 1200px;
-    margin: 2rem auto 0 auto;
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    border: 1px solid #eee;
-}
+        /* Ocultar elementos */
+        .hidden {
+            display: none !important;
+        }
 
-.accordion-item {
-    border-bottom: 1px solid #e0e0e0;
-}
-.accordion-item:last-child {
-    border-bottom: none;
-}
+        /* Estilo para el botón flotante de regresar */
+        #back-to-categories {
+            position: sticky; /* Hace que el elemento "flote" */
+            top: 90px; /* Ajusta la distancia desde la parte superior. Considera la altura del navbar */
+            left: 2rem; /* Alinea a la izquierda, puedes ajustar a right si prefieres */
+            z-index: 999; /* Asegura que esté por encima de otros elementos, pero debajo del navbar */
+            margin-bottom: 2rem; /* Espacio debajo del botón cuando no está fijo */
+            width: fit-content; /* El botón se ajusta a su contenido */
+            display: block; /* Para que funcione margin-bottom y centrado en móvil */
+            padding: 0.8rem 1.5rem; /* Ajusta el padding para que no sea demasiado grande */
+        }
 
-.accordion-header {
-    padding: 20px 25px;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: background-color 0.3s ease;
-}
+        /* Ajustes responsive para el botón "Regresar" */
+        @media (max-width: 768px) {
+            #back-to-categories {
+                width: calc(100% - 4rem); /* Ancho completo menos el padding lateral de la sección */
+                margin-left: 2rem;
+                margin-right: 2rem;
+                text-align: center;
+                top: 80px; /* Ajusta si el navbar móvil es más pequeño */
+            }
+        }
 
-.accordion-header:hover {
-    background-color: #f9f9f9;
-}
+        /* Estilos para las tarjetas de categoría (reutilizan .dish-card) */
+        .category-card .dish-overlay {
+            /* Puedes ajustar el overlay para las categorías si quieres un efecto diferente */
+            background: linear-gradient(transparent, rgba(0,0,0,0.7)); 
+        }
 
-.accordion-header h2 {
-    margin: 0;
-    font-family: 'Cinzel', serif;
-    font-size: 1.6em;
-    color: var(--tierra-principal);
-}
+        .category-card .dish-name {
+            /* Centra el título de la categoría */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            text-align: center;
+            font-size: 2rem; /* Ajusta el tamaño para que destaque */
+            opacity: 1; /* Siempre visible */
+            transition: opacity 0.3s ease;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+        }
 
-.accordion-header .icon {
-    transition: transform 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
-    font-size: 1.4em;
-    color: var(--ocre);
-}
+        .category-card:hover .dish-name {
+            opacity: 1; /* Se mantiene visible al hover */
+        }
 
-.accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s ease-in-out, padding 0.5s ease-in-out;
-    background-color: #fdfdfd;
-    padding: 0 25px;
-}
-
-/* Estado activo del acordeón */
-.accordion-item.active .accordion-content {
-    padding: 25px;
-}
-
-.accordion-item.active .icon {
-    transform: rotate(180deg);
-}
-
-.category-description {
-    font-style: italic;
-    color: #555;
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    border-bottom: 1px dashed #ccc;
-    font-size: 1.05em;
-}
-/* Nuevos estilos para las imágenes en la carta */
-.menu-item {
-    display: grid;
-    /* Ajustamos las columnas para la imagen */
-    grid-template-columns: 80px 1fr auto; 
-    gap: 15px 20px;
-    align-items: start;
-    margin-bottom: 25px;
-    padding-bottom: 25px;
-    border-bottom: 1px solid #f0f0f0;
-}
-.menu-item:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-.item-image-container {
-    width: 80px;
-    height: 80px;
-    grid-row: 1 / 3; /* La imagen ocupa dos filas si el texto es largo */
-}
-
-.item-image-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
-    border-radius: 8px;
-    background-color: #f5f5f5; /* Un color de fondo por si la imagen no carga */
-}
-
-.item-details {
-    /* La descripción ahora se alinea correctamente */
-    grid-column: 2 / 3;
-}
-
-.item-price {
-    grid-column: 3 / 4;
-}
-
-/* Si no hay imagen, el texto ocupa todo el espacio */
-.menu-item:has(.item-image-container) .item-details {
-    grid-column: 2 / 3;
-}
-.menu-item:not(:has(.item-image-container)) .item-details {
-    grid-column: 1 / 3;
-}
-
+        /* Si quieres que la descripción de la categoría no aparezca al pasar el mouse,
+           puedes ocultar el dish-description dentro de category-card */
+        .category-card .dish-description {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -538,13 +479,13 @@
         <div class="nav-container">
             <a href="#inicio" class="logo"><img src="img/carrusel/logo/logochacha.jpg" alt="Logo Restaurante Chacha" style="border-radius: 50%; width: 70px;"></a>
             <ul class="nav-links" id="nav-links">
-    <li><a href="#inicio">Inicio</a></li>
-    <li><a href="#platos">Nuestros Platos</a></li>
-    <li><a href="#nuestra-carta">Nuestra Carta</a></li> 
-    <li><a href="#ambiente">Nuestro Local</a></li>
-    <li><a href="#historia">Historia</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-</ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#platos">Nuestros Platos</a></li>
+                <li><a href="#nuestra-carta">Nuestra Carta</a></li> 
+                <li><a href="#ambiente">Nuestro Local</a></li>
+                <li><a href="#historia">Historia</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
             <div class="hamburger-menu" id="hamburger-menu">
                 <div class="bar"></div>
                 <div class="bar"></div>
@@ -553,8 +494,6 @@
         </div>
     </nav>
 
-
-    <!-- CARRUSEL PRINCIPAL -->
     <section class="hero-carousel" id="inicio">
         <div class="carousel-container" id="carouselContainer">
             <div class="carousel-slide slide-1">
@@ -588,21 +527,20 @@
         </div>
         
         <button class="carousel-arrow arrow-left">
-    <i class="fas fa-chevron-left"></i>
-</button>
-<button class="carousel-arrow arrow-right">
-    <i class="fas fa-chevron-right"></i>
-</button>
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="carousel-arrow arrow-right">
+            <i class="fas fa-chevron-right"></i>
+        </button>
 
-<div class="carousel-nav">
-    <div class="nav-dot active"></div>
-    <div class="nav-dot"></div>
-    <div class="nav-dot"></div>
-    <div class="nav-dot"></div>
-</div>
+        <div class="carousel-nav">
+            <div class="nav-dot active"></div>
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+            <div class="nav-dot"></div>
+        </div>
     </section>
 
-    <!-- BIENVENIDA -->
     <section class="section fade-in">
         <h2 class="section-title">Nuestra Esencia</h2>
         <p class="welcome-text">
@@ -610,43 +548,24 @@
         </p>
     </section>
 
-    <!-- PLATOS DESTACADOS -->
-    <section class="section fade-in" id="platos">
-        <h2 class="section-title">Platos que Cuentan Historias</h2>
-        <div class="dishes-grid">
-            <div class="dish-card">
-                <div class="dish-overlay">
-                    <h3 class="dish-name">Ceviche de trucha</h3>
-                    <p class="dish-description">con camote cocido</p>
-                </div>
+    
+
+    <section class="section fade-in" id="nuestra-carta">
+        <h2 class="section-title">Nuestra Carta Completa</h2>
+
+        <div id="category-grid-container" class="dishes-grid">
             </div>
-            <div class="dish-card">
-                <div class="dish-overlay">
-                    <h3 class="dish-name">Sandwhich de chicharrón de chancho</h3>
-                    <p class="dish-description">Con camote y sarsa criolla</p>
+
+        <div id="dishes-by-category-container" class="hidden">
+            <button id="back-to-categories" class="btn-primary">
+                <i class="fas fa-arrow-left"></i> Regresar a Categorías
+            </button>
+            <h3 id="category-dishes-title" class="section-title" style="margin-bottom: 3rem; font-size: 2rem;"></h3>
+            <div id="category-dishes-grid" class="dishes-grid">
                 </div>
-            </div>
-            <div class="dish-card">
-                <div class="dish-overlay">
-                    <h3 class="dish-name">El campesino</h3>
-                    <p class="dish-description">Cecina de chancho, filete de pollo, bistek, papas fritas, arroz, mote, yucas y platanos fritos, tamal</p>
-                </div>
-            </div>
-            <div class="dish-card">
-                <div class="dish-overlay">
-                    <h3 class="dish-name">Desayuno chacha</h3>
-                    <p class="dish-description">Jugo de papaya o piña, purtumote con huevo frito, tamal, pan y café</p>
-                </div>
-            </div>
         </div>
     </section>
-<section class="section fade-in" id="nuestra-carta">
-    <h2 class="section-title">Nuestra Carta Completa</h2>
-    <div id="menu-accordion-container">
-        </div>
-</section>
 
-    <!-- AMBIENTE -->
     <section class="section fade-in" id="ambiente">
         <h2 class="section-title">Un Refugio Inspirado en Gigantes</h2>
         <div class="ambiente-grid">
@@ -663,7 +582,6 @@
         </div>
     </section>
 
-    <!-- TESTIMONIOS -->
     <section class="testimonios fade-in">
         <div class="testimonios-container">
             <h2 class="section-title" style="color: white;">Lo que Dicen Nuestros Visitantes</h2>
@@ -674,7 +592,6 @@
         </div>
     </section>
 
-    <!-- HISTORIA -->
     <section class="section fade-in" id="historia">
         <h2 class="section-title">Nuestra Historia</h2>
         <div class="ambiente-grid">
@@ -692,14 +609,12 @@
         </div>
     </section>
 
-    <!-- CTA FINAL -->
     <section class="cta-final">
         <h2 class="cta-title">¿Listo para tu Viaje Culinario?</h2>
         <p class="cta-subtitle">Déjanos llevarte por un recorrido de sabores que despertarán todos tus sentidos</p>
         <a href="#contacto" class="btn-primary" style="font-size: 1.3rem; padding: 1.2rem 3rem;">RESERVAR TU MESA AHORA</a>
     </section>
 
-    <!-- FOOTER -->
     <footer class="footer" id="contacto">
         <div class="footer-content">
             <div class="footer-section">
@@ -732,245 +647,311 @@
         </div>
     </footer>
 
-   <script>
-   document.addEventListener('DOMContentLoaded', function() {
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
 
-    /*****************************************************
-     * SECCIÓN 1: LÓGICA DEL MENÚ Y LA CARTA
-     *****************************************************/
+        let cartaData = []; // Variable global para almacenar los datos de la carta una vez cargados
 
-    /**
- * Construye el menú de la carta en formato de acordeón a partir de datos JSON.
- * @param {object} data - El objeto JSON completo de la carta.
- */
-function generarMenu(data) {
-    const menuData = data.menu;
-    const menuContainer = document.getElementById('menu-accordion-container');
-    if (!menuContainer) return;
+        /*****************************************************
+         * SECCIÓN 1: LÓGICA DEL MENÚ Y LA CARTA INTERACTIVA
+         *****************************************************/
 
-    menuContainer.innerHTML = ''; // Limpiar antes de generar
-
-    menuData.forEach(category => {
-        const accordionItem = document.createElement('div');
-        accordionItem.className = 'accordion-item';
-
-        const accordionHeader = document.createElement('div');
-        accordionHeader.className = 'accordion-header';
-        accordionHeader.innerHTML = `<h2>${category.category}</h2><i class="fas fa-chevron-down icon"></i>`;
-
-        const accordionContent = document.createElement('div');
-        accordionContent.className = 'accordion-content';
-
-        let contentHTML = category.description ? `<p class="category-description">${category.description}</p>` : '';
-
-        category.items.forEach(item => {
-            let priceHTML = '';
-            if (typeof item.price === 'number') {
-                priceHTML = `S/ ${item.price.toFixed(2)}`;
-            } else if (item.prices) {
-                priceHTML = Object.entries(item.prices).map(([size, price]) => `${size}: S/ ${price.toFixed(2)}`).join('<br>');
-            } else {
-                priceHTML = item.price || '';
+        /**
+         * Muestra las tarjetas de categoría iniciales.
+         */
+        function mostrarCategorias() {
+            const categoryGridContainer = document.getElementById('category-grid-container');
+            const dishesByCategoryContainer = document.getElementById('dishes-by-category-container');
+            
+            if (!categoryGridContainer || !dishesByCategoryContainer) {
+                console.error('Contenedores de carta no encontrados.');
+                return;
             }
 
-            // === LÓGICA PARA LA IMAGEN ===
-            // Si el item tiene una imagen, creamos la etiqueta img.
-            // La ruta será "img/" + el nombre del archivo del JSON.
-            const imageHTML = item.image ? 
-                `<div class="item-image-container">
-                    <img src="img/${item.image}" alt="${item.name}" loading="lazy">
-                 </div>` : 
-                '';
+            categoryGridContainer.innerHTML = ''; 
+            categoryGridContainer.classList.remove('hidden'); 
+            dishesByCategoryContainer.classList.add('hidden'); 
 
-            contentHTML += `
-                <div class="menu-item">
-                    ${imageHTML}
-                    <div class="item-details">
-                        <h3>${item.name}</h3>
-                        ${item.description ? `<p>${item.description}</p>` : ''}
-                    </div>
-                    <div class="item-price">${priceHTML}</div>
-                </div>
-            `;
-        });
+            cartaData.forEach((category, index) => {
+                const categoryCard = document.createElement('div');
+                categoryCard.className = 'dish-card category-card';
 
-        accordionContent.innerHTML = contentHTML;
-        accordionItem.appendChild(accordionHeader);
-        accordionItem.appendChild(accordionContent);
-        menuContainer.appendChild(accordionItem);
+                // Asignar una imagen representativa a la categoría si existe
+                // Podrías añadir un campo 'categoryImage' en tu JSON para esto
+                // Por ahora, usaremos la imagen del primer item de cada categoría si está disponible.
+                const categoryImage = category.image || (category.items.length > 0 ? category.items[0].image : null);
 
-        accordionHeader.addEventListener('click', () => {
-            const isActive = accordionItem.classList.contains('active');
-            accordionItem.classList.toggle('active');
-            const content = accordionItem.querySelector('.accordion-content');
-            if (accordionItem.classList.contains('active')) {
-                content.style.maxHeight = content.scrollHeight + "px";
-            } else {
-                content.style.maxHeight = null;
-            }
-        });
-    });
-}
-
-    /**
-     * Carga los datos de la carta desde un archivo JSON externo.
-     */
-    function cargarCarta() {
-        fetch('carta.json') // Asegúrate que tu archivo se llame 'carta.json'
-            .then(response => {
-                if (!response.ok) throw new Error('Error de red al cargar la carta.');
-                return response.json();
-            })
-            .then(data => {
-                generarMenu(data); // Llama a la función que construye el menú
-            })
-            .catch(error => {
-                console.error('Error al cargar la carta:', error);
-                const menuContainer = document.getElementById('menu-accordion-container');
-                if (menuContainer) {
-                    menuContainer.innerHTML = '<p style="text-align:center; color:red;">Lo sentimos, no se pudo cargar la carta en este momento.</p>';
+                if (categoryImage) {
+                    categoryCard.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/${categoryImage}')`;
+                } else {
+                    categoryCard.style.backgroundColor = 'var(--terracota)'; // Fondo por defecto si no hay imagen
                 }
+
+                const categoryOverlay = document.createElement('div');
+                categoryOverlay.className = 'dish-overlay';
+
+                const categoryName = document.createElement('h3');
+                categoryName.className = 'dish-name';
+                categoryName.textContent = category.category;
+
+                categoryOverlay.appendChild(categoryName);
+                categoryCard.appendChild(categoryOverlay);
+                categoryGridContainer.appendChild(categoryCard);
+
+                categoryCard.addEventListener('click', () => mostrarPlatosPorCategoria(index));
             });
-    }
+        }
 
+        /**
+         * Muestra los platos de una categoría específica y hace scroll a la sección.
+         * @param {number} categoryIndex - El índice de la categoría a mostrar.
+         */
+        function mostrarPlatosPorCategoria(categoryIndex) {
+            const category = cartaData[categoryIndex];
+            const categoryGridContainer = document.getElementById('category-grid-container');
+            const dishesByCategoryContainer = document.getElementById('dishes-by-category-container');
+            const categoryDishesTitle = document.getElementById('category-dishes-title');
+            const categoryDishesGrid = document.getElementById('category-dishes-grid');
+            const navbar = document.getElementById('navbar'); 
 
-    /*****************************************************
-     * SECCIÓN 2: LÓGICA DE NAVEGACIÓN Y SCROLL
-     *****************************************************/
+            if (!category || !categoryGridContainer || !dishesByCategoryContainer || !categoryDishesTitle || !categoryDishesGrid || !navbar) {
+                console.error('Elementos de platos por categoría no encontrados.');
+                return;
+            }
 
-    // Lógica para el menú hamburguesa en móviles
-    const hamburger = document.getElementById('hamburger-menu');
-    const navLinks = document.getElementById('nav-links');
-    if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
+            categoryGridContainer.classList.add('hidden'); 
+            dishesByCategoryContainer.classList.remove('hidden'); 
+
+            categoryDishesTitle.textContent = category.category; 
+            categoryDishesGrid.innerHTML = ''; 
+
+            category.items.forEach(item => {
+                const dishCard = document.createElement('div');
+                dishCard.className = 'dish-card';
+
+                if (item.image) {
+                    dishCard.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/${item.image}')`;
+                } else {
+                    dishCard.style.backgroundColor = 'var(--terracota)';
+                }
+
+                const dishOverlay = document.createElement('div');
+                dishOverlay.className = 'dish-overlay';
+
+                const dishName = document.createElement('h3');
+                dishName.className = 'dish-name';
+                dishName.textContent = item.name;
+
+                const dishDescription = document.createElement('p');
+                dishDescription.className = 'dish-description';
+                
+                let descriptionText = item.description || '';
+                let priceText = '';
+
+                if (typeof item.price === 'number') {
+                    priceText = `S/ ${item.price.toFixed(2)}`;
+                } else if (item.prices) {
+                    priceText = Object.entries(item.prices).map(([size, price]) => `${size}: S/ ${price.toFixed(2)}`).join(' / ');
+                }
+
+                if (descriptionText && priceText) {
+                    dishDescription.textContent = `${descriptionText} (${priceText})`;
+                } else if (descriptionText) {
+                    dishDescription.textContent = descriptionText;
+                } else if (priceText) {
+                    dishDescription.textContent = priceText;
+                }
+
+                dishOverlay.appendChild(dishName);
+                dishOverlay.appendChild(dishDescription);
+                dishCard.appendChild(dishOverlay);
+                categoryDishesGrid.appendChild(dishCard);
             });
-        });
-    }
 
-    // Efecto de scroll en la barra de navegación
-    const navbar = document.getElementById('navbar');
-    if (navbar) {
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
-        });
-    }
-
-    // Scroll suave con ajuste para la barra de navegación fija
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-
-            if (targetElement) {
-                const navbarHeight = navbar ? navbar.offsetHeight : 0;
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
-
+            // Hacemos scroll suave a la parte superior de la sección de la carta
+            // Ajustamos la posición para que la barra de navegación fija no tape el contenido
+            const sectionCarta = document.getElementById('nuestra-carta');
+            if (sectionCarta) {
+                const navbarHeight = navbar.offsetHeight; 
+                const offsetTop = sectionCarta.getBoundingClientRect().top + window.pageYOffset;
                 window.scrollTo({
-                    top: offsetPosition,
+                    top: offsetTop - navbarHeight - 20, // Resta la altura del navbar y un poco más de margen
                     behavior: 'smooth'
                 });
             }
-        });
-    });
-
-
-    /*****************************************************
-     * SECCIÓN 3: LÓGICA DEL CARRUSEL
-     *****************************************************/
-
-    const carouselContainer = document.getElementById('carouselContainer');
-    if (carouselContainer) {
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.carousel-slide');
-        const totalSlides = slides.length;
-        const dots = document.querySelectorAll('.nav-dot');
-        const arrowLeft = document.querySelector('.arrow-left');
-        const arrowRight = document.querySelector('.arrow-right');
-        let autoPlayInterval;
-
-        const updateCarousel = () => {
-            carouselContainer.style.transform = `translateX(-${currentSlide * (100 / totalSlides)}%)`;
-            dots.forEach((dot, index) => dot.classList.toggle('active', index === currentSlide));
-        };
-
-        const resetAutoPlay = () => {
-            clearInterval(autoPlayInterval);
-            autoPlayInterval = setInterval(() => changeSlide(1), 6000);
-        };
-
-        const changeSlide = (direction) => {
-            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-            updateCarousel();
-            resetAutoPlay();
-        };
-
-        const goToSlide = (index) => {
-            currentSlide = index;
-            updateCarousel();
-            resetAutoPlay();
-        };
-
-        if (arrowLeft && arrowRight && dots.length > 0) {
-            arrowLeft.addEventListener('click', () => changeSlide(-1));
-            arrowRight.addEventListener('click', () => changeSlide(1));
-            dots.forEach((dot, index) => dot.addEventListener('click', () => goToSlide(index)));
-            resetAutoPlay(); // Inicia el carrusel
         }
-    }
+
+        /**
+         * Carga los datos de la carta desde un archivo JSON externo.
+         */
+        function cargarCarta() {
+            fetch('carta.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`Error de red: ${response.status} ${response.statusText}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    cartaData = data.menu; 
+                    mostrarCategorias(); 
+                })
+                .catch(error => {
+                    console.error('Error al cargar la carta:', error);
+                    const categoryGridContainer = document.getElementById('category-grid-container');
+                    if (categoryGridContainer) {
+                        categoryGridContainer.innerHTML = '<p style="text-align:center; color:red;">Lo sentimos, no se pudo cargar la carta en este momento. Por favor, inténtalo más tarde.</p>';
+                    }
+                });
+        }
+
+        const backButton = document.getElementById('back-to-categories');
+        if (backButton) {
+            backButton.addEventListener('click', mostrarCategorias);
+        }
 
 
-    /*****************************************************
-     * SECCIÓN 4: ANIMACIONES Y OTROS
-     *****************************************************/
+        /*****************************************************
+         * SECCIÓN 2: LÓGICA DE NAVEGACIÓN Y SCROLL
+         *****************************************************/
 
-    // Animación de entrada (Fade In) al hacer scroll
-    const fadeInElements = document.querySelectorAll('.fade-in');
-    if (fadeInElements.length > 0) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
+        // Lógica para el menú hamburguesa en móviles
+        const hamburger = document.getElementById('hamburger-menu');
+        const navLinks = document.getElementById('nav-links');
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+
+        // Efecto de scroll en la barra de navegación
+        const navbar = document.getElementById('navbar');
+        if (navbar) {
+            window.addEventListener('scroll', () => {
+                navbar.classList.toggle('scrolled', window.scrollY > 50);
+            });
+        }
+
+        // Scroll suave con ajuste para la barra de navegación fija
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    const navbarHeight = navbar ? navbar.offsetHeight : 0;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
                 }
             });
-        }, { threshold: 0.1 });
-        fadeInElements.forEach(el => observer.observe(el));
-    }
+        });
 
-    // Integración con WhatsApp
-    function reservarWhatsApp() {
-        const phone = '51941234567'; // Reemplaza con tu número
-        const message = 'Hola! Me gustaría hacer una reserva en el restaurante Chacha.';
-        const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-        window.open(url, '_blank');
-    }
 
-    document.body.addEventListener('click', function(e) {
-        const target = e.target.closest('a');
-        if (target) {
-            const isReserveButton = target.textContent.toUpperCase().includes('RESERVAR');
-            const isWhatsappIcon = target.querySelector('.fa-whatsapp');
-            if (isReserveButton || isWhatsappIcon) {
-                e.preventDefault();
-                reservarWhatsApp();
+        /*****************************************************
+         * SECCIÓN 3: LÓGICA DEL CARRUSEL
+         *****************************************************/
+
+        const carouselContainer = document.getElementById('carouselContainer');
+        if (carouselContainer) {
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.carousel-slide');
+            const totalSlides = slides.length;
+            const dots = document.querySelectorAll('.nav-dot');
+            const arrowLeft = document.querySelector('.arrow-left');
+            const arrowRight = document.querySelector('.arrow-right');
+            let autoPlayInterval;
+
+            const updateCarousel = () => {
+                carouselContainer.style.transform = `translateX(-${currentSlide * (100 / totalSlides)}%)`;
+                dots.forEach((dot, index) => dot.classList.toggle('active', index === currentSlide));
+            };
+
+            const resetAutoPlay = () => {
+                clearInterval(autoPlayInterval);
+                autoPlayInterval = setInterval(() => changeSlide(1), 6000);
+            };
+
+            const changeSlide = (direction) => {
+                currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+                updateCarousel();
+                resetAutoPlay();
+            };
+
+            const goToSlide = (index) => {
+                currentSlide = index;
+                updateCarousel();
+                resetAutoPlay();
+            };
+
+            if (arrowLeft && arrowRight && dots.length > 0) {
+                arrowLeft.addEventListener('click', () => changeSlide(-1));
+                arrowRight.addEventListener('click', () => changeSlide(1));
+                dots.forEach((dot, index) => dot.addEventListener('click', () => goToSlide(index)));
+                resetAutoPlay(); // Inicia el carrusel
             }
         }
+
+
+        /*****************************************************
+         * SECCIÓN 4: ANIMACIONES Y OTROS
+         *****************************************************/
+
+        // Animación de entrada (Fade In) al hacer scroll
+        const fadeInElements = document.querySelectorAll('.fade-in');
+        if (fadeInElements.length > 0) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            fadeInElements.forEach(el => observer.observe(el));
+        }
+
+        // Integración con WhatsApp
+        function reservarWhatsApp() {
+            const phone = '51941234567'; // Reemplaza con tu número de teléfono de WhatsApp en Perú
+            const message = 'Hola! Me gustaría hacer una reserva en el restaurante Chacha.';
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+
+        document.body.addEventListener('click', function(e) {
+            const target = e.target.closest('a');
+            if (target) {
+                const isReserveButton = target.textContent.toUpperCase().includes('RESERVAR');
+                const isWhatsappIcon = target.querySelector('.fa-whatsapp');
+                // Asegúrate de que el enlace tenga el href correcto si es un botón de reserva
+                // Si es el icono de WhatsApp, solo necesitas el selector .fa-whatsapp
+                if (isReserveButton || isWhatsappIcon) {
+                    e.preventDefault();
+                    reservarWhatsApp();
+                }
+            }
+        });
+
+
+        /*****************************************************
+         * INICIO DE LA APLICACIÓN
+         *****************************************************/
+
+        // Llama a la función principal para cargar la carta
+        cargarCarta();
+
     });
-
-
-    /*****************************************************
-     * INICIO DE LA APLICACIÓN
-     *****************************************************/
-
-    // Llama a la función principal para cargar la carta
-    cargarCarta();
-
-});
-</script>
+    </script>
+</body>
+</html>
