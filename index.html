@@ -6,497 +6,537 @@
     <title>Chacha - Sabores Ancestrales de Amazonas</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
-        
-        :root {
-            --tierra-principal: #1b110a;
-            --ocre: #cccc3c;
-            --terracota: #271e14;
-            --piedra: #d2c48c;
-            --verde-bosque: #354f2f;
-            --azul-catarata: #a0b446;
-            --rojo-ceramica: #cdbc3f;
-            --blanco-hueso: #FDF5E6;
-        }
+       @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+:root {
+    --tierra-principal: #1b110a;
+    --ocre: #cccc3c;
+    --terracota: #271e14;
+    --piedra: #d2c48c;
+    --verde-bosque: #354f2f;
+    --azul-catarata: #a0b446;
+    --rojo-ceramica: #cdbc3f;
+    --blanco-hueso: #FDF5E6;
+}
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--blanco-hueso);
-            color: var(--tierra-principal);
-            overflow-x: hidden;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        /* NAVEGACIÓN */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(24, 14, 7, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
-        }
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--blanco-hueso);
+    color: var(--tierra-principal);
+    overflow-x: hidden;
+}
 
-        .navbar.scrolled {
-            background: rgba(50, 33, 21, 0.98);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        }
+/* NAVEGACIÓN */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(24, 14, 7, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+}
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
+.navbar.scrolled {
+    background: rgba(50, 33, 21, 0.98);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
 
-        .nav-links a {
-            color: var(--blanco-hueso);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
 
-        .nav-links a:hover {
-            color: var(--ocre);
-            transform: translateY(-2px);
-        }
+.nav-links a {
+    color: var(--blanco-hueso);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            width: 0;
-            height: 2px;
-            background: var(--ocre);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
-        }
+.nav-links a:hover {
+    color: var(--ocre);
+    transform: translateY(-2px);
+}
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-        
-        /* === NUEVO: MENÚ HAMBURGUESA === */
-        .hamburger-menu {
-            display: none; /* Oculto por defecto en pantallas grandes */
-            cursor: pointer;
-            z-index: 1002;
-        }
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--ocre);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
 
-        .hamburger-menu .bar {
-            width: 25px;
-            height: 3px;
-            background-color: var(--blanco-hueso);
-            margin: 5px 0;
-            transition: 0.4s;
-        }
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* === MENÚ HAMBURGUESA === */
+.hamburger-menu {
+    display: none; /* Oculto por defecto en pantallas grandes */
+    cursor: pointer;
+    z-index: 1002;
+}
+
+.hamburger-menu .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--blanco-hueso);
+    margin: 5px 0;
+    transition: 0.4s;
+}
 
 
-        /* CARRUSEL PRINCIPAL */
-        .hero-carousel {
-            height: 100vh;
-            position: relative;
-            overflow: hidden;
-        }
+/* CARRUSEL PRINCIPAL */
+.hero-carousel {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
 
-        .carousel-container {
-            display: flex;
-            width: 400%;
-            height: 100%;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+.carousel-container {
+    display: flex;
+    width: 400%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-        .carousel-slide {
-            width: 25%;
-            height: 100%;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
+.carousel-slide {
+    width: 25%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 
-        .slide-1 { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/carrusel/slider1.jpg'); }
-        .slide-2 { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/carrusel/slider2.jpg'); }
-        .slide-3 { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('img/carrusel/todo.jpg'); }
-        .slide-4 { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/carrusel/slider3.jpg'); }
+.slide-1 { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/carrusel/slider1.jpg'); }
+.slide-2 { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/carrusel/slider2.jpg'); }
+.slide-3 { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('img/carrusel/todo.jpg'); }
+.slide-4 { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/carrusel/slider3.jpg'); }
 
-        .slide-content {
-            text-align: center;
-            color: white;
-            max-width: 800px;
-            padding: 2rem;
-            animation: fadeInUp 1s ease-out;
-        }
+.slide-content {
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 2rem;
+    animation: fadeInUp 1s ease-out;
+}
 
-        .slide-title {
-            font-family: 'Cinzel', serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
-            line-height: 1.2;
-        }
+.slide-title {
+    font-family: 'Cinzel', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+    line-height: 1.2;
+}
 
-        .slide-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            font-weight: 300;
-        }
+.slide-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--rojo-ceramica), var(--ocre));
-            color: white;
-            padding: 1rem 2.5rem;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+.btn-primary {
+    background: linear-gradient(135deg, var(--rojo-ceramica), var(--ocre));
+    color: white;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
-            background: linear-gradient(135deg, var(--ocre), var(--rojo-ceramica));
-        }
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+    background: linear-gradient(135deg, var(--ocre), var(--rojo-ceramica));
+}
 
-        .carousel-nav {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 1rem;
-        }
+.carousel-nav {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+}
 
-        .nav-dot {
-            width: 15px;
-            height: 15px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
+.nav-dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
-        .nav-dot.active {
-            background: var(--ocre);
-            transform: scale(1.2);
-        }
+.nav-dot.active {
+    background: var(--ocre);
+    transform: scale(1.2);
+}
 
-        .carousel-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.2);
-            border: none;
-            color: white;
-            font-size: 2rem;
-            padding: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
 
-        .carousel-arrow:hover { background: rgba(255,255,255,0.3); }
-        .arrow-left { left: 2rem; }
-        .arrow-right { right: 2rem; }
+.carousel-arrow:hover { background: rgba(255,255,255,0.3); }
+.arrow-left { left: 2rem; }
+.arrow-right { right: 2rem; }
 
-        /* SECCIONES */
-        .section {
-            padding: 5rem 2rem; /* Añadido padding lateral por defecto */
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+/* SECCIONES */
+.section {
+    padding: 5rem 2rem; /* Añadido padding lateral por defecto */
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-        .section-title {
-            font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: var(--tierra-principal);
-            position: relative;
-        }
+.section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--tierra-principal);
+    position: relative;
+}
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--ocre), var(--rojo-ceramica));
-        }
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--ocre), var(--rojo-ceramica));
+}
 
-        /* BIENVENIDA */
-        .welcome-text {
-            font-size: 1.3rem;
-            line-height: 1.8;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-            color: var(--verde-bosque);
-            font-weight: 400;
-        }
+/* BIENVENIDA */
+.welcome-text {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--verde-bosque);
+    font-weight: 400;
+}
 
-        /* PLATOS DESTACADOS */
-        .dishes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
+/* PLATOS DESTACADOS y CARTA (GENERAL) */
+.dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
 
-        .dish-card {
-            position: relative;
-            height: 350px;
-            border-radius: 15px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat; /* Asegura que la imagen no se repita */
-        }
+.dish-card {
+    position: relative;
+    height: 350px; /* Altura fija para tarjetas de plato */
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat; /* Asegura que la imagen no se repita */
+    display: flex; /* Para flexbox en móviles */
+    flex-direction: column; /* Para flexbox en móviles */
+    justify-content: flex-end; /* Para flexbox en móviles */
+}
 
-        .dish-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        }
+.dish-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
 
-        .dish-overlay {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.8));
-            color: white;
-            padding: 2rem;
-            transform: translateY(100%);
-            transition: transform 0.4s ease;
-            z-index: 2;
-        }
+.dish-overlay {
+    position: absolute; /* Por defecto, superpuesto */
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    color: white;
+    padding: 2rem;
+    transform: translateY(100%); /* Oculto por defecto */
+    transition: transform 0.4s ease;
+    z-index: 2;
+    display: flex; /* Para centrar contenido del overlay */
+    flex-direction: column;
+    justify-content: center;
+    min-height: 80px; /* Mínimo para el overlay */
+}
 
-        /* COMPORTAMIENTO POR DEFECTO PARA EL OVERLAY (ESCRITORIO) */
-        .dish-card:hover .dish-overlay { transform: translateY(0); }
-        .dish-name { font-family: 'Cinzel', serif; font-size: 1.5rem; margin-bottom: 0.5rem; }
-        .dish-description { font-size: 1rem; opacity: 0.9; }
+/* COMPORTAMIENTO POR DEFECTO PARA EL OVERLAY (ESCRITORIO: solo visible al hover) */
+.dish-card:hover .dish-overlay { transform: translateY(0); }
+.dish-name { font-family: 'Cinzel', serif; font-size: 1.5rem; margin-bottom: 0.5rem; }
+.dish-description { font-size: 1rem; opacity: 0.9; }
 
-        /* AMBIENTE */
-        .ambiente-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-            margin-top: 3rem;
-        }
-        .ambiente-text { font-size: 1.2rem; line-height: 1.8; color: var(--verde-bosque); }
-        .ambiente-images { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-        .ambiente-img { height: 200px; border-radius: 10px; background: linear-gradient(135deg, var(--piedra), var(--ocre)); position: relative; overflow: hidden; transition: transform 0.3s ease; }
-        .ambiente-img:hover { transform: scale(1.05); }
+/* AMBIENTE */
+.ambiente-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 3rem;
+}
+.ambiente-text { font-size: 1.2rem; line-height: 1.8; color: var(--verde-bosque); }
+.ambiente-images { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.ambiente-img { height: 200px; border-radius: 10px; background: linear-gradient(135deg, var(--piedra), var(--ocre)); position: relative; overflow: hidden; transition: transform 0.3s ease; }
+.ambiente-img:hover { transform: scale(1.05); }
 
-        /* TESTIMONIOS */
-        .testimonios { background: linear-gradient(135deg, var(--verde-bosque), var(--azul-catarata)); color: white; padding: 5rem 2rem; }
-        .testimonios-container { max-width: 1000px; margin: 0 auto; text-align: center; }
-        .testimonio { max-width: 600px; margin: 0 auto; }
-        .testimonio-text { font-size: 1.4rem; font-style: italic; margin-bottom: 2rem; line-height: 1.6; }
-        .testimonio-author { font-weight: 600; color: var(--ocre); }
+/* TESTIMONIOS */
+.testimonios { background: linear-gradient(135deg, var(--verde-bosque), var(--azul-catarata)); color: white; padding: 5rem 2rem; }
+.testimonios-container { max-width: 1000px; margin: 0 auto; text-align: center; }
+.testimonio { max-width: 600px; margin: 0 auto; }
+.testimonio-text { font-size: 1.4rem; font-style: italic; margin-bottom: 2rem; line-height: 1.6; }
+.testimonio-author { font-weight: 600; color: var(--ocre); }
 
-        /* CTA FINAL */
-        .cta-final { background: linear-gradient(135deg, var(--tierra-principal), var(--terracota)); color: white; text-align: center; padding: 5rem 2rem; }
-        .cta-title { font-family: 'Cinzel', serif; font-size: 3rem; margin-bottom: 2rem; }
-        .cta-subtitle { font-size: 1.3rem; margin-bottom: 3rem; opacity: 0.9; }
+/* CTA FINAL */
+.cta-final { background: linear-gradient(135deg, var(--tierra-principal), var(--terracota)); color: white; text-align: center; padding: 5rem 2rem; }
+.cta-title { font-family: 'Cinzel', serif; font-size: 3rem; margin-bottom: 2rem; }
+.cta-subtitle { font-size: 1.3rem; margin-bottom: 3rem; opacity: 0.9; }
 
-        /* FOOTER */
-        .footer { background: var(--tierra-principal); color: var(--blanco-hueso); padding: 3rem 0 1rem 0; }
-        .footer-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-        .footer-section h3 { font-family: 'Cinzel', serif; margin-bottom: 1rem; color: var(--ocre); }
-        .footer-section p, .footer-section a { color: var(--blanco-hueso); text-decoration: none; margin-bottom: 0.5rem; display: block; }
-        .footer-section a:hover { color: var(--ocre); }
-        .social-links { display: flex; gap: 1rem; margin-top: 1rem; }
-        .social-links a { color: var(--blanco-hueso); font-size: 1.5rem; transition: color 0.3s ease; }
-        .social-links a:hover { color: var(--ocre); }
-        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2); margin-top: 2rem; opacity: 0.7; }
+/* FOOTER */
+.footer { background: var(--tierra-principal); color: var(--blanco-hueso); padding: 3rem 0 1rem 0; }
+.footer-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+.footer-section h3 { font-family: 'Cinzel', serif; margin-bottom: 1rem; color: var(--ocre); }
+.footer-section p, .footer-section a { color: var(--blanco-hueso); text-decoration: none; margin-bottom: 0.5rem; display: block; }
+.footer-section a:hover { color: var(--ocre); }
+.social-links { display: flex; gap: 1rem; margin-top: 1rem; }
+.social-links a { color: var(--blanco-hueso); font-size: 1.5rem; transition: color 0.3s ease; }
+.social-links a:hover { color: var(--ocre); }
+.footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2); margin-top: 2rem; opacity: 0.7; }
 
-        /* ANIMACIONES */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-        
-        /* === IMÁGENES DE PLATOS DESTACADOS (puedes dejarlas o quitarlas y manejar todo por JS si lo prefieres) === */
-        .dishes-grid .dish-card:nth-child(1) { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/ceviche de trucha.jpg'); }
-        .dishes-grid .dish-card:nth-child(2) { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/shanwichchicharronchancho.jpg'); }
-        .dishes-grid .dish-card:nth-child(3) { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('img/El campesino.jpg'); }
-        .dishes-grid .dish-card:nth-child(4) { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/desayunochacha.jpg'); }
-        
-        
-        /* =================================
-           ===== MEJORAS RESPONSIVE ======
-           ================================= */
-        
-        /* === TABLETS Y MÓVILES GRANDES (hasta 992px) === */
-        @media (max-width: 992px) {
-            .ambiente-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-        }
+/* ANIMACIONES */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* === MÓVILES (hasta 768px) === */
-        @media (max-width: 768px) {
-            .nav-links {
-                /* === MEJORA: Transforma los enlaces en un menú desplegable === */
-                display: flex;
-                flex-direction: column;
-                position: fixed;
-                top: 0;
-                right: -100%; /* Empieza fuera de la pantalla */
-                width: 70%;
-                height: 100vh;
-                background: var(--terracota);
-                padding-top: 5rem;
-                align-items: center;
-                transition: right 0.5s ease-in-out;
-                z-index: 1001;
-            }
-            .nav-links.active {
-                right: 0; /* Muestra el menú */
-            }
-            .hamburger-menu {
-                display: block; /* Muestra el icono de hamburguesa */
-            }
-            .slide-title { font-size: 2.5rem; }
-            .slide-subtitle { font-size: 1.1rem; }
-            .section { padding: 3rem 1.5rem; }
-            .section-title { font-size: 2.2rem; }
-            .welcome-text { font-size: 1.1rem; }
-            .cta-title { font-size: 2rem; }
-            .btn-primary { padding: 0.8rem 1.8rem; font-size: 1rem; }
-            .footer-content { text-align: center; }
-            .social-links { justify-content: center; }
+/* === IMÁGENES DE PLATOS DESTACADOS (pueden dejarlas o quitarlas y manejar todo por JS si lo prefieres) === */
+.dishes-grid .dish-card:nth-child(1) { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/ceviche de trucha.jpg'); }
+.dishes-grid .dish-card:nth-child(2) { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/shanwichchicharronchancho.jpg'); }
+.dishes-grid .dish-card:nth-child(3) { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('img/El campesino.jpg'); }
+.dishes-grid .dish-card:nth-child(4) { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/desayunochacha.jpg'); }
 
-            /* === ESTILOS PARA DISH-CARD EN MÓVILES === */
-            .dish-card .dish-overlay {
-                transform: translateY(0) !important; /* Siempre visible */
-                background: rgba(0,0,0,0.7); /* Fondo más sólido */
-                padding: 1rem; /* Ajustar padding */
-                height: auto; /* Ajustar altura al contenido */
-            }
-            .dish-card {
-                height: auto; /* Permite que la tarjeta se ajuste si el overlay tiene más contenido */
-            }
-            .dish-card .dish-name {
-                font-size: 1.3rem; 
-                margin-bottom: 0.3rem;
-            }
-            .dish-card .dish-description {
-                font-size: 0.9rem; 
-                opacity: 1; /* Asegura que siempre sea visible */
-            }
 
-            /* No necesitamos la regla :hover para el overlay en móviles */
-            .dish-card:hover .dish-overlay {
-                transform: translateY(0); /* Mantiene el estado visible */
-            }
-        }
+/* =================================
+   ===== MEJORAS RESPONSIVE ======
+   ================================= */
 
-        /* === MÓVILES PEQUEÑOS (hasta 480px) === */
-        @media (max-width: 480px) {
-            .slide-title { font-size: 2rem; }
-            .slide-subtitle { font-size: 1rem; }
-            .carousel-arrow { font-size: 1.5rem; padding: 0.8rem; }
-            .arrow-left { left: 1rem; }
-            .arrow-right { right: 1rem; }
-            .cta-title { font-size: 1.8rem; }
-        }
+/* === TABLETS Y MÓVILES GRANDES (hasta 992px) === */
+@media (max-width: 992px) {
+    .ambiente-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
 
-        /* NUEVOS ESTILOS PARA LA NAVEGACIÓN DE LA CARTA POR CATEGORÍAS */
+/* === MÓVILES (hasta 768px) === */
+@media (max-width: 768px) {
+    .nav-links {
+        /* === MEJORA: Transforma los enlaces en un menú desplegable === */
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%; /* Empieza fuera de la pantalla */
+        width: 70%;
+        height: 100vh;
+        background: var(--terracota);
+        padding-top: 5rem;
+        align-items: center;
+        transition: right 0.5s ease-in-out;
+        z-index: 1001;
+    }
+    .nav-links.active {
+        right: 0; /* Muestra el menú */
+    }
+    .hamburger-menu {
+        display: block; /* Muestra el icono de hamburguesa */
+    }
+    .slide-title { font-size: 2.5rem; }
+    .slide-subtitle { font-size: 1.1rem; }
+    .section { padding: 3rem 1.5rem; }
+    .section-title { font-size: 2.2rem; }
+    .welcome-text { font-size: 1.1rem; }
+    .cta-title { font-size: 2rem; }
+    .btn-primary { padding: 0.8rem 1.8rem; font-size: 1rem; }
+    .footer-content { text-align: center; }
+    .social-links { justify-content: center; }
 
-        /* Ocultar elementos */
-        .hidden {
-            display: none !important;
-        }
+    /* === ESTILOS PARA DISH-CARD Y DISH-OVERLAY EN MÓVILES === */
+    .dish-card {
+        /* Aseguramos que la tarjeta es un flex container para que el overlay se alinee abajo */
+        display: flex; 
+        flex-direction: column;
+        justify-content: flex-end; /* Empuja el overlay hacia la parte inferior */
+        height: 350px; /* Puedes ajustar o dejar en auto si la imagen lo permite y el contenido es dinámico */
+        padding: 0; /* Remover padding que pueda interferir con el flexbox */
+    }
 
-        /* Estilo para el botón flotante de regresar */
-        #back-to-categories {
-            position: sticky; /* Hace que el elemento "flote" */
-            top: 90px; /* Ajusta la distancia desde la parte superior. Considera la altura del navbar */
-            left: 2rem; /* Alinea a la izquierda, puedes ajustar a right si prefieres */
-            z-index: 999; /* Asegura que esté por encima de otros elementos, pero debajo del navbar */
-            margin-bottom: 2rem; /* Espacio debajo del botón cuando no está fijo */
-            width: fit-content; /* El botón se ajusta a su contenido */
-            display: block; /* Para que funcione margin-bottom y centrado en móvil */
-            padding: 0.8rem 1.5rem; /* Ajusta el padding para que no sea demasiado grande */
-        }
+    .dish-card .dish-overlay {
+        position: relative; /* CRÍTICO: el overlay ahora fluye dentro del flexbox */
+        transform: translateY(0) !important; /* Siempre visible, anula el efecto de hover de escritorio */
+        background: rgba(0,0,0,0.7); /* Fondo sólido para legibilidad */
+        padding: 1rem; /* Relleno del overlay */
+        min-height: 80px; /* Altura mínima para asegurar espacio para el texto */
+        /* Asegurar que el contenido dentro del overlay esté centrado si es necesario */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .dish-card .dish-name {
+        font-size: 1.3rem; 
+        margin-bottom: 0.3rem;
+        opacity: 1; /* Siempre visible en móviles */
+    }
 
-        /* Ajustes responsive para el botón "Regresar" */
-        @media (max-width: 768px) {
-            #back-to-categories {
-                width: calc(100% - 4rem); /* Ancho completo menos el padding lateral de la sección */
-                margin-left: 2rem;
-                margin-right: 2rem;
-                text-align: center;
-                top: 80px; /* Ajusta si el navbar móvil es más pequeño */
-            }
-        }
+    .dish-card .dish-description {
+        font-size: 0.9rem; 
+        opacity: 1; /* Siempre visible en móviles */
+    }
 
-        /* Estilos para las tarjetas de categoría (reutilizan .dish-card) */
-        .category-card .dish-overlay {
-            /* Puedes ajustar el overlay para las categorías si quieres un efecto diferente */
-            background: linear-gradient(transparent, rgba(0,0,0,0.7)); 
-        }
+    /* Ya no necesitamos la regla :hover para el overlay en móviles */
+    .dish-card:hover .dish-overlay {
+        transform: translateY(0); /* Mantiene el estado visible */
+    }
 
-        .category-card .dish-name {
-            /* Centra el título de la categoría */
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%;
-            text-align: center;
-            font-size: 2rem; /* Ajusta el tamaño para que destaque */
-            opacity: 1; /* Siempre visible */
-            transition: opacity 0.3s ease;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-        }
+    /* Estilos para las tarjetas de categoría (reutilizan .dish-card) - asegurar visibilidad en móvil */
+    .category-card .dish-name {
+        font-size: 1.8rem; /* Ajuste para que se vea bien el nombre de la categoría */
+    }
+}
 
-        .category-card:hover .dish-name {
-            opacity: 1; /* Se mantiene visible al hover */
-        }
+/* === MÓVILES PEQUEÑOS (hasta 480px) === */
+@media (max-width: 480px) {
+    .slide-title { font-size: 2rem; }
+    .slide-subtitle { font-size: 1rem; }
+    .carousel-arrow { font-size: 1.5rem; padding: 0.8rem; }
+    .arrow-left { left: 1rem; }
+    .arrow-right { right: 1rem; }
+    .cta-title { font-size: 1.8rem; }
+    
+    /* Pequeños ajustes finales para el overlay en móviles muy pequeños */
+    .dish-card .dish-overlay {
+        padding: 0.8rem;
+        min-height: 70px;
+    }
+    .dish-card .dish-name {
+        font-size: 1.2rem;
+    }
+    .dish-card .dish-description {
+        font-size: 0.85rem;
+    }
+}
 
-        /* Si quieres que la descripción de la categoría no aparezca al pasar el mouse,
-           puedes ocultar el dish-description dentro de category-card */
-        .category-card .dish-description {
-            display: none;
-        }
+/* NUEVOS ESTILOS PARA LA NAVEGACIÓN DE LA CARTA POR CATEGORÍAS */
+
+/* Ocultar elementos */
+.hidden {
+    display: none !important;
+}
+
+/* Estilo para el botón flotante de regresar */
+#back-to-categories {
+    position: sticky; /* Hace que el elemento "flote" */
+    top: 90px; /* Ajusta la distancia desde la parte superior. Considera la altura del navbar */
+    left: 2rem; /* Alinea a la izquierda, puedes ajustar a right si prefieres */
+    z-index: 999; /* Asegura que esté por encima de otros elementos, pero debajo del navbar */
+    margin-bottom: 2rem; /* Espacio debajo del botón cuando no está fijo */
+    width: fit-content; /* El botón se ajusta a su contenido */
+    display: block; /* Para que funcione margin-bottom y centrado en móvil */
+    padding: 0.8rem 1.5rem; /* Ajusta el padding para que no sea demasiado grande */
+    text-decoration: none; /* Asegurar que no tenga subrayado si es un link */
+    text-align: center; /* Centrar texto en el botón */
+}
+
+/* Ajustes responsive para el botón "Regresar" */
+@media (max-width: 768px) {
+    #back-to-categories {
+        width: calc(100% - 4rem); /* Ancho completo menos el padding lateral de la sección */
+        margin-left: 2rem;
+        margin-right: 2rem;
+        text-align: center;
+        top: 80px; /* Ajusta si el navbar móvil es más pequeño */
+    }
+}
+
+/* Estilos para las tarjetas de categoría (reutilizan .dish-card) */
+/* En móviles, estas también serán siempre visibles gracias a las reglas generales de .dish-card */
+.category-card .dish-overlay {
+    background: linear-gradient(transparent, rgba(0,0,0,0.7)); 
+}
+
+.category-card .dish-name {
+    /* Centra el título de la categoría */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+    font-size: 2rem; /* Ajusta el tamaño para que destaque */
+    opacity: 1; /* Siempre visible */
+    transition: opacity 0.3s ease;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+}
+
+.category-card:hover .dish-name {
+    opacity: 1; /* Se mantiene visible al hover */
+}
+
+/* Si quieres que la descripción de la categoría no aparezca al pasar el mouse,
+   puedes ocultar el dish-description dentro de category-card */
+.category-card .dish-description {
+    display: none;
+}
     </style>
 </head>
 <body>
@@ -669,310 +709,323 @@
     </footer>
 
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
+   document.addEventListener('DOMContentLoaded', function() {
 
-        let cartaData = []; // Variable global para almacenar los datos de la carta una vez cargados
+    let cartaData = []; // Variable global para almacenar los datos de la carta una vez cargados
 
-        /*****************************************************
-         * SECCIÓN 1: LÓGICA DEL MENÚ Y LA CARTA INTERACTIVA
-         *****************************************************/
+    /*****************************************************
+     * SECCIÓN 1: LÓGICA DEL MENÚ Y LA CARTA INTERACTIVA
+     *****************************************************/
 
-        /**
-         * Muestra las tarjetas de categoría iniciales.
-         */
-        function mostrarCategorias() {
-            const categoryGridContainer = document.getElementById('category-grid-container');
-            const dishesByCategoryContainer = document.getElementById('dishes-by-category-container');
-            
-            if (!categoryGridContainer || !dishesByCategoryContainer) {
-                console.error('Contenedores de carta no encontrados.');
-                return;
-            }
-
-            categoryGridContainer.innerHTML = ''; 
-            categoryGridContainer.classList.remove('hidden'); 
-            dishesByCategoryContainer.classList.add('hidden'); 
-
-            cartaData.forEach((category, index) => {
-                const categoryCard = document.createElement('div');
-                categoryCard.className = 'dish-card category-card';
-
-                // Asignar una imagen representativa a la categoría si existe
-                // Podrías añadir un campo 'categoryImage' en tu JSON para esto
-                // Por ahora, usaremos la imagen del primer item de cada categoría si está disponible.
-                const categoryImage = category.image || (category.items.length > 0 ? category.items[0].image : null);
-
-                if (categoryImage) {
-                    categoryCard.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/${categoryImage}')`;
-                } else {
-                    categoryCard.style.backgroundColor = 'var(--terracota)'; // Fondo por defecto si no hay imagen
-                }
-
-                const categoryOverlay = document.createElement('div');
-                categoryOverlay.className = 'dish-overlay';
-
-                const categoryName = document.createElement('h3');
-                categoryName.className = 'dish-name';
-                categoryName.textContent = category.category;
-
-                categoryOverlay.appendChild(categoryName);
-                categoryCard.appendChild(categoryOverlay);
-                categoryGridContainer.appendChild(categoryCard);
-
-                categoryCard.addEventListener('click', () => mostrarPlatosPorCategoria(index));
-            });
+    /**
+     * Muestra las tarjetas de categoría iniciales.
+     */
+    function mostrarCategorias() {
+        const categoryGridContainer = document.getElementById('category-grid-container');
+        const dishesByCategoryContainer = document.getElementById('dishes-by-category-container');
+        
+        if (!categoryGridContainer || !dishesByCategoryContainer) {
+            console.error('Contenedores de carta no encontrados.');
+            return;
         }
 
-        /**
-         * Muestra los platos de una categoría específica y hace scroll a la sección.
-         * @param {number} categoryIndex - El índice de la categoría a mostrar.
-         */
-        function mostrarPlatosPorCategoria(categoryIndex) {
-            const category = cartaData[categoryIndex];
-            const categoryGridContainer = document.getElementById('category-grid-container');
-            const dishesByCategoryContainer = document.getElementById('dishes-by-category-container');
-            const categoryDishesTitle = document.getElementById('category-dishes-title');
-            const categoryDishesGrid = document.getElementById('category-dishes-grid');
-            const navbar = document.getElementById('navbar'); 
+        categoryGridContainer.innerHTML = ''; 
+        categoryGridContainer.classList.remove('hidden'); 
+        dishesByCategoryContainer.classList.add('hidden'); 
 
-            if (!category || !categoryGridContainer || !dishesByCategoryContainer || !categoryDishesTitle || !categoryDishesGrid || !navbar) {
-                console.error('Elementos de platos por categoría no encontrados.');
-                return;
+        cartaData.forEach((category, index) => {
+            const categoryCard = document.createElement('div');
+            categoryCard.className = 'dish-card category-card';
+
+            // --- LÓGICA MEJORADA PARA LA IMAGEN DE LA CATEGORÍA ---
+            let categoryImage = category.image; // 1. Primero intenta con la imagen definida en la categoría JSON
+            
+            // 2. Si la categoría no tiene una imagen, busca la primera imagen disponible entre sus platos
+            if (!categoryImage && category.items && category.items.length > 0) {
+                // Itera sobre los platos para encontrar la primera imagen disponible
+                for (let i = 0; i < category.items.length; i++) {
+                    if (category.items[i].image) {
+                        categoryImage = category.items[i].image;
+                        break; // Encontró una imagen, sale del bucle
+                    }
+                }
+            }
+            // --- FIN LÓGICA MEJORADA ---
+
+
+            if (categoryImage) {
+                // Aplica el gradiente y la imagen
+                categoryCard.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/${categoryImage}')`;
+            } else {
+                // Si no hay ninguna imagen disponible, usa el color de fondo por defecto
+                categoryCard.style.backgroundColor = 'var(--terracota)'; 
             }
 
-            categoryGridContainer.classList.add('hidden'); 
-            dishesByCategoryContainer.classList.remove('hidden'); 
+            const categoryOverlay = document.createElement('div');
+            categoryOverlay.className = 'dish-overlay';
 
-            categoryDishesTitle.textContent = category.category; 
-            categoryDishesGrid.innerHTML = ''; 
+            const categoryName = document.createElement('h3');
+            categoryName.className = 'dish-name';
+            categoryName.textContent = category.category;
 
-            category.items.forEach(item => {
-                const dishCard = document.createElement('div');
-                dishCard.className = 'dish-card';
+            categoryOverlay.appendChild(categoryName);
+            categoryCard.appendChild(categoryOverlay);
+            categoryGridContainer.appendChild(categoryCard);
 
-                if (item.image) {
-                    dishCard.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/${item.image}')`;
-                } else {
-                    dishCard.style.backgroundColor = 'var(--terracota)';
-                }
+            categoryCard.addEventListener('click', () => mostrarPlatosPorCategoria(index));
+        });
+    }
 
-                const dishOverlay = document.createElement('div');
-                dishOverlay.className = 'dish-overlay';
+    /**
+     * Muestra los platos de una categoría específica y hace scroll a la sección.
+     * @param {number} categoryIndex - El índice de la categoría a mostrar.
+     */
+    function mostrarPlatosPorCategoria(categoryIndex) {
+        const category = cartaData[categoryIndex];
+        const categoryGridContainer = document.getElementById('category-grid-container');
+        const dishesByCategoryContainer = document.getElementById('dishes-by-category-container');
+        const categoryDishesTitle = document.getElementById('category-dishes-title');
+        const categoryDishesGrid = document.getElementById('category-dishes-grid');
+        const navbar = document.getElementById('navbar'); 
 
-                const dishName = document.createElement('h3');
-                dishName.className = 'dish-name';
-                dishName.textContent = item.name;
+        if (!category || !categoryGridContainer || !dishesByCategoryContainer || !categoryDishesTitle || !categoryDishesGrid || !navbar) {
+            console.error('Elementos de platos por categoría no encontrados.');
+            return;
+        }
 
-                const dishDescription = document.createElement('p');
-                dishDescription.className = 'dish-description';
-                
-                let descriptionText = item.description || '';
-                let priceText = '';
+        categoryGridContainer.classList.add('hidden'); 
+        dishesByCategoryContainer.classList.remove('hidden'); 
 
-                if (typeof item.price === 'number') {
-                    priceText = `S/ ${item.price.toFixed(2)}`;
-                } else if (item.prices) {
-                    priceText = Object.entries(item.prices).map(([size, price]) => `${size}: S/ ${price.toFixed(2)}`).join(' / ');
-                }
+        categoryDishesTitle.textContent = category.category; 
+        categoryDishesGrid.innerHTML = ''; 
 
-                if (descriptionText && priceText) {
-                    dishDescription.textContent = `${descriptionText} (${priceText})`;
-                } else if (descriptionText) {
-                    dishDescription.textContent = descriptionText;
-                } else if (priceText) {
-                    dishDescription.textContent = priceText;
-                }
+        category.items.forEach(item => {
+            const dishCard = document.createElement('div');
+            dishCard.className = 'dish-card';
 
-                dishOverlay.appendChild(dishName);
-                dishOverlay.appendChild(dishDescription);
-                dishCard.appendChild(dishOverlay);
-                categoryDishesGrid.appendChild(dishCard);
+            if (item.image) {
+                dishCard.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/${item.image}')`;
+            } else {
+                dishCard.style.backgroundColor = 'var(--terracota)';
+            }
+
+            const dishOverlay = document.createElement('div');
+            dishOverlay.className = 'dish-overlay';
+
+            const dishName = document.createElement('h3');
+            dishName.className = 'dish-name';
+            dishName.textContent = item.name;
+
+            const dishDescription = document.createElement('p');
+            dishDescription.className = 'dish-description';
+            
+            let descriptionText = item.description || '';
+            let priceText = '';
+
+            if (typeof item.price === 'number') {
+                priceText = `S/ ${item.price.toFixed(2)}`;
+            } else if (item.prices) {
+                priceText = Object.entries(item.prices).map(([size, price]) => `${size}: S/ ${price.toFixed(2)}`).join(' / ');
+            }
+
+            if (descriptionText && priceText) {
+                dishDescription.textContent = `${descriptionText} (${priceText})`;
+            } else if (descriptionText) {
+                dishDescription.textContent = descriptionText;
+            } else if (priceText) {
+                dishDescription.textContent = priceText;
+            }
+
+            dishOverlay.appendChild(dishName);
+            dishOverlay.appendChild(dishDescription);
+            dishCard.appendChild(dishOverlay);
+            categoryDishesGrid.appendChild(dishCard);
+        });
+
+        // Hacemos scroll suave a la parte superior de la sección de la carta
+        // Ajustamos la posición para que la barra de navegación fija no tape el contenido
+        const sectionCarta = document.getElementById('nuestra-carta');
+        if (sectionCarta) {
+            const navbarHeight = navbar.offsetHeight; 
+            const offsetTop = sectionCarta.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({
+                top: offsetTop - navbarHeight - 20, // Resta la altura del navbar y un poco más de margen
+                behavior: 'smooth'
             });
+        }
+    }
 
-            // Hacemos scroll suave a la parte superior de la sección de la carta
-            // Ajustamos la posición para que la barra de navegación fija no tape el contenido
-            const sectionCarta = document.getElementById('nuestra-carta');
-            if (sectionCarta) {
-                const navbarHeight = navbar.offsetHeight; 
-                const offsetTop = sectionCarta.getBoundingClientRect().top + window.pageYOffset;
+    /**
+     * Carga los datos de la carta desde un archivo JSON externo.
+     */
+    function cargarCarta() {
+        fetch('carta.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Error de red: ${response.status} ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                cartaData = data.menu; 
+                mostrarCategorias(); 
+            })
+            .catch(error => {
+                console.error('Error al cargar la carta:', error);
+                const categoryGridContainer = document.getElementById('category-grid-container');
+                if (categoryGridContainer) {
+                    categoryGridContainer.innerHTML = '<p style="text-align:center; color:red;">Lo sentimos, no se pudo cargar la carta en este momento. Por favor, inténtalo más tarde.</p>';
+                }
+            });
+    }
+
+    const backButton = document.getElementById('back-to-categories');
+    if (backButton) {
+        backButton.addEventListener('click', mostrarCategorias);
+    }
+
+
+    /*****************************************************
+     * SECCIÓN 2: LÓGICA DE NAVEGACIÓN Y SCROLL
+     *****************************************************/
+
+    // Lógica para el menú hamburguesa en móviles
+    const hamburger = document.getElementById('hamburger-menu');
+    const navLinks = document.getElementById('nav-links');
+    if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    }
+
+    // Efecto de scroll en la barra de navegación
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    }
+
+    // Scroll suave con ajuste para la barra de navegación fija
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                const navbarHeight = navbar ? navbar.offsetHeight : 0;
+                const elementPosition = targetElement.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+
                 window.scrollTo({
-                    top: offsetTop - navbarHeight - 20, // Resta la altura del navbar y un poco más de margen
+                    top: offsetPosition,
                     behavior: 'smooth'
                 });
             }
-        }
-
-        /**
-         * Carga los datos de la carta desde un archivo JSON externo.
-         */
-        function cargarCarta() {
-            fetch('carta.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`Error de red: ${response.status} ${response.statusText}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    cartaData = data.menu; 
-                    mostrarCategorias(); 
-                })
-                .catch(error => {
-                    console.error('Error al cargar la carta:', error);
-                    const categoryGridContainer = document.getElementById('category-grid-container');
-                    if (categoryGridContainer) {
-                        categoryGridContainer.innerHTML = '<p style="text-align:center; color:red;">Lo sentimos, no se pudo cargar la carta en este momento. Por favor, inténtalo más tarde.</p>';
-                    }
-                });
-        }
-
-        const backButton = document.getElementById('back-to-categories');
-        if (backButton) {
-            backButton.addEventListener('click', mostrarCategorias);
-        }
-
-
-        /*****************************************************
-         * SECCIÓN 2: LÓGICA DE NAVEGACIÓN Y SCROLL
-         *****************************************************/
-
-        // Lógica para el menú hamburguesa en móviles
-        const hamburger = document.getElementById('hamburger-menu');
-        const navLinks = document.getElementById('nav-links');
-        if (hamburger && navLinks) {
-            hamburger.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-            });
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    navLinks.classList.remove('active');
-                });
-            });
-        }
-
-        // Efecto de scroll en la barra de navegación
-        const navbar = document.getElementById('navbar');
-        if (navbar) {
-            window.addEventListener('scroll', () => {
-                navbar.classList.toggle('scrolled', window.scrollY > 50);
-            });
-        }
-
-        // Scroll suave con ajuste para la barra de navegación fija
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-
-                if (targetElement) {
-                    const navbarHeight = navbar ? navbar.offsetHeight : 0;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
-
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
         });
-
-
-        /*****************************************************
-         * SECCIÓN 3: LÓGICA DEL CARRUSEL
-         *****************************************************/
-
-        const carouselContainer = document.getElementById('carouselContainer');
-        if (carouselContainer) {
-            let currentSlide = 0;
-            const slides = document.querySelectorAll('.carousel-slide');
-            const totalSlides = slides.length;
-            const dots = document.querySelectorAll('.nav-dot');
-            const arrowLeft = document.querySelector('.arrow-left');
-            const arrowRight = document.querySelector('.arrow-right');
-            let autoPlayInterval;
-
-            const updateCarousel = () => {
-                carouselContainer.style.transform = `translateX(-${currentSlide * (100 / totalSlides)}%)`;
-                dots.forEach((dot, index) => dot.classList.toggle('active', index === currentSlide));
-            };
-
-            const resetAutoPlay = () => {
-                clearInterval(autoPlayInterval);
-                autoPlayInterval = setInterval(() => changeSlide(1), 6000);
-            };
-
-            const changeSlide = (direction) => {
-                currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-                updateCarousel();
-                resetAutoPlay();
-            };
-
-            const goToSlide = (index) => {
-                currentSlide = index;
-                updateCarousel();
-                resetAutoPlay();
-            };
-
-            if (arrowLeft && arrowRight && dots.length > 0) {
-                arrowLeft.addEventListener('click', () => changeSlide(-1));
-                arrowRight.addEventListener('click', () => changeSlide(1));
-                dots.forEach((dot, index) => dot.addEventListener('click', () => goToSlide(index)));
-                resetAutoPlay(); // Inicia el carrusel
-            }
-        }
-
-
-        /*****************************************************
-         * SECCIÓN 4: ANIMACIONES Y OTROS
-         *****************************************************/
-
-        // Animación de entrada (Fade In) al hacer scroll
-        const fadeInElements = document.querySelectorAll('.fade-in');
-        if (fadeInElements.length > 0) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-            fadeInElements.forEach(el => observer.observe(el));
-        }
-
-        // Integración con WhatsApp
-        function reservarWhatsApp() {
-            const phone = '51941234567'; // Reemplaza con tu número de teléfono de WhatsApp en Perú
-            const message = 'Hola! Me gustaría hacer una reserva en el restaurante Chacha.';
-            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
-        }
-
-        document.body.addEventListener('click', function(e) {
-            const target = e.target.closest('a');
-            if (target) {
-                const isReserveButton = target.textContent.toUpperCase().includes('RESERVAR');
-                const isWhatsappIcon = target.querySelector('.fa-whatsapp');
-                // Asegúrate de que el enlace tenga el href correcto si es un botón de reserva
-                // Si es el icono de WhatsApp, solo necesitas el selector .fa-whatsapp
-                if (isReserveButton || isWhatsappIcon) {
-                    e.preventDefault();
-                    reservarWhatsApp();
-                }
-            }
-        });
-
-
-        /*****************************************************
-         * INICIO DE LA APLICACIÓN
-         *****************************************************/
-
-        // Llama a la función principal para cargar la carta
-        cargarCarta();
-
     });
+
+
+    /*****************************************************
+     * SECCIÓN 3: LÓGICA DEL CARRUSEL
+     *****************************************************/
+
+    const carouselContainer = document.getElementById('carouselContainer');
+    if (carouselContainer) {
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+        const dots = document.querySelectorAll('.nav-dot');
+        const arrowLeft = document.querySelector('.arrow-left');
+        const arrowRight = document.querySelector('.arrow-right');
+        let autoPlayInterval;
+
+        const updateCarousel = () => {
+            carouselContainer.style.transform = `translateX(-${currentSlide * (100 / totalSlides)}%)`;
+            dots.forEach((dot, index) => dot.classList.toggle('active', index === currentSlide));
+        };
+
+        const resetAutoPlay = () => {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = setInterval(() => changeSlide(1), 6000);
+        };
+
+        const changeSlide = (direction) => {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            updateCarousel();
+            resetAutoPlay();
+        };
+
+        const goToSlide = (index) => {
+            currentSlide = index;
+            updateCarousel();
+            resetAutoPlay();
+        };
+
+        if (arrowLeft && arrowRight && dots.length > 0) {
+            arrowLeft.addEventListener('click', () => changeSlide(-1));
+            arrowRight.addEventListener('click', () => changeSlide(1));
+            dots.forEach((dot, index) => dot.addEventListener('click', () => goToSlide(index)));
+            resetAutoPlay(); // Inicia el carrusel
+        }
+    }
+
+
+    /*****************************************************
+     * SECCIÓN 4: ANIMACIONES Y OTROS
+     *****************************************************/
+
+    // Animación de entrada (Fade In) al hacer scroll
+    const fadeInElements = document.querySelectorAll('.fade-in');
+    if (fadeInElements.length > 0) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        fadeInElements.forEach(el => observer.observe(el));
+    }
+
+    // Integración con WhatsApp
+    function reservarWhatsApp() {
+        const phone = '51941234567'; // Reemplaza con tu número de teléfono de WhatsApp en Perú
+        const message = 'Hola! Me gustaría hacer una reserva en el restaurante Chacha.';
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+
+    document.body.addEventListener('click', function(e) {
+        const target = e.target.closest('a');
+        if (target) {
+            const isReserveButton = target.textContent.toUpperCase().includes('RESERVAR');
+            const isWhatsappIcon = target.querySelector('.fa-whatsapp');
+            // Asegúrate de que el enlace tenga el href correcto si es un botón de reserva
+            // Si es el icono de WhatsApp, solo necesitas el selector .fa-whatsapp
+            if (isReserveButton || isWhatsappIcon) {
+                e.preventDefault();
+                reservarWhatsApp();
+            }
+        }
+    });
+
+
+    /*****************************************************
+     * INICIO DE LA APLICACIÓN
+     *****************************************************/
+
+    // Llama a la función principal para cargar la carta
+    cargarCarta();
+
+});
     </script>
 </body>
 </html>

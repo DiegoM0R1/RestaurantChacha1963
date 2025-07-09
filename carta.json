@@ -7,11 +7,19 @@
       "description": "Nuestros clásicos para cualquier momento del día.",
       "items": [
         {
+          "name": "Chicharrón de Chancho",
+          "price": 13.00,
+          "currency": "Soles",
+          "description": "Crujiente chicharrón con camote frito y nuestra auténtica salsa criolla.",
+          "image": "sandwich_chicharron.jpg",
+          "tags": ["regional", "imperdible"]
+        },
+        {
           "name": "Pollo deshilachado",
           "price": 10.00,
           "currency": "Soles",
           "description": "Tiernas hebras de pollo, perfectas para un bocado rápido.",
-          "image": "sandwich_pollo_deshilachado.jpg",
+          "image": "sandwichdepollodesilachado.png",
           "tags": ["clásico", "rápido"]
         },
         {
@@ -22,14 +30,7 @@
           "image": "sandwich_mixto_clasico.jpg",
           "tags": ["clásico", "básico"]
         },
-        {
-          "name": "Chicharrón de Chancho",
-          "price": 13.00,
-          "currency": "Soles",
-          "description": "Crujiente chicharrón con camote frito y nuestra auténtica salsa criolla.",
-          "image": "sandwich_chicharron.jpg",
-          "tags": ["regional", "imperdible"]
-        },
+        
         {
           "name": "Filete de pollo",
           "price": 13.00,
@@ -85,10 +86,10 @@
           "tags": ["vegetariano", "fresco"]
         },
         {
-          "name": "Palta Jamón y Queso",
+          "name": "Pollo Jamón y Queso",
           "price": 12.00,
           "currency": "Soles",
-          "description": "La cremosidad de la palta se une al sabor del jamón y queso.",
+          "description": "El pollo se une al sabor del jamón y queso.",
           "image": "triple_palta_jamon_queso.jpg",
           "tags": ["clásico", "sabroso"]
         },
@@ -136,6 +137,14 @@
       "category": "Desayunos",
       "description": "Comienza tu día con energía y el sabor de la tradición chachapoyana.",
       "items": [
+        {
+          "name": "Desayuno Chacha",
+          "price": 22.00,
+          "currency": "Soles",
+          "description": "Jugo de papaya o piña, café o té, 2 panes, miel, mantequilla, y la tradicional cecina con tacacho.",
+          "image": "desayuno_chacha.jpg",
+          "tags": ["regional", "especialidad"]
+        },
         {
           "name": "Pan",
           "price": 1.50,
@@ -224,14 +233,7 @@
           "image": "desayuno_americano.jpg",
           "tags": ["completo", "sustancioso"]
         },
-        {
-          "name": "Desayuno Chacha",
-          "price": 22.00,
-          "currency": "Soles",
-          "description": "Jugo de papaya o piña, café o té, 2 panes, miel, mantequilla, y la tradicional cecina con tacacho.",
-          "image": "desayuno_chacha.jpg",
-          "tags": ["regional", "especialidad"]
-        },
+        
         {
           "name": "Desayuno Light",
           "price": 22.00,
@@ -613,7 +615,7 @@
       ]
     },
     {
-      "category": "Piques",
+      "category": "Piqueos",
       "description": "Ideales para compartir o disfrutar como entrada.",
       "items": [
         {
@@ -901,7 +903,7 @@
           "price": 30.00,
           "currency": "Soles",
           "description": "Fettuccini con la tradicional salsa huancaína.",
-          "image": "fettuccini_huancaina.jpg",
+          "image": "fetuchini a la huancaina con lomo saltado.png",
           "tags": ["peruano", "cremoso"]
         },
         {
