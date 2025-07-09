@@ -302,6 +302,7 @@
             z-index: 2;
         }
 
+        /* COMPORTAMIENTO POR DEFECTO PARA EL OVERLAY (ESCRITORIO) */
         .dish-card:hover .dish-overlay { transform: translateY(0); }
         .dish-name { font-family: 'Cinzel', serif; font-size: 1.5rem; margin-bottom: 0.5rem; }
         .dish-description { font-size: 1rem; opacity: 0.9; }
@@ -401,6 +402,30 @@
             .btn-primary { padding: 0.8rem 1.8rem; font-size: 1rem; }
             .footer-content { text-align: center; }
             .social-links { justify-content: center; }
+
+            /* === ESTILOS PARA DISH-CARD EN MÓVILES === */
+            .dish-card .dish-overlay {
+                transform: translateY(0) !important; /* Siempre visible */
+                background: rgba(0,0,0,0.7); /* Fondo más sólido */
+                padding: 1rem; /* Ajustar padding */
+                height: auto; /* Ajustar altura al contenido */
+            }
+            .dish-card {
+                height: auto; /* Permite que la tarjeta se ajuste si el overlay tiene más contenido */
+            }
+            .dish-card .dish-name {
+                font-size: 1.3rem; 
+                margin-bottom: 0.3rem;
+            }
+            .dish-card .dish-description {
+                font-size: 0.9rem; 
+                opacity: 1; /* Asegura que siempre sea visible */
+            }
+
+            /* No necesitamos la regla :hover para el overlay en móviles */
+            .dish-card:hover .dish-overlay {
+                transform: translateY(0); /* Mantiene el estado visible */
+            }
         }
 
         /* === MÓVILES PEQUEÑOS (hasta 480px) === */
@@ -480,7 +505,6 @@
             <a href="#inicio" class="logo"><img src="img/carrusel/logo/logochacha.jpg" alt="Logo Restaurante Chacha" style="border-radius: 50%; width: 70px;"></a>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#platos">Nuestros Platos</a></li>
                 <li><a href="#nuestra-carta">Nuestra Carta</a></li> 
                 <li><a href="#ambiente">Nuestro Local</a></li>
                 <li><a href="#historia">Historia</a></li>
@@ -547,9 +571,6 @@
             En Chacha, no solo servimos comida. Servimos historias en cada plato, rescatando las recetas de nuestros ancestros y celebrando la riqueza de Amazonas. Bienvenido a una experiencia que alimenta el cuerpo y el alma, donde cada bocado te conecta con la majestuosa herencia de los Chachapoyas.
         </p>
     </section>
-
-    
-
     <section class="section fade-in" id="nuestra-carta">
         <h2 class="section-title">Nuestra Carta Completa</h2>
 
