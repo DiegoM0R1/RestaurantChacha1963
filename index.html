@@ -9,14 +9,19 @@
        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
 :root {
-    --tierra-principal: #1b110a;
-    --ocre: #cccc3c;
+     --tierra-principal: #1b110a;
+    --ocre: #cccc3c; /* Amarillo ocre */
     --terracota: #271e14;
     --piedra: #d2c48c;
     --verde-bosque: #354f2f;
     --azul-catarata: #a0b446;
-    --rojo-ceramica: #cdbc3f;
+    --rojo-ceramica: #cdbc3f; /* Rojo/Naranja más suave, cercano al ocre */
     --blanco-hueso: #FDF5E6;
+
+    /* Nuevas variables para colores consistentes en botones, etc. */
+    --primary-color: var(--ocre); /* Ocre para elementos principales */
+    --secondary-color: var(--rojo-ceramica); /* Terracota para acentos */
+    --light-text: #f0f0f0; 
 }
 
 * {
@@ -264,56 +269,419 @@ body {
     color: var(--verde-bosque);
     font-weight: 400;
 }
+/* ESTILOS MEJORADOS PARA LA SECCIÓN DE CARTA */
 
-/* PLATOS DESTACADOS y CARTA (GENERAL) */
+/* Grid de platos mejorado */
 .dishes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
     margin-top: 3rem;
+    padding: 0 1rem;
 }
 
+/* Tarjetas de plato mejoradas */
 .dish-card {
     position: relative;
-    height: 350px; /* Altura fija para tarjetas de plato */
-    border-radius: 15px;
+    height: 400px;
+    border-radius: 20px;
     overflow: hidden;
     cursor: pointer;
-    transition: all 0.4s ease;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
     background-size: cover;
     background-position: center;
-    background-repeat: no-repeat; /* Asegura que la imagen no se repita */
-    display: flex; /* Para flexbox en móviles */
-    flex-direction: column; /* Para flexbox en móviles */
-    justify-content: flex-end; /* Para flexbox en móviles */
+    background-repeat: no-repeat;
+    transform-style: preserve-3d;
+    perspective: 1000px;
 }
 
 .dish-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.4);
 }
 
+.dish-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(212, 165, 116, 0.1), rgba(0,0,0,0.3));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+}
+
+.dish-card:hover::before {
+    opacity: 1;
+}
+
+/* Overlay mejorado */
 .dish-overlay {
-    position: absolute; /* Por defecto, superpuesto */
-    bottom: 0; left: 0; right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
     color: white;
-    padding: 2rem;
-    transform: translateY(100%); /* Oculto por defecto */
-    transition: transform 0.4s ease;
+    padding: 2.5rem;
+    transform: translateY(100%);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     z-index: 2;
-    display: flex; /* Para centrar contenido del overlay */
+    display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 80px; /* Mínimo para el overlay */
+    min-height: 120px;
+    backdrop-filter: blur(10px);
 }
 
-/* COMPORTAMIENTO POR DEFECTO PARA EL OVERLAY (ESCRITORIO: solo visible al hover) */
-.dish-card:hover .dish-overlay { transform: translateY(0); }
-.dish-name { font-family: 'Cinzel', serif; font-size: 1.5rem; margin-bottom: 0.5rem; }
-.dish-description { font-size: 1rem; opacity: 0.9; }
+.dish-card:hover .dish-overlay {
+    transform: translateY(0);
+}
 
+.dish-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.dish-description {
+    font-size: 1rem;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+/* Estilos para tarjetas de categoría */
+.category-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.category-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    background: rgba(212, 165, 116, 0.9);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.category-card:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.category-card .dish-overlay {
+    background: linear-gradient(45deg, rgba(0,0,0,0.7), rgba(139, 69, 19, 0.8));
+    transform: translateY(0);
+    min-height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.category-card .dish-name {
+    font-size: 2rem;
+    margin-bottom: 0;
+    z-index: 3;
+    position: relative;
+}
+
+/* Botón de regreso mejorado */
+.back-btn {
+    margin-bottom: 2rem;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(212, 165, 116, 0.3);
+}
+
+.back-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 165, 116, 0.5);
+}
+
+/* Título de categoría mejorado */
+.category-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+    animation: slideInDown 0.8s ease;
+}
+
+/* Modal mejorado */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    transform: scale(0.8) translateY(50px);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(212, 165, 116, 0.2);
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.modal-close:hover {
+    transform: scale(1.2);
+}
+
+.modal-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.modal-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--secondary-color);
+}
+
+.modal-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: var(--light-text);
+    text-align: center;
+}
+
+.modal-stats {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.stat-item i {
+    font-size: 1.2rem;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-view-dishes {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(212, 165, 116, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-view-dishes:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 165, 116, 0.5);
+}
+
+/* Botón flotante mejorado */
+.floating-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    font-size: 1.5rem;
+    box-shadow: 0 10px 30px rgba(212, 165, 116, 0.4);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 999;
+    overflow: hidden;
+}
+
+.floating-btn:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 15px 40px rgba(212, 165, 116, 0.6);
+    width: 120px;
+    border-radius: 35px;
+}
+
+.floating-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.floating-btn:hover .floating-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Transiciones entre vistas */
+.fade-transition {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.fade-transition.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animaciones */
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dish-card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.dish-card:nth-child(1) { animation-delay: 0.1s; }
+.dish-card:nth-child(2) { animation-delay: 0.2s; }
+.dish-card:nth-child(3) { animation-delay: 0.3s; }
+.dish-card:nth-child(4) { animation-delay: 0.4s; }
+.dish-card:nth-child(5) { animation-delay: 0.5s; }
+.dish-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Responsive mejorado */
+@media (max-width: 768px) {
+    .dishes-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+    }
+    
+    .dish-card {
+        height: 350px;
+    }
+    
+    .dish-overlay {
+        transform: translateY(0);
+        background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        min-height: 80px;
+        padding: 1.5rem;
+    }
+    
+    .dish-name {
+        font-size: 1.4rem;
+    }
+    
+    .modal-content {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .floating-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* Utilidades */
+.hidden {
+    display: none !important;
+}
+
+.blur-effect {
+    filter: blur(5px);
+    transition: filter 0.3s ease;
+}
 /* AMBIENTE */
 .ambiente-grid {
     display: grid;
@@ -358,11 +726,6 @@ body {
 .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
 .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-/* === IMÁGENES DE PLATOS DESTACADOS (pueden dejarlas o quitarlas y manejar todo por JS si lo prefieres) === */
-.dishes-grid .dish-card:nth-child(1) { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/ceviche de trucha.jpg'); }
-.dishes-grid .dish-card:nth-child(2) { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/shanwichchicharronchancho.jpg'); }
-.dishes-grid .dish-card:nth-child(3) { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('img/El campesino.jpg'); }
-.dishes-grid .dish-card:nth-child(4) { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/desayunochacha.jpg'); }
 
 
 /* =================================
@@ -486,7 +849,7 @@ body {
 /* Estilo para el botón flotante de regresar */
 #back-to-categories {
     position: sticky; /* Hace que el elemento "flote" */
-    top: 90px; /* Ajusta la distancia desde la parte superior. Considera la altura del navbar */
+    top: 120px; /* Ajusta la distancia desde la parte superior. Considera la altura del navbar */
     left: 2rem; /* Alinea a la izquierda, puedes ajustar a right si prefieres */
     z-index: 999; /* Asegura que esté por encima de otros elementos, pero debajo del navbar */
     margin-bottom: 2rem; /* Espacio debajo del botón cuando no está fijo */
@@ -504,7 +867,7 @@ body {
         margin-left: 2rem;
         margin-right: 2rem;
         text-align: center;
-        top: 80px; /* Ajusta si el navbar móvil es más pequeño */
+        top: 120px; /* Ajusta si el navbar móvil es más pequeño */
     }
 }
 
@@ -537,6 +900,28 @@ body {
 .category-card .dish-description {
     display: none;
 }
+
+/* Estilo para el efecto ripple */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7); /* Color del ripple */
+    animation: ripple-animation 0.6s ease-out forwards;
+    transform: scale(0);
+    opacity: 1;
+    z-index: 10; /* Asegura que el ripple esté sobre el botón */
+}
+
+@keyframes ripple-animation {
+    from {
+        transform: scale(0);
+        opacity: 1;
+    }
+    to {
+        transform: scale(2.5); /* Ajusta el tamaño de expansión del ripple */
+        opacity: 0;
+    }
+}
     </style>
 </head>
 <body>
@@ -545,7 +930,8 @@ body {
             <a href="#inicio" class="logo"><img src="img/carrusel/logo/logochacha.jpg" alt="Logo Restaurante Chacha" style="border-radius: 50%; width: 70px;"></a>
             <ul class="nav-links" id="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#nuestra-carta">Nuestra Carta</a></li> 
+                <li><a href="#nuestra-carta">Nuestra Carta     <i class="fas fa-utensils"></i>
+</a></li> 
                 <li><a href="#ambiente">Nuestro Local</a></li>
                 <li><a href="#historia">Historia</a></li>
                 <li><a href="#contacto">Contacto</a></li>
@@ -609,23 +995,64 @@ body {
         <h2 class="section-title">Nuestra Esencia</h2>
         <p class="welcome-text">
             En Chacha, no solo servimos comida. Servimos historias en cada plato, rescatando las recetas de nuestros ancestros y celebrando la riqueza de Amazonas. Bienvenido a una experiencia que alimenta el cuerpo y el alma, donde cada bocado te conecta con la majestuosa herencia de los Chachapoyas.
-        </p>
-    </section>
-    <section class="section fade-in" id="nuestra-carta">
-        <h2 class="section-title">Nuestra Carta Completa</h2>
-
-        <div id="category-grid-container" class="dishes-grid">
-            </div>
-
-        <div id="dishes-by-category-container" class="hidden">
-            <button id="back-to-categories" class="btn-primary">
-                <i class="fas fa-arrow-left"></i> Regresar a Categorías
-            </button>
-            <h3 id="category-dishes-title" class="section-title" style="margin-bottom: 3rem; font-size: 2rem;"></h3>
-            <div id="category-dishes-grid" class="dishes-grid">
-                </div>
+        </p><br>
+        <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fweb.facebook.com%2Freel%2F1232218728529156%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+   <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fweb.facebook.com%2Freel%2F1848971305671403%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+    <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fweb.facebook.com%2Freel%2F473679292500967%2F&show_text=false&width=267&t=0" width="267" height="476" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+</section>
+    <!-- HTML MEJORADO PARA LA SECCIÓN DE CARTA -->
+<section class="section fade-in" id="nuestra-carta">
+    <h2 class="section-title">Nuestra Carta Completa</h2>
+    
+    <!-- Grid de Categorías -->
+    <div id="category-grid-container" class="dishes-grid">
+        <!-- Las categorías se cargan dinámicamente -->
+    </div>
+    
+    <!-- Vista de Platos por Categoría -->
+    <div id="dishes-by-category-container" class="hidden">
+        <button id="back-to-categories" class="btn-primary back-btn">
+            <i class="fas fa-arrow-left"></i> Ver otros platos
+        </button>
+        <h3 id="category-dishes-title" class="section-title category-title"></h3>
+        <div id="category-dishes-grid" class="dishes-grid">
+            <!-- Los platos se cargan dinámicamente -->
         </div>
-    </section>
+    </div>
+</section>
+
+<!-- Modal para mostrar detalles de categoría -->
+<div id="category-modal" class="modal-overlay">
+    <div class="modal-content">
+        <button class="modal-close" id="modal-close">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="modal-header">
+            <h3 id="modal-category-name" class="modal-title"></h3>
+        </div>
+        <div class="modal-body">
+            <div id="modal-category-image" class="modal-image"></div>
+            <p id="modal-category-description" class="modal-description"></p>
+            <div class="modal-stats">
+                <div class="stat-item">
+                    <i class="fas fa-utensils"></i>
+                    <span id="modal-dishes-count">0 platos</span>
+                </div>
+            </div>
+        </div>
+        <div class="modal-actions">
+            <button id="modal-view-dishes" class="btn-primary btn-view-dishes">
+                <i class="fas fa-eye"></i> Ver Platos
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Botón flotante mejorado -->
+<button id="floating-menu-btn" class="floating-btn">
+    <i class="fas fa-utensils"></i>
+    <span class="floating-text">Carta</span>
+</button>
 
     <section class="section fade-in" id="ambiente">
         <h2 class="section-title">Un Refugio Inspirado en Gigantes</h2>
@@ -709,56 +1136,59 @@ body {
     </footer>
 
     <script>
-   document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
 
-    let cartaData = []; // Variable global para almacenar los datos de la carta una vez cargados
+    // Variables globales (dentro del ámbito del DOMContentLoaded)
+    let cartaData = [];
+    let currentCategoryIndex = null;
 
-    /*****************************************************
-     * SECCIÓN 1: LÓGICA DEL MENÚ Y LA CARTA INTERACTIVA
-     *****************************************************/
+    // --- Funciones para la gestión del menú ---
 
     /**
-     * Muestra las tarjetas de categoría iniciales.
+     * Muestra las categorías principales con animaciones mejoradas.
      */
     function mostrarCategorias() {
         const categoryGridContainer = document.getElementById('category-grid-container');
         const dishesByCategoryContainer = document.getElementById('dishes-by-category-container');
-        
+        const navbar = document.getElementById('navbar'); // Asegúrate de tener esta referencia
+
         if (!categoryGridContainer || !dishesByCategoryContainer) {
             console.error('Contenedores de carta no encontrados.');
             return;
         }
 
-        categoryGridContainer.innerHTML = ''; 
-        categoryGridContainer.classList.remove('hidden'); 
-        dishesByCategoryContainer.classList.add('hidden'); 
+        // Transición suave entre vistas
+        dishesByCategoryContainer.classList.add('fade-transition');
+        setTimeout(() => {
+            dishesByCategoryContainer.classList.add('hidden');
+            categoryGridContainer.classList.remove('hidden');
+            categoryGridContainer.classList.add('fade-transition', 'active'); // Asegura que la categoría se vea activa para la animación
+
+            // Remover blur effect si existe
+            document.querySelector('#nuestra-carta')?.classList.remove('blur-effect');
+        }, 250);
+
+        categoryGridContainer.innerHTML = '';
 
         cartaData.forEach((category, index) => {
             const categoryCard = document.createElement('div');
             categoryCard.className = 'dish-card category-card';
+            categoryCard.style.animationDelay = `${index * 0.1}s`;
 
-            // --- LÓGICA MEJORADA PARA LA IMAGEN DE LA CATEGORÍA ---
-            let categoryImage = category.image; // 1. Primero intenta con la imagen definida en la categoría JSON
-            
-            // 2. Si la categoría no tiene una imagen, busca la primera imagen disponible entre sus platos
+            let categoryImage = category.image;
             if (!categoryImage && category.items && category.items.length > 0) {
-                // Itera sobre los platos para encontrar la primera imagen disponible
                 for (let i = 0; i < category.items.length; i++) {
                     if (category.items[i].image) {
                         categoryImage = category.items[i].image;
-                        break; // Encontró una imagen, sale del bucle
+                        break;
                     }
                 }
             }
-            // --- FIN LÓGICA MEJORADA ---
-
 
             if (categoryImage) {
-                // Aplica el gradiente y la imagen
-                categoryCard.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/${categoryImage}')`;
+                categoryCard.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('img/${categoryImage}')`;
             } else {
-                // Si no hay ninguna imagen disponible, usa el color de fondo por defecto
-                categoryCard.style.backgroundColor = 'var(--terracota)'; 
+                categoryCard.style.backgroundColor = 'var(--terracota)';
             }
 
             const categoryOverlay = document.createElement('div');
@@ -768,17 +1198,87 @@ body {
             categoryName.className = 'dish-name';
             categoryName.textContent = category.category;
 
+            const dishCount = document.createElement('p');
+            dishCount.className = 'dish-description';
+            dishCount.textContent = `${category.items.length} platos disponibles`;
+
             categoryOverlay.appendChild(categoryName);
+            categoryOverlay.appendChild(dishCount);
             categoryCard.appendChild(categoryOverlay);
             categoryGridContainer.appendChild(categoryCard);
 
-            categoryCard.addEventListener('click', () => mostrarPlatosPorCategoria(index));
+            categoryCard.addEventListener('click', () => {
+                mostrarModalCategoria(index);
+            });
         });
+
+        // Asegúrate de que el contenedor de categorías tenga su estado de animación correcto
+        categoryGridContainer.classList.add('fade-transition', 'active');
+        dishesByCategoryContainer.classList.remove('active'); // Remover la clase active al cambiar
     }
 
     /**
-     * Muestra los platos de una categoría específica y hace scroll a la sección.
-     * @param {number} categoryIndex - El índice de la categoría a mostrar.
+     * Muestra el modal con detalles de la categoría.
+     */
+    function mostrarModalCategoria(categoryIndex) {
+        const category = cartaData[categoryIndex];
+        const modal = document.getElementById('category-modal');
+        const modalName = document.getElementById('modal-category-name');
+        const modalImage = document.getElementById('modal-category-image');
+        const modalDescription = document.getElementById('modal-category-description');
+        const modalDishesCount = document.getElementById('modal-dishes-count');
+        const viewDishesBtn = document.getElementById('modal-view-dishes');
+
+        if (!modal || !category) return;
+
+        currentCategoryIndex = categoryIndex;
+
+        modalName.textContent = category.category;
+        modalDescription.textContent = category.description || `Descubre nuestra selección de ${category.category.toLowerCase()}. Cada plato está preparado con ingredientes frescos y técnicas culinarias tradicionales.`;
+        modalDishesCount.textContent = `${category.items.length} platos`;
+
+        let categoryImage = category.image;
+        if (!categoryImage && category.items && category.items.length > 0) {
+            for (let i = 0; i < category.items.length; i++) {
+                if (category.items[i].image) {
+                    categoryImage = category.items[i].image;
+                    break;
+                }
+            }
+        }
+
+        if (categoryImage) {
+            modalImage.style.backgroundImage = `url('img/${categoryImage}')`;
+        } else {
+            modalImage.style.backgroundColor = 'var(--terracota)';
+        }
+
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        document.querySelector('#nuestra-carta')?.classList.add('blur-effect');
+
+        viewDishesBtn.onclick = () => {
+            cerrarModal();
+            setTimeout(() => {
+                mostrarPlatosPorCategoria(categoryIndex);
+            }, 300);
+        };
+    }
+
+    /**
+     * Cierra el modal.
+     */
+    function cerrarModal() {
+        const modal = document.getElementById('category-modal');
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            document.querySelector('#nuestra-carta')?.classList.remove('blur-effect');
+        }
+    }
+
+    /**
+     * Muestra los platos de una categoría específica con transiciones mejoradas.
      */
     function mostrarPlatosPorCategoria(categoryIndex) {
         const category = cartaData[categoryIndex];
@@ -786,22 +1286,29 @@ body {
         const dishesByCategoryContainer = document.getElementById('dishes-by-category-container');
         const categoryDishesTitle = document.getElementById('category-dishes-title');
         const categoryDishesGrid = document.getElementById('category-dishes-grid');
-        const navbar = document.getElementById('navbar'); 
+        const navbar = document.getElementById('navbar');
 
-        if (!category || !categoryGridContainer || !dishesByCategoryContainer || !categoryDishesTitle || !categoryDishesGrid || !navbar) {
+        if (!category || !categoryGridContainer || !dishesByCategoryContainer || !categoryDishesTitle || !categoryDishesGrid) {
             console.error('Elementos de platos por categoría no encontrados.');
             return;
         }
 
-        categoryGridContainer.classList.add('hidden'); 
-        dishesByCategoryContainer.classList.remove('hidden'); 
+        categoryGridContainer.classList.remove('active'); // Remover la clase active de la grilla de categorías
+        dishesByCategoryContainer.classList.add('fade-transition');
+        
+        setTimeout(() => {
+            categoryGridContainer.classList.add('hidden');
+            dishesByCategoryContainer.classList.remove('hidden');
+            dishesByCategoryContainer.classList.add('active'); // Añadir la clase active para la animación de entrada de platos
+        }, 250);
 
-        categoryDishesTitle.textContent = category.category; 
-        categoryDishesGrid.innerHTML = ''; 
+        categoryDishesTitle.textContent = category.category;
+        categoryDishesGrid.innerHTML = '';
 
-        category.items.forEach(item => {
+        category.items.forEach((item, index) => {
             const dishCard = document.createElement('div');
             dishCard.className = 'dish-card';
+            dishCard.style.animationDelay = `${index * 0.1}s`;
 
             if (item.image) {
                 dishCard.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/${item.image}')`;
@@ -825,15 +1332,17 @@ body {
             if (typeof item.price === 'number') {
                 priceText = `S/ ${item.price.toFixed(2)}`;
             } else if (item.prices) {
-                priceText = Object.entries(item.prices).map(([size, price]) => `${size}: S/ ${price.toFixed(2)}`).join(' / ');
+                priceText = Object.entries(item.prices)
+                    .map(([size, price]) => `${size}: S/ ${price.toFixed(2)}`)
+                    .join(' / ');
             }
 
             if (descriptionText && priceText) {
-                dishDescription.textContent = `${descriptionText} (${priceText})`;
+                dishDescription.innerHTML = `${descriptionText}<br><strong>${priceText}</strong>`;
             } else if (descriptionText) {
                 dishDescription.textContent = descriptionText;
             } else if (priceText) {
-                dishDescription.textContent = priceText;
+                dishDescription.innerHTML = `<strong>${priceText}</strong>`;
             }
 
             dishOverlay.appendChild(dishName);
@@ -842,17 +1351,17 @@ body {
             categoryDishesGrid.appendChild(dishCard);
         });
 
-        // Hacemos scroll suave a la parte superior de la sección de la carta
-        // Ajustamos la posición para que la barra de navegación fija no tape el contenido
-        const sectionCarta = document.getElementById('nuestra-carta');
-        if (sectionCarta) {
-            const navbarHeight = navbar.offsetHeight; 
-            const offsetTop = sectionCarta.getBoundingClientRect().top + window.pageYOffset;
-            window.scrollTo({
-                top: offsetTop - navbarHeight - 20, // Resta la altura del navbar y un poco más de margen
-                behavior: 'smooth'
-            });
-        }
+        setTimeout(() => {
+            const sectionCarta = document.getElementById('nuestra-carta');
+            if (sectionCarta) {
+                const navbarHeight = navbar ? navbar.offsetHeight : 0;
+                const offsetTop = sectionCarta.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({
+                    top: offsetTop - navbarHeight - 20,
+                    behavior: 'smooth'
+                });
+            }
+        }, 300);
     }
 
     /**
@@ -867,75 +1376,25 @@ body {
                 return response.json();
             })
             .then(data => {
-                cartaData = data.menu; 
-                mostrarCategorias(); 
+                cartaData = data.menu;
+                mostrarCategorias(); // Mostrar categorías una vez que los datos se cargan
             })
             .catch(error => {
                 console.error('Error al cargar la carta:', error);
                 const categoryGridContainer = document.getElementById('category-grid-container');
                 if (categoryGridContainer) {
-                    categoryGridContainer.innerHTML = '<p style="text-align:center; color:red;">Lo sentimos, no se pudo cargar la carta en este momento. Por favor, inténtalo más tarde.</p>';
+                    categoryGridContainer.innerHTML = `
+                        <div style="text-align: center; padding: 3rem; color: var(--tierra-principal);">
+                            <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem;"></i>
+                            <p>Lo sentimos, no se pudo cargar la carta en este momento.</p>
+                            <p>Por favor, inténtalo más tarde.</p>
+                        </div>
+                    `;
                 }
             });
     }
 
-    const backButton = document.getElementById('back-to-categories');
-    if (backButton) {
-        backButton.addEventListener('click', mostrarCategorias);
-    }
-
-
-    /*****************************************************
-     * SECCIÓN 2: LÓGICA DE NAVEGACIÓN Y SCROLL
-     *****************************************************/
-
-    // Lógica para el menú hamburguesa en móviles
-    const hamburger = document.getElementById('hamburger-menu');
-    const navLinks = document.getElementById('nav-links');
-    if (hamburger && navLinks) {
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-    }
-
-    // Efecto de scroll en la barra de navegación
-    const navbar = document.getElementById('navbar');
-    if (navbar) {
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
-        });
-    }
-
-    // Scroll suave con ajuste para la barra de navegación fija
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-
-            if (targetElement) {
-                const navbarHeight = navbar ? navbar.offsetHeight : 0;
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-
-
-    /*****************************************************
-     * SECCIÓN 3: LÓGICA DEL CARRUSEL
-     *****************************************************/
-
+    // --- Lógica del Carrusel ---
     const carouselContainer = document.getElementById('carouselContainer');
     if (carouselContainer) {
         let currentSlide = 0;
@@ -972,14 +1431,11 @@ body {
             arrowLeft.addEventListener('click', () => changeSlide(-1));
             arrowRight.addEventListener('click', () => changeSlide(1));
             dots.forEach((dot, index) => dot.addEventListener('click', () => goToSlide(index)));
-            resetAutoPlay(); // Inicia el carrusel
+            resetAutoPlay();
         }
     }
 
-
-    /*****************************************************
-     * SECCIÓN 4: ANIMACIONES Y OTROS
-     *****************************************************/
+    // --- Animaciones y otros ---
 
     // Animación de entrada (Fade In) al hacer scroll
     const fadeInElements = document.querySelectorAll('.fade-in');
@@ -997,19 +1453,18 @@ body {
 
     // Integración con WhatsApp
     function reservarWhatsApp() {
-        const phone = '51941234567'; // Reemplaza con tu número de teléfono de WhatsApp en Perú
+        const phone = '51941234567'; // Tu número de WhatsApp
         const message = 'Hola! Me gustaría hacer una reserva en el restaurante Chacha.';
         const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
         window.open(url, '_blank');
     }
 
     document.body.addEventListener('click', function(e) {
-        const target = e.target.closest('a');
+        const target = e.target.closest('a'); // Usa closest para manejar clics en iconos dentro del <a>
         if (target) {
             const isReserveButton = target.textContent.toUpperCase().includes('RESERVAR');
             const isWhatsappIcon = target.querySelector('.fa-whatsapp');
-            // Asegúrate de que el enlace tenga el href correcto si es un botón de reserva
-            // Si es el icono de WhatsApp, solo necesitas el selector .fa-whatsapp
+            
             if (isReserveButton || isWhatsappIcon) {
                 e.preventDefault();
                 reservarWhatsApp();
@@ -1017,14 +1472,90 @@ body {
         }
     });
 
+    // --- Setup de Event Listeners al cargar el DOM ---
+    
+    // Botón de regreso a categorías
+    const backButton = document.getElementById('back-to-categories');
+    if (backButton) {
+        backButton.addEventListener('click', mostrarCategorias);
+    }
 
-    /*****************************************************
-     * INICIO DE LA APLICACIÓN
-     *****************************************************/
+    // Botón de cerrar modal
+    const modalClose = document.getElementById('modal-close');
+    if (modalClose) {
+        modalClose.addEventListener('click', cerrarModal);
+    }
 
-    // Llama a la función principal para cargar la carta
-    cargarCarta();
+    // Cerrar modal al hacer clic fuera del contenido (en el overlay)
+    const modalOverlay = document.getElementById('category-modal');
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', function(e) {
+            // Verifica si el clic fue directamente en el overlay y no en el contenido del modal
+            if (e.target === modalOverlay) {
+                cerrarModal();
+            }
+        });
+    }
 
+    // Botón flotante para la carta
+    const floatingBtn = document.getElementById('floating-menu-btn');
+    if (floatingBtn) {
+        floatingBtn.addEventListener('click', function() {
+            const sectionCarta = document.getElementById('nuestra-carta');
+            const navbar = document.getElementById('navbar');
+            
+            if (sectionCarta) {
+                const navbarHeight = navbar ? navbar.offsetHeight : 0;
+                const offsetTop = sectionCarta.getBoundingClientRect().top + window.pageYOffset;
+                window.scrollTo({
+                    top: offsetTop - navbarHeight - 20,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    }
+
+    // Cerrar modal con tecla ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            cerrarModal();
+        }
+    });
+
+    // Aplicar efectos visuales a los botones
+    function addRippleEffect(element) {
+        element.addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            const rect = element.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+            
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple');
+            
+            // Añade el ripple a un contenedor para evitar problemas de overflow en elementos con border-radius
+            const rippleContainer = document.createElement('div');
+            rippleContainer.style.cssText = 'position: absolute; overflow: hidden; top: 0; left: 0; right: 0; bottom: 0; border-radius: inherit; pointer-events: none;';
+            rippleContainer.appendChild(ripple);
+            element.appendChild(rippleContainer);
+            
+            setTimeout(() => {
+                rippleContainer.remove();
+            }, 600);
+        }, {once: true}); // El evento se dispara una vez
+    }
+
+    // Aplicar efectos a los botones cuando se cargan
+    const buttons = document.querySelectorAll('.btn-primary, .btn-view-dishes');
+    buttons.forEach(button => {
+        addRippleEffect(button);
+    });
+
+    // --- Inicio de la aplicación ---
+    cargarCarta(); // Llama a la función principal para cargar la carta al inicio
 });
     </script>
 </body>
