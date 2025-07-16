@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reservas - Restaurante Chacha</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css"> 
+    <style>
+    /* Keep only the specific styles for the reservation page here.
+       General styles like :root variables, body, btn-primary, etc.,
+       should ideally come from styles.css to maintain consistency.
+    */
+    
+    .reservation-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        min-height: calc(100vh - 200px); /* Ajusta según la altura de tu navbar/footer */
+        padding-top: 100px; /* Espacio para el navbar fijo */
+    }
+
+    .reservation-header {
+        text-align: center;
+        margin-bottom: 3rem;
+        background: linear-gradient(135deg, var(--verde-bosque), var(--azul-catarata));
+        color: white;
+        padding: 3rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .reservation-title {
+        font-family: 'Cinzel', serif;
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: var(--ocre);
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+
+    .reservation-subtitle {
+        font-size: 1.2rem;
+        opacity: 0.9;
+    }
+
+    .reservation-form {
+        background: white;
+        padding: 3rem;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        margin-bottom: 3rem;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group label {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: var(--tierra-principal);
+    }
+
+    .form-group input,
+    .form-group select {
+        padding: 1rem;
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+        outline: none;
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(204, 204, 60, 0.2);
+    }
+
+    .table-selection {
+        margin-top: 2rem;
+    }
+
+    .salon-selector {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .salon-btn {
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: #f0f0f0;
+        color: var(--tierra-principal);
+    }
+
+    .salon-btn.active {
+        background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .salon-container {
+        background: #fafafa;
+        border-radius: 15px;
+        padding: 2rem;
+        min-height: 400px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .salon-title {
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--verde-bosque);
+        margin-bottom: 2rem;
+    }
+
+    .tables-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+        gap: 1rem;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .table-item {
+        aspect-ratio: 1;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 1.1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background: white;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .table-item::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: radial-gradient(circle, rgba(204, 204, 60, 0.3) 0%, transparent 70%);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s ease;
+    }
+
+    .table-item:hover::before {
+        width: 100px;
+        height: 100px;
+    }
+
+    .table-item.available {
+        border-color: #4CAF50;
+        color: #4CAF50;
+    }
+
+    .table-item.available:hover {
+        background: #4CAF50;
+        color: white;
+        transform: scale(1.05);
+    }
+
+    .table-item.occupied {
+        border-color: #f44336;
+        color: #f44336;
+        background: #ffebee;
+        cursor: not-allowed;
+    }
+
+    .table-item.selected {
+        border-color: var(--primary-color);
+        background: var(--primary-color);
+        color: white;
+        transform: scale(1.1);
+        box-shadow: 0 5px 15px rgba(204, 204, 60, 0.4);
+    }
+
+    .table-legend {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .legend-color {
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
+        border: 2px solid;
+    }
+
+    .legend-available {
+        border-color: #4CAF50;
+        background: white;
+    }
+
+    .legend-occupied {
+        border-color: #f44336;
+        background: #ffebee;
+    }
+
+    .legend-selected {
+        border-color: var(--primary-color);
+        background: var(--primary-color);
+    }
+
+    .reservation-summary {
+        background: linear-gradient(135deg, var(--piedra), var(--ocre));
+        padding: 2rem;
+        border-radius: 15px;
+        margin-top: 2rem;
+        color: var(--tierra-principal);
+    }
+
+    .summary-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+    }
+
+    .summary-item {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .summary-item:last-child {
+        border-bottom: none;
+        font-weight: 700;
+        font-size: 1.1rem;
+    }
+    /* The .btn-primary style is already in styles.css, no need to duplicate */
+    /* You might need to add a specific rule for width: 100%; for this button if needed */
+    .reservation-form .btn-primary {
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    .btn-primary:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+    }
+
+    .error-message {
+        background: #ffebee;
+        color: #c62828;
+        padding: 1rem;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        border-left: 4px solid #c62828;
+    }
+
+    .success-message {
+        background: #e8f5e8;
+        color: #2e7d32;
+        padding: 1rem;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        border-left: 4px solid #2e7d32;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .reservation-container {
+            padding: 1rem;
+            padding-top: 80px; /* Ajusta para el navbar móvil */
+        }
+        
+        /* Estas reglas deben estar DENTRO de este media query */
+        .reservation-title { 
+            font-size: 2rem;
+        }
+
+        .form-grid {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .salon-selector {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .salon-btn {
+            width: 200px;
+        }
+
+        .tables-grid {
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .table-legend {
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .reservation-form {
+            padding: 1.5rem;
+        }
+    } /* <-- ESTA ES LA LLAVE DE CIERRE CORRECTA PARA EL MEDIA QUERY */
+
+
+    /* Animaciones */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .fade-in {
+        animation: fadeIn 0.5s ease-out;
+    }
+
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.05);
+        }
+    }
+
+    .pulse {
+        animation: pulse 1s infinite;
+    }
+</style>
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html#inicio" class="logo"><img src="img/carrusel/logo/logochacha.jpg" alt="Logo Restaurante Chacha" style="border-radius: 50%; width: 70px;"></a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#nuestra-carta">Nuestra Carta <i class="fas fa-utensils"></i></a></li> 
+                <li><a href="index.html#ambiente">Nuestro Local</a></li>
+                <li><a href="index.html#historia">Historia</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+            <div class="hamburger-menu" id="hamburger-menu">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="reservation-container">
+        <div class="reservation-header">
+            <h1 class="reservation-title">Reserva tu Mesa</h1>
+            <p class="reservation-subtitle">Selecciona tu mesa favorita y disfruta de una experiencia gastronómica única</p>
+        </div>
+
+        <form class="reservation-form">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="name">Nombre completo</label>
+                    <input type="text" id="name" name="name" required autocomplete="name">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Teléfono</label>
+                    <input type="tel" id="phone" name="phone" required autocomplete="tel">
+                </div>
+                <div class="form-group">
+                    <label for="date">Fecha de reserva</label>
+                    <input type="date" id="date" name="date" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="time">Hora</label>
+                    <select id="time" name="time" required>
+                        <option value="">Selecciona una hora</option>
+                        <option value="12:00">12:00 PM</option>
+                        <option value="12:30">12:30 PM</option>
+                        <option value="13:00">1:00 PM</option>
+                        <option value="13:30">1:30 PM</option>
+                        <option value="14:00">2:00 PM</option>
+                        <option value="14:30">2:30 PM</option>
+                        <option value="19:00">7:00 PM</option>
+                        <option value="19:30">7:30 PM</option>
+                        <option value="20:00">8:00 PM</option>
+                        <option value="20:30">8:30 PM</option>
+                        <option value="21:00">9:00 PM</option>
+                        <option value="21:30">9:30 PM</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="guests">Número de personas</label>
+                    <select id="guests" name="guests" required autocomplete="off">
+                        <option value="">Selecciona</option>
+                        <option value="1">1 persona</option>
+                        <option value="2">2 personas</option>
+                        <option value="3">3 personas</option>
+                        <option value="4">4 personas</option>
+                        <option value="5">5 personas</option>
+                        <option value="6">6 personas</option>
+                        <option value="7">7 personas</option>
+                        <option value="8">8 personas</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email (opcional)</label>
+                    <input type="email" id="email" name="email" autocomplete="email">
+                </div>
+            </div>
+
+            <div class="table-selection">
+                <h3 style="text-align: center; margin-bottom: 2rem; color: var(--verde-bosque);">Selecciona tu Salón y Mesa</h3>
+                
+                <div class="salon-selector">
+                    <button type="button" class="salon-btn active" data-salon="1">
+                        <i class="fas fa-utensils"></i> Salón Principal
+                    </button>
+                    <button type="button" class="salon-btn" data-salon="2">
+                        <i class="fas fa-wine-glass"></i> Salón Privado
+                    </button>
+                </div>
+
+                <div class="salon-container">
+                    <div class="salon-title">Salón Principal - Mesas 1-16</div>
+                    <div class="tables-grid" id="salon-1">
+                        </div>
+                </div>
+
+                <div class="table-legend">
+                    <div class="legend-item">
+                        <div class="legend-color legend-available"></div>
+                        <span>Disponible</span>
+                    </div>
+                    
+                    <div class="legend-item">
+                        <div class="legend-color legend-selected"></div>
+                        <span>Seleccionada</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reservation-summary" style="display: none;">
+                <div class="summary-title">Resumen de tu Reserva</div>
+                <div class="summary-item">
+                    <span>Nombre:</span>
+                    <span id="summary-name">-</span>
+                </div>
+                <div class="summary-item">
+                    <span>Fecha:</span>
+                    <span id="summary-date">-</span>
+                </div>
+                <div class="summary-item">
+                    <span>Hora:</span>
+                    <span id="summary-time">-</span>
+                </div>
+                <div class="summary-item">
+                    <span>Personas:</span>
+                    <span id="summary-guests">-</span>
+                </div>
+                <div class="summary-item">
+                    <span>Mesa:</span>
+                    <span id="summary-table">-</span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary" disabled>
+                <i class="fab fa-whatsapp"></i> Confirmar Reserva por WhatsApp
+            </button>
+        </form>
+    </div>
+
+    <footer class="footer" id="contacto">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Grau 545, Chachapoyas 01001</p>
+                <p><i class="fas fa-phone"></i> +51 933543580</p>
+                <p><i class="fas fa-envelope"></i> reservas@chacharestaurante.com</p>
+                <div class="social-links">
+                    <a href="https://web.facebook.com/Rest.Chacha/?locale=es_LA&_rdc=1&_rdr#" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/tuusuario" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@tuusuario" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://wa.me/933543580" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Horarios</h3>
+                <p>Lunes a Domingo</p>
+                <p>12:00 PM - 3:00 PM</p>
+                <p>6:00 PM - 11:00 PM</p>
+                <p><strong>Reservas recomendadas</strong></p>
+            </div>
+            <div class="footer-section">
+                <h3>Ubicación</h3>
+                <p>En el corazón histórico de Chachapoyas, a solo minutos de los principales atractivos turísticos.</p>
+                <p>Fácil acceso y estacionamiento disponible.</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 <a href="https://diegomori.online" target="_blank" rel="noopener noreferrer" style="color: #0077cc; text-decoration: none; font-weight: bold;">
+                Diego Mori
+            </a>
+            Restaurant Chacha. Todos los derechos reservados. | Diseñado con amor por nuestra tierra amazónica.</p>
+        </div>
+    </footer>
+
+   <script>
+    // Datos de las mesas (simulando ocupación)
+    const tablesData = {
+        1: { salon: 1, capacity: 4, occupied: false },
+        2: { salon: 1, capacity: 4, occupied: false },
+        3: { salon: 1, capacity: 4, occupied: false },
+        4: { salon: 1, capacity: 4, occupied: false },
+        5: { salon: 1, capacity: 4, occupied: false },
+        6: { salon: 1, capacity: 6, occupied: false },
+        7: { salon: 1, capacity: 2, occupied: false },
+        8: { salon: 1, capacity: 6, occupied: false },
+        9: { salon: 1, capacity: 4, occupied: false },
+        10: { salon: 1, capacity: 4, occupied: false },
+        11: { salon: 1, capacity: 4, occupied: false },
+        12: { salon: 1, capacity: 4, occupied: false },
+        13: { salon: 1, capacity: 4, occupied: false },
+        14: { salon: 1, capacity: 4, occupied: false },
+        15: { salon: 1, capacity: 4, occupied: false },
+        "16": { salon: 1, capacity: 4, occupied: false }, // <-- Clave corregida con comillas
+        17: { salon: 2, capacity: 4, occupied: false },
+        18: { salon: 2, capacity: 2, occupied: false },
+        19: { salon: 2, capacity: 6, occupied: false },
+        20: { salon: 2, capacity: 4, occupied: false },
+        21: { salon: 2, capacity: 8, occupied: false },
+        22: { salon: 2, capacity: 4, occupied: false },
+        23: { salon: 2, capacity: 2, occupied: false },
+        24: { salon: 2, capacity: 4, occupied: false },
+        25: { salon: 2, capacity: 6, occupied: false },
+        26: { salon: 2, capacity: 4, occupied: false },
+        27: { salon: 2, capacity: 4, occupied: false }
+    };
+
+    let currentSalon = 1;
+    let selectedTable = null;
+
+    // Función principal que se ejecuta cuando el DOM está completamente cargado
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inicializa los eventos de la página de reserva
+        setupEventListeners();
+        renderTables(); // Renderiza las mesas del salón actual al cargar
+        setMinDate(); // Establece la fecha mínima para el campo de fecha
+
+        // --- Lógica del Navbar (copiada de index.html) ---
+        // Esto es crucial para que el menú de hamburguesa y el efecto de scroll funcionen
+        const navbar = document.getElementById('navbar');
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        if (navbar) {
+            // Efecto de scroll para el navbar (cambia fondo y sombra)
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        }
+
+        if (hamburgerMenu && navLinks) {
+            // Alternar menú móvil (hamburguesa)
+            hamburgerMenu.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburgerMenu.classList.toggle('active'); // Opcional: para animar el ícono de hamburguesa
+            });
+
+            // Cerrar menú móvil cuando se hace clic en un enlace
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    hamburgerMenu.classList.remove('active');
+                });
+            });
+        }
+        // --- Fin de la lógica del Navbar ---
+    });
+
+    // Configura los escuchadores de eventos para los elementos de la página de reserva
+    function setupEventListeners() {
+        // Eventos para los botones de selección de salón
+        document.querySelectorAll('.salon-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const salon = parseInt(this.dataset.salon);
+                switchSalon(salon);
+            });
+        });
+
+        // Evento para el envío del formulario de reserva
+        const form = document.querySelector('.reservation-form');
+        form.addEventListener('submit', handleSubmit);
+
+        // Eventos para actualizar el resumen cada vez que un campo del formulario cambia
+        ['name', 'phone', 'date', 'time', 'guests'].forEach(field => {
+            document.getElementById(field).addEventListener('change', updateSummary);
+        });
+    }
+
+    // Cambia entre los salones (Principal o Privado)
+    function switchSalon(salon) {
+        currentSalon = salon;
+        selectedTable = null; // Reinicia la mesa seleccionada al cambiar de salón
+        
+        // Actualiza el estado activo de los botones de salón
+        document.querySelectorAll('.salon-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.querySelector(`[data-salon="${salon}"]`).classList.add('active');
+
+        // Actualiza el título del salón mostrado
+        const title = document.querySelector('.salon-title');
+        if (salon === 1) {
+            title.textContent = 'Salón Principal - Mesas 1-16';
+        } else {
+            title.textContent = 'Salón Privado - Mesas 17-27';
+        }
+
+        renderTables(); // Vuelve a renderizar las mesas para el nuevo salón
+        updateSummary(); // Actualiza el resumen de la reserva
+    }
+
+    // Renderiza las mesas en la cuadrícula del salón actual
+    function renderTables() {
+        const container = document.querySelector('.tables-grid');
+        container.innerHTML = ''; // Limpia las mesas existentes
+
+        // Filtra las mesas que pertenecen al salón actual
+        const filteredTables = Object.entries(tablesData).filter(([, table]) => table.salon === currentSalon);
+
+        // Crea y añade un elemento HTML para cada mesa
+        filteredTables.forEach(([tableNumber, table]) => {
+            const tableElement = createTableElement(tableNumber, table);
+            container.appendChild(tableElement);
+        });
+    }
+
+    // Crea un elemento HTML para una mesa individual
+    function createTableElement(tableNumber, tableData) {
+        const div = document.createElement('div');
+        div.className = 'table-item';
+        div.textContent = tableNumber;
+        // ¡IMPORTANTE! Añade el atributo data-table-number para poder identificar la mesa al seleccionarla
+        div.dataset.tableNumber = tableNumber; 
+        
+        if (tableData.occupied) {
+            div.classList.add('occupied');
+            div.title = 'Mesa ocupada';
+        } else {
+            div.classList.add('available');
+            div.title = `Mesa ${tableNumber} - Capacidad: ${tableData.capacity} personas`;
+            // Añade el evento click para seleccionar la mesa
+            div.addEventListener('click', () => selectTable(tableNumber));
+        }
+
+        return div;
+    }
+
+    // Selecciona una mesa al hacer clic en ella
+    function selectTable(tableNumber) {
+        // Remueve la clase 'selected' y 'pulse' de todas las mesas para deseleccionar la anterior
+        document.querySelectorAll('.table-item').forEach(item => {
+            item.classList.remove('selected');
+            item.classList.remove('pulse');
+        });
+
+        // Establece la mesa seleccionada actual
+        selectedTable = tableNumber;
+        // Encuentra el elemento de la mesa clicada usando el atributo data-table-number
+        const clickedTableElement = document.querySelector(`.table-item[data-table-number="${tableNumber}"]`); 
+        
+        if (clickedTableElement) { // Asegúrate de que el elemento exista
+            clickedTableElement.classList.add('selected'); // Marca la mesa como seleccionada
+            
+            // Añade un efecto visual de "pulso"
+            clickedTableElement.classList.add('pulse');
+            setTimeout(() => {
+                clickedTableElement.classList.remove('pulse'); // Quita el efecto después de 1 segundo
+            }, 1000);
+        }
+
+        updateSummary(); // Actualiza el resumen de la reserva
+    }
+
+    // Actualiza el resumen de la reserva y el estado del botón de envío
+    function updateSummary() {
+        const name = document.getElementById('name').value;
+        const date = document.getElementById('date').value;
+        const time = document.getElementById('time').value;
+        const guests = document.getElementById('guests').value;
+
+        // Rellena los detalles en el resumen
+        document.getElementById('summary-name').textContent = name || '-';
+        document.getElementById('summary-date').textContent = date ? formatDate(date) : '-';
+        document.getElementById('summary-time').textContent = time ? formatTime(time) : '-';
+        document.getElementById('summary-guests').textContent = guests ? `${guests} persona${guests > 1 ? 's' : ''}` : '-';
+        document.getElementById('summary-table').textContent = selectedTable ? `Mesa ${selectedTable}` : '-';
+
+        // Muestra u oculta el bloque de resumen según si los campos requeridos están llenos
+        const summary = document.querySelector('.reservation-summary');
+        if (name && date && time && guests && selectedTable) {
+            summary.style.display = 'block';
+            summary.classList.add('fade-in'); // Añade animación de aparición
+        } else {
+            summary.style.display = 'none'; // Oculta si falta información
+        }
+
+        // Habilita o deshabilita el botón de enviar
+        const submitBtn = document.querySelector('.btn-primary');
+        submitBtn.disabled = !(name && date && time && guests && selectedTable);
+    }
+
+    // Formatea la fecha a un formato legible en español
+    function formatDate(dateString) {
+        const date = new Date(dateString + 'T00:00:00'); // Añadir T00:00:00 para evitar problemas de zona horaria
+        return date.toLocaleDateString('es-ES', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    }
+
+    // Formatea la hora a un formato legible en español
+    function formatTime(timeString) {
+        // Simplemente devolver la cadena de tiempo si ya está en formato 12:00 PM/AM
+        // o si prefieres el formato 24h, solo devuelve timeString
+        // Si quieres conversión a AM/PM, el código actual está bien
+        const [hours, minutes] = timeString.split(':');
+        const date = new Date();
+        date.setHours(hours, minutes);
+        return date.toLocaleTimeString('es-ES', {
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    }
+
+    // Establece la fecha mínima del campo de fecha (mañana)
+    function setMinDate() {
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1); // Suma un día para que la reserva sea mínimo para mañana
+        
+        const dateInput = document.getElementById('date');
+        dateInput.min = tomorrow.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+    }
+
+    // Maneja el envío del formulario
+    function handleSubmit(e) {
+        e.preventDefault(); // Previene el envío por defecto del formulario
+
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData);
+        
+        // Valida que se haya seleccionado una mesa
+        if (!selectedTable) {
+            alert('Por favor selecciona una mesa');
+            return;
+        }
+
+        // Crea el mensaje para WhatsApp
+        const message = createWhatsAppMessage(data);
+        
+        // Envía el mensaje por WhatsApp
+        sendWhatsAppMessage(message);
+    }
+
+    // Crea el cuerpo del mensaje para WhatsApp
+    function createWhatsAppMessage(data) {
+        const tableInfo = tablesData[selectedTable];
+        // Determina el nombre del salón basado en el currentSalon
+        const salonName = currentSalon === 1 ? 'Salón Principal' : 'Salón Privado';
+        
+        // Construye el mensaje con la información de la reserva
+        return `🍽️ *RESERVA RESTAURANTE CHACHA*
+
+👤 *Nombre:* ${data.name}
+📞 *Teléfono:* ${data.phone}
+📅 *Fecha:* ${formatDate(data.date)}
+🕐 *Hora:* ${formatTime(data.time)}
+👥 *Personas:* ${data.guests}
+🪑 *Mesa:* ${selectedTable} (${salonName})
+📧 *Email:* ${data.email || 'No proporcionado'}
+
+¡Esperamos confirmar tu reserva pronto!`;
+    }
+
+    // Abre una nueva ventana para enviar el mensaje por WhatsApp
+    function sendWhatsAppMessage(message) {
+        const phone = '51933543580'; // Número de teléfono de WhatsApp
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank'); // Abre en una nueva pestaña
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,915 @@
+
+:root {
+     --tierra-principal: #1b110a;
+    --ocre: #cccc3c; /* Amarillo ocre */
+    --terracota: #271e14;
+    --piedra: #d2c48c;
+    --verde-bosque: #354f2f;
+    --azul-catarata: #a0b446;
+    --rojo-ceramica: #cdbc3f; /* Rojo/Naranja más suave, cercano al ocre */
+    --blanco-hueso: #FDF5E6;
+
+    /* Nuevas variables para colores consistentes en botones, etc. */
+    --primary-color: var(--ocre); /* Ocre para elementos principales */
+    --secondary-color: var(--rojo-ceramica); /* Terracota para acentos */
+    --light-text: #f0f0f0; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--blanco-hueso);
+    color: var(--tierra-principal);
+    overflow-x: hidden;
+}
+
+/* NAVEGACIÓN */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(24, 14, 7, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(50, 33, 21, 0.98);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--blanco-hueso);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a:hover {
+    color: var(--ocre);
+    transform: translateY(-2px);
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--ocre);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* === MENÚ HAMBURGUESA === */
+.hamburger-menu {
+    display: none; /* Oculto por defecto en pantallas grandes */
+    cursor: pointer;
+    z-index: 1002;
+}
+
+.hamburger-menu .bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--blanco-hueso);
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+
+/* CARRUSEL PRINCIPAL */
+.hero-carousel {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-container {
+    display: flex;
+    width: 400%;
+    height: 100%;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-slide {
+    width: 25%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.slide-1 { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../img/carrusel/slider1.jpg'); }
+.slide-2 { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../img/carrusel/slider2.jpg'); }
+.slide-3 { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/carrusel/slider3.jpg'); }
+.slide-4 { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../img/carrusel/todo.jpg'); }
+
+.slide-content {
+    text-align: center;
+    color: white;
+    max-width: 800px;
+    padding: 2rem;
+    animation: fadeInUp 1s ease-out;
+}
+
+.slide-title {
+    font-family: 'Cinzel', serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+    line-height: 1.2;
+}
+
+.slide-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--rojo-ceramica), var(--ocre));
+    color: white;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+    background: linear-gradient(135deg, var(--ocre), var(--rojo-ceramica));
+}
+
+.carousel-nav {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.nav-dot.active {
+    background: var(--ocre);
+    transform: scale(1.2);
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.2);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.carousel-arrow:hover { background: rgba(255,255,255,0.3); }
+.arrow-left { left: 2rem; }
+.arrow-right { right: 2rem; }
+
+/* SECCIONES */
+.section {
+    padding: 5rem 2rem; /* Añadido padding lateral por defecto */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--tierra-principal);
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--ocre), var(--rojo-ceramica));
+}
+
+/* BIENVENIDA */
+.welcome-text {
+    font-size: 1.3rem;
+    line-height: 1.8;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--verde-bosque);
+    font-weight: 400;
+}
+/* ESTILOS MEJORADOS PARA LA SECCIÓN DE CARTA */
+
+/* Grid de platos mejorado */
+.dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    margin-top: 3rem;
+    padding: 0 1rem;
+}
+
+/* Tarjetas de plato mejoradas */
+.dish-card {
+    position: relative;
+    height: 400px;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.dish-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+}
+
+.dish-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(212, 165, 116, 0.1), rgba(0,0,0,0.3));
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 1;
+}
+
+.dish-card:hover::before {
+    opacity: 1;
+}
+
+/* Overlay mejorado */
+.dish-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.9));
+    color: white;
+    padding: 2.5rem;
+    transform: translateY(100%);
+    transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 120px;
+    backdrop-filter: blur(10px);
+}
+
+.dish-card:hover .dish-overlay {
+    transform: translateY(0);
+}
+
+.dish-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.dish-description {
+    font-size: 1rem;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+/* Estilos para tarjetas de categoría */
+.category-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.category-card::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 60px;
+    height: 60px;
+    background: rgba(212, 165, 116, 0.9);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease;
+    z-index: 1;
+}
+
+.category-card:hover::after {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.category-card .dish-overlay {
+    background: linear-gradient(45deg, rgba(0,0,0,0.7), rgba(139, 69, 19, 0.8));
+    transform: translateY(0);
+    min-height: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.category-card .dish-name {
+    font-size: 2rem;
+    margin-bottom: 0;
+    z-index: 3;
+    position: relative;
+}
+
+/* Botón de regreso mejorado */
+.back-btn {
+    margin-bottom: 2rem;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(212, 165, 116, 0.3);
+}
+
+.back-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 165, 116, 0.5);
+}
+
+/* Título de categoría mejorado */
+.category-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    position: relative;
+    animation: slideInDown 0.8s ease;
+}
+
+/* Modal mejorado */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    transform: scale(0.8) translateY(50px);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(212, 165, 116, 0.2);
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.modal-close:hover {
+    transform: scale(1.2);
+}
+
+.modal-title {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.modal-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 15px;
+    margin-bottom: 1.5rem;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--secondary-color);
+}
+
+.modal-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: var(--light-text);
+    text-align: center;
+}
+
+.modal-stats {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.stat-item i {
+    font-size: 1.2rem;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-view-dishes {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(212, 165, 116, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-view-dishes:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 165, 116, 0.5);
+}
+
+/* Botón flotante mejorado */
+.floating-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    font-size: 1.5rem;
+    box-shadow: 0 10px 30px rgba(212, 165, 116, 0.4);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    z-index: 999;
+    overflow: hidden;
+}
+
+.floating-btn:hover {
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 15px 40px rgba(212, 165, 116, 0.6);
+    width: 120px;
+    border-radius: 35px;
+}
+
+.floating-text {
+    font-size: 0.8rem;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+}
+
+.floating-btn:hover .floating-text {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Transiciones entre vistas */
+.fade-transition {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.fade-transition.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animaciones */
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dish-card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.dish-card:nth-child(1) { animation-delay: 0.1s; }
+.dish-card:nth-child(2) { animation-delay: 0.2s; }
+.dish-card:nth-child(3) { animation-delay: 0.3s; }
+.dish-card:nth-child(4) { animation-delay: 0.4s; }
+.dish-card:nth-child(5) { animation-delay: 0.5s; }
+.dish-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Responsive mejorado */
+@media (max-width: 768px) {
+    .dishes-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        padding: 0 0.5rem;
+    }
+    
+    .dish-card {
+        height: 350px;
+    }
+    
+    .dish-overlay {
+        transform: translateY(0);
+        background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        min-height: 80px;
+        padding: 1.5rem;
+    }
+    
+    .dish-name {
+        font-size: 1.4rem;
+    }
+    
+    .modal-content {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .floating-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* Utilidades */
+.hidden {
+    display: none !important;
+}
+
+.blur-effect {
+    filter: blur(5px);
+    transition: filter 0.3s ease;
+}
+/* AMBIENTE */
+.ambiente-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    margin-top: 3rem;
+}
+.ambiente-text { font-size: 1.2rem; line-height: 1.8; color: var(--verde-bosque); }
+.ambiente-images { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.ambiente-img { height: 200px; border-radius: 10px; background: linear-gradient(135deg, var(--piedra), var(--ocre)); position: relative; overflow: hidden; transition: transform 0.3s ease; }
+.ambiente-img:hover { transform: scale(1.05); }
+
+/* TESTIMONIOS */
+.testimonios { background: linear-gradient(135deg, var(--verde-bosque), var(--azul-catarata)); color: white; padding: 5rem 2rem; }
+.testimonios-container { max-width: 1000px; margin: 0 auto; text-align: center; }
+.testimonio { max-width: 600px; margin: 0 auto; }
+.testimonio-text { font-size: 1.4rem; font-style: italic; margin-bottom: 2rem; line-height: 1.6; }
+.testimonio-author { font-weight: 600; color: var(--ocre); }
+
+/* CTA FINAL */
+.cta-final { background: linear-gradient(135deg, var(--tierra-principal), var(--terracota)); color: white; text-align: center; padding: 5rem 2rem; }
+.cta-title { font-family: 'Cinzel', serif; font-size: 3rem; margin-bottom: 2rem; }
+.cta-subtitle { font-size: 1.3rem; margin-bottom: 3rem; opacity: 0.9; }
+
+/* FOOTER */
+.footer { background: var(--tierra-principal); color: var(--blanco-hueso); padding: 3rem 0 1rem 0; }
+.footer-content { max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+.footer-section h3 { font-family: 'Cinzel', serif; margin-bottom: 1rem; color: var(--ocre); }
+.footer-section p, .footer-section a { color: var(--blanco-hueso); text-decoration: none; margin-bottom: 0.5rem; display: block; }
+.footer-section a:hover { color: var(--ocre); }
+.social-links { display: flex; gap: 1rem; margin-top: 1rem; }
+.social-links a { color: var(--blanco-hueso); font-size: 1.5rem; transition: color 0.3s ease; }
+.social-links a:hover { color: var(--ocre); }
+.footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.2); margin-top: 2rem; opacity: 0.7; }
+
+/* ANIMACIONES */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+
+
+/* =================================
+   ===== MEJORAS RESPONSIVE ======
+   ================================= */
+
+/* === TABLETS Y MÓVILES GRANDES (hasta 992px) === */
+@media (max-width: 992px) {
+    .ambiente-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
+/* === MÓVILES (hasta 768px) === */
+@media (max-width: 768px) {
+    .nav-links {
+        /* === MEJORA: Transforma los enlaces en un menú desplegable === */
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: -100%; /* Empieza fuera de la pantalla */
+        width: 70%;
+        height: 100vh;
+        background: var(--terracota);
+        padding-top: 5rem;
+        align-items: center;
+        transition: right 0.5s ease-in-out;
+        z-index: 1001;
+    }
+    .nav-links.active {
+        right: 0; /* Muestra el menú */
+    }
+    .hamburger-menu {
+        display: block; /* Muestra el icono de hamburguesa */
+    }
+    .slide-title { font-size: 2.5rem; }
+    .slide-subtitle { font-size: 1.1rem; }
+    .section { padding: 3rem 1.5rem; }
+    .section-title { font-size: 2.2rem; }
+    .welcome-text { font-size: 1.1rem; }
+    .cta-title { font-size: 2rem; }
+    .btn-primary { padding: 0.8rem 1.8rem; font-size: 1rem; }
+    .footer-content { text-align: center; }
+    .social-links { justify-content: center; }
+
+    /* === ESTILOS PARA DISH-CARD Y DISH-OVERLAY EN MÓVILES === */
+    .dish-card {
+        /* Aseguramos que la tarjeta es un flex container para que el overlay se alinee abajo */
+        display: flex; 
+        flex-direction: column;
+        justify-content: flex-end; /* Empuja el overlay hacia la parte inferior */
+        height: 350px; /* Puedes ajustar o dejar en auto si la imagen lo permite y el contenido es dinámico */
+        padding: 0; /* Remover padding que pueda interferir con el flexbox */
+    }
+
+    .dish-card .dish-overlay {
+        position: relative; /* CRÍTICO: el overlay ahora fluye dentro del flexbox */
+        transform: translateY(0) !important; /* Siempre visible, anula el efecto de hover de escritorio */
+        background: rgba(0,0,0,0.7); /* Fondo sólido para legibilidad */
+        padding: 1rem; /* Relleno del overlay */
+        min-height: 80px; /* Altura mínima para asegurar espacio para el texto */
+        /* Asegurar que el contenido dentro del overlay esté centrado si es necesario */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .dish-card .dish-name {
+        font-size: 1.3rem; 
+        margin-bottom: 0.3rem;
+        opacity: 1; /* Siempre visible en móviles */
+    }
+
+    .dish-card .dish-description {
+        font-size: 0.9rem; 
+        opacity: 1; /* Siempre visible en móviles */
+    }
+
+    /* Ya no necesitamos la regla :hover para el overlay en móviles */
+    .dish-card:hover .dish-overlay {
+        transform: translateY(0); /* Mantiene el estado visible */
+    }
+
+    /* Estilos para las tarjetas de categoría (reutilizan .dish-card) - asegurar visibilidad en móvil */
+    .category-card .dish-name {
+        font-size: 1.8rem; /* Ajuste para que se vea bien el nombre de la categoría */
+    }
+}
+
+/* === MÓVILES PEQUEÑOS (hasta 480px) === */
+@media (max-width: 480px) {
+    .slide-title { font-size: 2rem; }
+    .slide-subtitle { font-size: 1rem; }
+    .carousel-arrow { font-size: 1.5rem; padding: 0.8rem; }
+    .arrow-left { left: 1rem; }
+    .arrow-right { right: 1rem; }
+    .cta-title { font-size: 1.8rem; }
+    
+    /* Pequeños ajustes finales para el overlay en móviles muy pequeños */
+    .dish-card .dish-overlay {
+        padding: 0.8rem;
+        min-height: 70px;
+    }
+    .dish-card .dish-name {
+        font-size: 1.2rem;
+    }
+    .dish-card .dish-description {
+        font-size: 0.85rem;
+    }
+}
+
+/* NUEVOS ESTILOS PARA LA NAVEGACIÓN DE LA CARTA POR CATEGORÍAS */
+
+/* Ocultar elementos */
+.hidden {
+    display: none !important;
+}
+
+/* Estilo para el botón flotante de regresar */
+#back-to-categories {
+    position: sticky; /* Hace que el elemento "flote" */
+    top: 120px; /* Ajusta la distancia desde la parte superior. Considera la altura del navbar */
+    left: 2rem; /* Alinea a la izquierda, puedes ajustar a right si prefieres */
+    z-index: 999; /* Asegura que esté por encima de otros elementos, pero debajo del navbar */
+    margin-bottom: 2rem; /* Espacio debajo del botón cuando no está fijo */
+    width: fit-content; /* El botón se ajusta a su contenido */
+    display: block; /* Para que funcione margin-bottom y centrado en móvil */
+    padding: 0.8rem 1.5rem; /* Ajusta el padding para que no sea demasiado grande */
+    text-decoration: none; /* Asegurar que no tenga subrayado si es un link */
+    text-align: center; /* Centrar texto en el botón */
+}
+
+/* Ajustes responsive para el botón "Regresar" */
+@media (max-width: 768px) {
+    #back-to-categories {
+        width: calc(100% - 4rem); /* Ancho completo menos el padding lateral de la sección */
+        margin-left: 2rem;
+        margin-right: 2rem;
+        text-align: center;
+        top: 120px; /* Ajusta si el navbar móvil es más pequeño */
+    }
+}
+
+/* Estilos para las tarjetas de categoría (reutilizan .dish-card) */
+/* En móviles, estas también serán siempre visibles gracias a las reglas generales de .dish-card */
+.category-card .dish-overlay {
+    background: linear-gradient(transparent, rgba(0,0,0,0.7)); 
+}
+
+.category-card .dish-name {
+    /* Centra el título de la categoría */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+    font-size: 2rem; /* Ajusta el tamaño para que destaque */
+    opacity: 1; /* Siempre visible */
+    transition: opacity 0.3s ease;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+}
+
+.category-card:hover .dish-name {
+    opacity: 1; /* Se mantiene visible al hover */
+}
+
+/* Si quieres que la descripción de la categoría no aparezca al pasar el mouse,
+   puedes ocultar el dish-description dentro de category-card */
+.category-card .dish-description {
+    display: none;
+}
+
+/* Estilo para el efecto ripple */
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7); /* Color del ripple */
+    animation: ripple-animation 0.6s ease-out forwards;
+    transform: scale(0);
+    opacity: 1;
+    z-index: 10; /* Asegura que el ripple esté sobre el botón */
+}
+
+@keyframes ripple-animation {
+    from {
+        transform: scale(0);
+        opacity: 1;
+    }
+    to {
+        transform: scale(2.5); /* Ajusta el tamaño de expansión del ripple */
+        opacity: 0;
+    }
+}
