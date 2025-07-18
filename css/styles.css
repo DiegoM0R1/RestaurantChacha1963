@@ -129,19 +129,58 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    /* Añadimos overflow: hidden para que la imagen no se salga del slide al escalar */
+    overflow: hidden; 
 }
 
-.slide-1 { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../img/carrusel/slider1.jpg'); }
-.slide-2 { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../img/carrusel/slider2.jpg'); }
-.slide-3 { background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('../img/carrusel/slider3.jpg'); }
-.slide-4 { background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../img/carrusel/todo.jpg'); }
+/* Contenedor para la imagen de fondo con la animación de zoom */
+.carousel-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 3s ease-out; /* Transición más lenta para el efecto de zoom */
+    z-index: -1; /* Asegura que la imagen esté detrás del contenido */
+}
 
+.slide-1::before { background-image: url('../img/carrusel/slider1.jpg'); }
+.slide-2::before { background-image: url('../img/carrusel/slider2.jpg'); }
+.slide-3::before { background-image: url('../img/carrusel/slider3.jpg'); }
+.slide-4::before { background-image: url('../img/carrusel/todo.jpg'); }
+
+/* Aplica el degradado sobre el contenido en lugar de la imagen de fondo */
+.carousel-slide::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)); /* Ajusta los colores y opacidad según tus degradados originales */
+    z-index: 0; /* Asegura que el degradado esté entre la imagen y el contenido */
+}
+.slide-3::after {
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
+}
+
+
+/* Clase para aplicar la animación de zoom a la imagen activa */
+.carousel-slide.active::before {
+    transform: scale(1.1); /* Ajusta el valor para un mayor o menor "acercamiento" */
+}
+
+/* Asegúrate de que el contenido del slide esté por encima de la imagen y el degradado */
 .slide-content {
     text-align: center;
     color: white;
     max-width: 800px;
     padding: 2rem;
     animation: fadeInUp 1s ease-out;
+    z-index: 1; /* Asegura que el contenido esté por encima del degradado */
 }
 
 .slide-title {
