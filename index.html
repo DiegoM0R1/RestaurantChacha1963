@@ -282,10 +282,11 @@ Lucy Capuñay</p>
                 <p>Cada receta ha sido cuidadosamente investigada y adaptada, respetando las técnicas ancestrales mientras incorporamos toques contemporáneos que realzan los sabores únicos de nuestra región.</p>
             </div>
             <div class="ambiente-images">
-                <div class="ambiente-img"></div>
-                <div class="ambiente-img"></div>
-                <div class="ambiente-img"></div>
-                <div class="ambiente-img"></div>
+                <div class="ambiente-img"><img src="img/contenido/chachatarde.jpg" alt="" style="height: 200px;"></div>
+                <div class="ambiente-img"><img src="img/contenido/chachanoche.jpg" alt="" style="height: 200px;"></div>
+                <div class="ambiente-img"><img src="img/contenido/chicharronchacho.jpg" alt="" style="height: 200px;"></div>
+                <div class="ambiente-img"><img src="img/contenido/chachaplaza.jpg" alt=""style="height: 200px;"></div>
+                
             </div>
         </div>
     </section>
@@ -378,7 +379,55 @@ Lucy Capuñay</p>
     }
 
     // --- Funciones para la gestión del menú ---
+// Agregar este código al final de tu archivo JavaScript existente, dentro del DOMContentLoaded
 
+// --- MENÚ HAMBURGUESA ---
+const hamburgerMenu = document.getElementById('hamburger-menu');
+const navLinks = document.getElementById('nav-links');
+const navbar = document.getElementById('navbar');
+
+if (hamburgerMenu && navLinks) {
+    // Toggle del menú hamburguesa
+    hamburgerMenu.addEventListener('click', function() {
+        navLinks.classList.toggle('active');
+        hamburgerMenu.classList.toggle('active');
+        
+        // Prevenir scroll cuando el menú está abierto
+        if (navLinks.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Cerrar menú al hacer clic en un enlace
+    const navLinkItems = navLinks.querySelectorAll('a');
+    navLinkItems.forEach(link => {
+        link.addEventListener('click', function() {
+            navLinks.classList.remove('active');
+            hamburgerMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    });
+
+    // Cerrar menú al hacer clic fuera de él
+    document.addEventListener('click', function(e) {
+        if (!navbar.contains(e.target) && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            hamburgerMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Cerrar menú al redimensionar la ventana
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            navLinks.classList.remove('active');
+            hamburgerMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+    });
+}
     /**
      * Muestra las categorías principales con animaciones mejoradas.
      */
