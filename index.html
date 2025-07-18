@@ -340,45 +340,43 @@ Lucy Capuñay</p>
         </div>
     </footer>
 
-    <script>
-  document.addEventListener('DOMContentLoaded', function() {
-
-    
-    // Variables globales (dentro del ámbito del DOMContentLoaded)
+    <script>document.addEventListener('DOMContentLoaded', function() {
+    // --- Variables globales ---
     let cartaData = [];
     let currentCategoryIndex = null;
 
-
+    // --- Funciones de Utilidad ---
     function addRippleEffect(element) {
-    element.style.position = 'relative'; // Ensure position is set for absolute children
-    element.style.overflow = 'hidden';   // Ensure ripple is clipped
+        element.style.position = 'relative'; // Asegurar que la posición esté establecida para hijos absolutos
+        element.style.overflow = 'hidden';   // Asegurar que el efecto ripple se recorte
 
-    element.addEventListener('click', function(e) {
-        // Remove any existing ripples to prevent accumulation if clicked rapidly
-        const existingRipple = element.querySelector('.ripple');
-        if (existingRipple) {
-            existingRipple.remove();
-        }
+        element.addEventListener('click', function(e) {
+            // Eliminar cualquier ripple existente para prevenir acumulación
+            const existingRipple = element.querySelector('.ripple');
+            if (existingRipple) {
+                existingRipple.remove();
+            }
 
-        const ripple = document.createElement('span');
-        const rect = element.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = e.clientX - rect.left - size / 2;
-        const y = e.clientY - rect.top - size / 2;
+            const ripple = document.createElement('span');
+            const rect = element.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
 
-        ripple.style.width = ripple.style.height = size + 'px';
-        ripple.style.left = x + 'px';
-        ripple.style.top = y + 'px';
-        ripple.classList.add('ripple');
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            ripple.classList.add('ripple');
 
-        element.appendChild(ripple);
+            element.appendChild(ripple);
 
-        // Remove the ripple after animation
-        ripple.addEventListener('animationend', () => {
-            ripple.remove();
+            // Eliminar el ripple después de la animación
+            ripple.addEventListener('animationend', () => {
+                ripple.remove();
+            });
         });
-    });
-}
+    }
+
     // --- Funciones para la gestión del menú ---
 
     /**
@@ -423,13 +421,18 @@ Lucy Capuñay</p>
             }
 
             if (categoryImage) {
-                categoryCard.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('img/${categoryImage}')`;
+                // Aquí usamos la imagen de fondo para la tarjeta de categoría directamente
+                // y el gradiente se aplica sobre el overlay si lo deseas
+                categoryCard.style.backgroundImage = `url('img/${categoryImage}')`;
             } else {
                 categoryCard.style.backgroundColor = 'var(--terracota)';
             }
 
             const categoryOverlay = document.createElement('div');
             categoryOverlay.className = 'dish-overlay';
+            // Aquí puedes agregar un gradiente al overlay si no lo pusiste en el CSS para .dish-card.category-card
+            // categoryOverlay.style.background = 'linear-gradient(transparent, rgba(0,0,0,0.9))';
+
 
             const categoryName = document.createElement('h3');
             categoryName.className = 'dish-name';
@@ -547,6 +550,7 @@ Lucy Capuñay</p>
             dishCard.className = 'dish-card';
             dishCard.style.animationDelay = `${index * 0.1}s`;
 
+            // Aquí aplicamos el background-image y el linear-gradient directamente
             if (item.image) {
                 dishCard.style.backgroundImage = `linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/${item.image}')`;
             } else {
@@ -631,7 +635,8 @@ Lucy Capuñay</p>
             });
     }
 
-    // --- Lógica del Carrusel ---
+    
+
     const carouselContainer = document.getElementById('carouselContainer');
     if (carouselContainer) {
         let currentSlide = 0;
@@ -644,6 +649,17 @@ Lucy Capuñay</p>
 
         const updateCarousel = () => {
             carouselContainer.style.transform = `translateX(-${currentSlide * (100 / totalSlides)}%)`;
+            
+            // --- CÓDIGO AÑADIDO PARA EL EFECTO DE ZOOM ---
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.add('active'); // Añade la clase 'active' al slide actual
+                } else {
+                    slide.classList.remove('active'); // Remueve la clase 'active' de los demás
+                }
+            });
+            // --- FIN CÓDIGO AÑADIDO ---
+
             dots.forEach((dot, index) => dot.classList.toggle('active', index === currentSlide));
         };
 
@@ -668,11 +684,14 @@ Lucy Capuñay</p>
             arrowLeft.addEventListener('click', () => changeSlide(-1));
             arrowRight.addEventListener('click', () => changeSlide(1));
             dots.forEach((dot, index) => dot.addEventListener('click', () => goToSlide(index)));
+            
+            // Inicializa el carrusel con el primer slide activo al cargar la página
+            updateCarousel(); 
             resetAutoPlay();
         }
     }
 
-    // --- Animaciones y otros ---
+   
 
     // Animación de entrada (Fade In) al hacer scroll
     const fadeInElements = document.querySelectorAll('.fade-in');
@@ -687,8 +706,6 @@ Lucy Capuñay</p>
         }, { threshold: 0.1 });
         fadeInElements.forEach(el => observer.observe(el));
     }
-
-   
 
     // --- Setup de Event Listeners al cargar el DOM ---
     
@@ -740,35 +757,11 @@ Lucy Capuñay</p>
         }
     });
 
-    // Aplicar efectos visuales a los botones
-    function addRippleEffect(element) {
-        element.addEventListener('click', function(e) {
-            const ripple = document.createElement('span');
-            const rect = element.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-            
-            ripple.style.width = ripple.style.height = size + 'px';
-            ripple.style.left = x + 'px';
-            ripple.style.top = y + 'px';
-            ripple.classList.add('ripple');
-            
-            // Añade el ripple a un contenedor para evitar problemas de overflow en elementos con border-radius
-            const rippleContainer = document.createElement('div');
-            rippleContainer.style.cssText = 'position: absolute; overflow: hidden; top: 0; left: 0; right: 0; bottom: 0; border-radius: inherit; pointer-events: none;';
-            rippleContainer.appendChild(ripple);
-            element.appendChild(rippleContainer);
-            
-            setTimeout(() => {
-                rippleContainer.remove();
-            }, 600);
-        }, {once: true}); // El evento se dispara una vez
-    }
-
     // Aplicar efectos a los botones cuando se cargan
-    const buttons = document.querySelectorAll('.btn-primary, .btn-view-dishes');
-    buttons.forEach(button => {
+    // Asegúrate de que la función addRippleEffect esté definida correctamente
+    // y que los elementos a los que se aplica tengan position: relative; y overflow: hidden; en CSS
+    const buttonsToRipple = document.querySelectorAll('.btn-primary, .btn-view-dishes');
+    buttonsToRipple.forEach(button => {
         addRippleEffect(button);
     });
 
