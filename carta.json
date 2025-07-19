@@ -19,7 +19,7 @@
           "price": 10.00,
           "currency": "Soles",
           "description": "Tiernas hebras de pollo, perfectas para un bocado rápido.",
-          "image": "",
+          "image": "pollodesilachdo.png",
           "tags": ["clásico", "rápido"]
         },
         {
@@ -27,7 +27,7 @@
           "price": 10.00,
           "currency": "Soles",
           "description": "La combinación perfecta de jamón y queso.",
-          "image": "sandwich_mixto_clasico.jpg",
+          "image": "mixtoclasico.jpg",
           "tags": ["clásico", "básico"]
         },
         
@@ -35,8 +35,8 @@
           "name": "Filete de pollo",
           "price": 13.00,
           "currency": "Soles",
-          "description": "Jugoso filete de pollo con tomate fresco y lechuga crujiente.",
-          "image": "sandwich_filete_pollo.jpg",
+          "description": "Jugoso filete de pollo con tomate fresco y lechuga.",
+          "image": "sandfiletepollo.png",
           "tags": ["ligero", "saludable"]
         },
         {
@@ -44,7 +44,7 @@
           "price": 12.00,
           "currency": "Soles",
           "description": "",
-          "image": "sandwich_lomo_saltado.jpg",
+          "image": "sadwcecinachancho.png",
           "tags": ["tradicional", "sabroso"]
         },
         {
@@ -52,14 +52,14 @@
           "price": 12.00,
           "currency": "Soles",
           "description": "Exquisito chorizo con el sabor auténtico de la región.",
-          "image": "sandwich_chorizo_regional.jpg",
+          "image": "sandchorizoregional.png",
           "tags": ["regional", "único"]
         },
         {
           "name": "Club Sandwich",
           "price": 25.00,
           "currency": "Soles",
-          "description": "Pollo, jamón, queso, huevo, tomate, acompañado de papas fritas.",
+          "description": "Pollo, jamón ingles, queso edam, tocino, huevo, tomate, acompañado de papas fritas.",
           "image": "sandwich_club.jpg",
           "tags": ["completo", "generoso"]
         }
@@ -74,7 +74,7 @@
           "price": 14.00,
           "currency": "Soles",
           "description": "Fresco y delicioso, con pollo, palta cremosa y tomate.",
-          "image": "triple_pollo_palta_tomate.jpg",
+          "image": "triplepollopaltatomate.png",
           "tags": ["fresco", "clásico"]
         },
         {
@@ -82,7 +82,7 @@
           "price": 12.00,
           "currency": "Soles",
           "description": "La frescura de la palta, tomate, lechuga y el toque mediterráneo de la aceituna.",
-          "image": "triple_palta_tomate_lechuga.jpg",
+          "image": "triple_palta_tomate_lechuga.png",
           "tags": ["vegetariano", "fresco"]
         },
         {
@@ -90,15 +90,15 @@
           "price": 12.00,
           "currency": "Soles",
           "description": "El pollo se une al sabor del jamón y queso.",
-          "image": "triple_palta_jamon_queso.jpg",
+          "image": "pollojamonqueso.png",
           "tags": ["clásico", "sabroso"]
         },
         {
-          "name": "Pollo Durazno con Almíbar y Queso Jamón",
+          "name": "Pollo piña en Almíbar y Queso",
           "price": 16.00,
           "currency": "Soles",
-          "description": "Una mezcla sorprendente de pollo, dulzura del durazno en almíbar, queso y jamón.",
-          "image": "triple_pollo_durazno.jpg",
+          "description": "Una mezcla sorprendente de pollo, dulzura de la piña en almíbar, queso.",
+          "image": "triplepiñaalmibar.png",
           "tags": ["innovador", "dulce-salado"]
         },
         {
@@ -106,7 +106,7 @@
           "price": 16.00,
           "currency": "Soles",
           "description": "Una combinación única de pollo, durazno, huevo y crujiente tocino.",
-          "image": "triple_pollo_durazno_huevo_tocino.jpg",
+          "image": "tripleduraznohuevotocino.png",
           "tags": ["único", "especial"]
         }
       ]
@@ -141,7 +141,7 @@
           "name": "Desayuno Chacha",
           "price": 22.00,
           "currency": "Soles",
-          "description": "Jugo de papaya o piña, café o té, 2 panes, miel, mantequilla, y la tradicional cecina con tacacho.",
+          "description": "Jugo de papaya o piña, café, pan, purtumote con huevo frito y tamal.",
           "image": "desayuno_chacha.jpg",
           "tags": ["regional", "especialidad"]
         },
@@ -182,7 +182,7 @@
           "price": 6.00,
           "currency": "Soles",
           "description": "El clásico juane, con arroz, pollo y especias, envuelto en hoja de bijao.",
-          "image": "jumitas.jpg",
+          "image": "",
           "tags": ["regional", "dulce", "salado"]
         },
         {
@@ -190,7 +190,7 @@
           "price": 12.00,
           "currency": "Soles",
           "description": "Huevos revueltos esponjosos, acompañados de 1 pan.",
-          "image": "huevos_revueltos.jpg",
+          "image": "",
           "tags": ["clásico", "completo"]
         },
         {
@@ -198,7 +198,7 @@
           "price": 14.00,
           "currency": "Soles",
           "description": "Huevos y crujiente tocino, acompañado de 1 pan.",
-          "image": "huevos_tocino.jpg",
+          "image": "",
           "tags": ["clásico", "sabroso"]
         },
         {
@@ -206,7 +206,7 @@
           "price": 18.00,
           "currency": "Soles",
           "description": "Suave omelette relleno de jamón y queso, con tostadas.",
-          "image": "omelette_jamon_queso.jpg",
+          "image": "",
           "tags": ["completo", "delicioso"]
         },
         {
@@ -214,22 +214,22 @@
           "price": 18.00,
           "currency": "Soles",
           "description": "Omelette lleno de vegetales frescos, con tostadas.",
-          "image": "omelette_vegetariano.jpg",
+          "image": "",
           "tags": ["vegetariano", "saludable"]
         },
         {
           "name": "Desayuno Continental",
           "price": 15.50,
           "currency": "Soles",
-          "description": "Jugo de papaya o piña, 1 café o té, 2 panes, miel y mantequilla.",
-          "image": "desayuno_continental.jpg",
+          "description": "Jugo de papaya o piña, café, pan, mermelada y mantequilla.",
+          "image": "",
           "tags": ["ligero", "clásico"]
         },
         {
           "name": "Desayuno Americano",
           "price": 21.00,
           "currency": "Soles",
-          "description": "Jugo de papaya o piña, café o té, 2 panes, miel, mantequilla, huevos revueltos o fritos.",
+          "description": "Jugo de papaya o piña, café, pan, huevos revueltos con tocino crocante.",
           "image": "desayuno_americano.jpg",
           "tags": ["completo", "sustancioso"]
         },
@@ -238,7 +238,7 @@
           "name": "Desayuno Light",
           "price": 22.00,
           "currency": "Soles",
-          "description": "Jugo de piña o papaya, 1 café o té, miel, queso fresco, mermelada y panes integrales o cereales, tostadas.",
+          "description": "Jugo de piña o papaya, 1 café, pan, ensalada de frutas con yogurt y miel de abeja, porción de cereales y tostadas.",
           "image": "desayuno_light.jpg",
           "tags": ["saludable", "ligero"]
         },
@@ -246,7 +246,7 @@
           "name": "Desayuno Típico",
           "price": 22.00,
           "currency": "Soles",
-          "description": "Jugo de piña o papaya, café o té, huevo revuelto o frito, salchicha, tacacho, cecina de res y mote, café y pan.",
+          "description": "Jugo de piña o papaya, huevo revuelto con cecina de res y mote, café y pan.",
           "image": "desayuno_tipico.jpg",
           "tags": ["regional", "tradicional"]
         },
